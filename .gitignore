@@ -25,3 +25,7 @@ sanity.types.ts
 # OS / editor
 .DS_Store
 npm-debug.log*
+
+# Handoff docs — keep local only
+DEVELOPER_HANDOFF.md
+PROJECT_MANIFEST.txt
