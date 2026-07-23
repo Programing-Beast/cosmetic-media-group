@@ -1,0 +1,37 @@
+import {aboutPage} from './documents/aboutPage'
+import {article} from './documents/article'
+import {author} from './documents/author'
+import {brand} from './documents/brand'
+import {diamondAwards} from './documents/diamondAwards'
+import {founder} from './documents/founder'
+import {homepage} from './documents/homepage'
+import {mediaDesk} from './documents/mediaDesk'
+import {membershipPage} from './documents/membershipPage'
+import {service} from './documents/service'
+import {siteSettings} from './documents/siteSettings'
+import {toolkit} from './documents/toolkit'
+import {homeSection} from './objects/homeSection'
+import {link} from './objects/link'
+import {portableText} from './objects/portableText'
+import {seo} from './objects/seo'
+import {stat} from './objects/stat'
+
+export const schemaTypes = [
+  siteSettings,
+  homepage,
+  aboutPage,
+  founder,
+  mediaDesk,
+  diamondAwards,
+  membershipPage,
+  service,
+  author,
+  article,
+  brand,
+  toolkit,
+  seo,
+  link,
+  stat,
+  portableText,
+  homeSection
+]

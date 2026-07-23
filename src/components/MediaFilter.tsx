@@ -1,0 +1,61 @@
+'use client'
+
+import Link from 'next/link'
+import {useMemo, useState} from 'react'
+
+export type MediaCard = {
+  slug: string
+  title: string
+  excerpt: string
+  category: string
+  format?: string
+  img: string
+  alt: string
+}
+
+const CHIPS: Array<{label: string; value: string}> = [
+  {label: 'All stories', value: 'all'},
+  {label: 'Articles', value: 'article'},
+  {label: 'Interviews', value: 'interview'},
+  {label: 'Videos', value: 'video'},
+  {label: 'Podcasts', value: 'podcast'},
+  {label: 'Industry news', value: 'news'},
+  {label: 'Opinion', value: 'opinion'},
+  {label: 'Expert content', value: 'report'}
+]
+
+export function MediaFilter({cards}: {cards: MediaCard[]}) {
+  const [active, setActive] = useState('all')
+  const visible = useMemo(() => (active === 'all' ? cards : cards.filter((c) => c.format === active)), [active, cards])
+
+  return (
+    <>
+      <div className="filter-bar">
+        {CHIPS.map((chip) => (
+          <button
+            key={chip.value}
+            type="button"
+            className={`filter-chip ${active === chip.value ? 'active' : ''}`}
+            onClick={() => setActive(chip.value)}
+          >
+            {chip.label}
+          </button>
+        ))}
+      </div>
+      <div className="media-grid" style={{marginTop: 42}}>
+        {visible.length ? (
+          visible.map((card) => (
+            <Link className="media-card" href={`/media-hub/${card.slug}`} key={card.slug}>
+              <div className="story-image"><img src={card.img} alt={card.alt} /></div>
+              <div className="story-meta">{card.format || card.category} / {card.category}</div>
+              <h3>{card.title}</h3>
+              <p>{card.excerpt}</p>
+            </Link>
+          ))
+        ) : (
+          <p className="muted">No stories in this category yet.</p>
+        )}
+      </div>
+    </>
+  )
+}

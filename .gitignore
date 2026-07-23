@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+
+# Next.js build output
+.next
+out
+
+# Environment files
+.env
+.env.local
+.env*.local
+copy.txt
+
+# Next.js / TypeScript generated
+next-env.d.ts
+*.tsbuildinfo
+
+# Sanity generated
+schema.json
+sanity.types.ts
+
+# Vercel
+.vercel
+
+# OS / editor
+.DS_Store
+npm-debug.log*

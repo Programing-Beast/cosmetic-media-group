@@ -1,0 +1,37 @@
+{
+  "name": "cosmetic-media-group-platform",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {"node": ">=20.9.0"},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "sanity:typegen": "sanity schema extract --path=./schema.json && sanity typegen generate",
+    "seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "@portabletext/react": "6.2.0",
+    "@sanity/image-url": "2.1.1",
+    "@sanity/vision": "6.5.0",
+    "@sanity/client": "7.23.2",
+    "next": "16.2.11",
+    "next-sanity": "13.1.4",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "sanity": "6.5.0",
+    "styled-components": "^6.1.19",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.15",
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "eslint": "^9.32.0",
+    "eslint-config-next": "16.2.11",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  }
+}

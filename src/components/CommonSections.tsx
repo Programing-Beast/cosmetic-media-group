@@ -1,0 +1,14 @@
+import Link from 'next/link'
+import {ManagedForm} from './Form'
+
+export function PageHero({title, accent, intro, crumbs}: {title: string; accent?: string; intro: string; crumbs: Array<{label: string; href?: string}>}) {
+  return <div className="page-hero"><div className="shell"><div className="crumbs">{crumbs.map((crumb, index) => <span key={`${crumb.label}-${index}`}>{index > 0 && <span>/</span>} {crumb.href ? <Link href={crumb.href}>{crumb.label}</Link> : crumb.label}</span>)}</div><h1>{title} {accent && <span className="serif pink">{accent}</span>}</h1><p className="intro">{intro}</p></div></div>
+}
+
+export function NewsletterBand() {
+  return <section className="newsletter"><div className="shell newsletter-inner"><div><div className="eyebrow" style={{color: 'var(--ink)'}}>The industry, edited</div><h2>Stay close to what is shaping aesthetics.</h2></div><div><p>Join the Cosmetic Media Group newsletter for sharp industry thinking, new voices, trend intelligence and selected opportunities.</p><ManagedForm type="newsletter" className="subscribe" successMessage="Thank you. You have joined the list."><input type="email" name="email" required placeholder="Enter your email address" /><button type="submit">Join the list ↗</button></ManagedForm></div></div></section>
+}
+
+export function ContactForm() {
+  return <ManagedForm type="contact" className="contact-form" successMessage="Thank you. Your enquiry has been sent."><div className="form-row"><div className="field"><label htmlFor="firstName">First name</label><input id="firstName" name="firstName" required placeholder="First name" /></div><div className="field"><label htmlFor="lastName">Last name</label><input id="lastName" name="lastName" required placeholder="Last name" /></div></div><div className="form-row"><div className="field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" required placeholder="name@company.com" /></div><div className="field"><label htmlFor="company">Company</label><input id="company" name="company" placeholder="Company or brand" /></div></div><div className="field"><label htmlFor="interest">What can we help with?</label><select id="interest" name="interest"><option>PR</option><option>Personal Branding</option><option>Content Studio</option><option>Media Training</option><option>Podcast Production</option><option>Events</option><option>Integrated campaign</option><option>Media or journalist request</option><option>Partnership or other enquiry</option></select></div><div className="field"><label htmlFor="message">Tell us about your brief</label><textarea id="message" name="message" required placeholder="Your goals, timings and what success should look like..." /></div><button className="btn btn-pink" type="submit">Send your enquiry ↗</button></ManagedForm>
+}
