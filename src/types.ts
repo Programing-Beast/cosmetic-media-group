@@ -28,7 +28,7 @@ export type Service = {
   eyebrow: string
   intro: string
   body: string
-  image: ImageValue
+  image?: ImageValue
   deliverables: string[]
   outcomes: string[]
   seo?: SEO
@@ -43,7 +43,7 @@ export type Article = {
   format?: 'article' | 'interview' | 'video' | 'podcast' | 'news' | 'opinion' | 'report'
   publishedAt: string
   readingTime?: string
-  image: ImageValue
+  image?: ImageValue
   author?: Author
   body?: PortableTextBlock[]
   externalVideoUrl?: string
@@ -66,7 +66,7 @@ export type Brand = {
   slug: string
   type: string
   description: string
-  image: ImageValue
+  image?: ImageValue
   href?: string
   external?: boolean
 }
