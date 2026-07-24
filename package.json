@@ -5,11 +5,14 @@
   "engines": {"node": ">=20.9.0"},
   "scripts": {
     "dev": "next dev",
+    "predev": "npm run sanity:typegen",
     "build": "next build",
+    "prebuild": "npm run sanity:typegen",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "sanity:typegen": "sanity schema extract --path=./schema.json && sanity typegen generate",
+    "pretypecheck": "npm run sanity:typegen",
+    "sanity:typegen": "sanity schema extract --path=./schema.json --force && sanity typegen generate",
     "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
