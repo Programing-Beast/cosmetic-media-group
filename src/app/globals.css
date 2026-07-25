@@ -1018,3 +1018,7 @@
    pins the image to the box like the .brand-card pattern. Excludes grid-cell/background images. */
 .cmg-cover-image,.story-image,.portrait,.page-hero-photo,.article-hero-image,.cmg-founder-image,.cmg-founder-teaser-image,.cmg-side-story,.cmg-contact-image,.da-visual,.da-statement-visual,.da-experience-image{position:relative}
 .cmg-cover-image>img,.story-image>img,.portrait>img,.page-hero-photo>img,.article-hero-image>img,.cmg-founder-image>img,.cmg-founder-teaser-image>img,.cmg-side-story>img,.cmg-contact-image>img,.da-visual>img,.da-statement-visual>img,.da-experience-image>img{position:absolute;inset:0;width:100%;height:100%}
+.footer-contact{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.footer-contact a,.footer-contact span{color:#d5d0cc;font-size:13px;line-height:1.4}
+.footer-contact a:hover{color:var(--pink)}
+.footer-contact span{color:#8a8580}

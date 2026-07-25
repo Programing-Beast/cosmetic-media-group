@@ -108,6 +108,8 @@ export type SiteSettings = {
   legalLinks?: Array<{label: string; url: string}>
 }
 
+export type FooterNavItem = {slug: string; title: string}
+
 export type Principle = {title: string; description: string}
 
 export type AboutPage = {
