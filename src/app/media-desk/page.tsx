@@ -5,7 +5,7 @@ import {createMetadata} from '@/lib/metadata'
 
 export async function generateMetadata() {
   const data = await getMediaDesk()
-  return createMetadata('Media Desk for Journalists', 'Request expert comments, interviews, case studies or background information from trusted professionals across the aesthetics industry.', data?.seo)
+  return createMetadata('Media Desk for Journalists', 'Request expert comments, interviews, case studies or background information from trusted professionals across the aesthetics industry.', data?.seo, '/media-desk')
 }
 
 export default async function MediaDeskPage() {

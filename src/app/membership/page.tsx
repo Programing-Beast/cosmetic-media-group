@@ -10,7 +10,7 @@ const FALLBACK_BENEFITS = [
 
 export async function generateMetadata() {
   const membership = await getMembership()
-  return createMetadata('Membership', 'Membership is coming soon. Register for future access to reports, toolkits, events, courses and editorial content.', membership?.seo)
+  return createMetadata('Membership', 'Membership is coming soon. Register for future access to reports, toolkits, events, courses and editorial content.', membership?.seo, '/membership')
 }
 
 export default async function MembershipPage() {

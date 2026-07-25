@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import {NewsletterBand, PageHero} from '@/components/CommonSections'
 import {RichText} from '@/components/RichText'
@@ -20,7 +21,7 @@ const FALLBACK_PRINCIPLES = [
 
 export async function generateMetadata() {
   const about = await getAboutPage()
-  return createMetadata('About', 'More than PR. A platform for influence.', about?.seo)
+  return createMetadata('About', 'More than PR. A platform for influence.', about?.seo, '/about')
 }
 
 export default async function AboutPage() {
@@ -60,7 +61,7 @@ export default async function AboutPage() {
               <Link className="btn btn-media" href="/media-desk">Media enquiries ↗</Link>
             </div>
           </div>
-          <div className="portrait"><img src={imageUrl(image, 900, 1100)} alt={imageAlt(image, 'The Cosmetic Media Group editorial ecosystem')} /></div>
+          <div className="portrait"><Image src={imageUrl(image, 900, 1100)} alt={imageAlt(image, 'The Cosmetic Media Group editorial ecosystem')} width={900} height={1100} sizes="(max-width: 980px) 100vw, 40vw" /></div>
         </div>
       </section>
       <section style={{background: '#fff'}}>

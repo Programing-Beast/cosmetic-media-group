@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import {PageHero} from '@/components/CommonSections'
 import {MediaFilter, type MediaCard} from '@/components/MediaFilter'
@@ -5,7 +6,7 @@ import {getArticles} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
-export const metadata = createMetadata('Media Hub', 'Articles, interviews, videos, podcasts, news, trends, opinion and expert content.')
+export const metadata = createMetadata('Media Hub', 'Articles, interviews, videos, podcasts, news, trends, opinion and expert content.', undefined, '/media-hub')
 
 export default async function MediaHubPage() {
   const articles = await getArticles()
@@ -31,7 +32,7 @@ export default async function MediaHubPage() {
         <div className="shell">
           {featured && (
             <Link className="story-card featured" href={`/media-hub/${featured.slug}`}>
-              <div className="story-image"><img src={imageUrl(featured.image, 1000, 750)} alt={imageAlt(featured.image, featured.title)} /></div>
+              <div className="story-image"><Image src={imageUrl(featured.image, 1000, 750)} alt={imageAlt(featured.image, featured.title)} width={1000} height={750} sizes="(max-width: 980px) 100vw, 66vw" /></div>
               <div className="story-body">
                 <div className="story-meta">Featured / {featured.category}</div>
                 <h3>{featured.title}</h3>

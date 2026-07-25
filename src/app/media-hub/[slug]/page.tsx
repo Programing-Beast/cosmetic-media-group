@@ -1,4 +1,5 @@
 import {notFound} from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
 import {ExternalVideo} from '@/components/ExternalVideo'
 import {RichText} from '@/components/RichText'
@@ -16,7 +17,7 @@ export async function generateMetadata({params}: {params: Promise<{slug: string}
   const {slug} = await params
   const article = await getArticle(slug)
   if (!article) return {}
-  return createMetadata(article.title, article.excerpt, article.seo)
+  return createMetadata(article.title, article.excerpt, article.seo, `/media-hub/${slug}`)
 }
 
 export default async function ArticlePage({params}: {params: Promise<{slug: string}>}) {
@@ -34,7 +35,7 @@ export default async function ArticlePage({params}: {params: Promise<{slug: stri
           <p className="intro">{article.excerpt}</p>
         </div>
       </div>
-      <div className="shell article-hero-image"><img src={imageUrl(article.image, 1600, 900)} alt={imageAlt(article.image, article.title)} /></div>
+      <div className="shell article-hero-image"><Image src={imageUrl(article.image, 1600, 900)} alt={imageAlt(article.image, article.title)} width={1600} height={900} priority sizes="(max-width: 900px) 100vw, 820px" /></div>
       <section>
         <div className="shell article-layout">
           <article>

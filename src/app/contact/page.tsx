@@ -2,7 +2,7 @@ import {ContactForm, PageHero} from '@/components/CommonSections'
 import {getSiteSettings} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 
-export const metadata = createMetadata('Contact', 'Tell us about your ambitions, your audience and the conversation you want to lead.')
+export const metadata = createMetadata('Contact', 'Tell us about your ambitions, your audience and the conversation you want to lead.', undefined, '/contact')
 
 export default async function ContactPage() {
   const settings = await getSiteSettings()
