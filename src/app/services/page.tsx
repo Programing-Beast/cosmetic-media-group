@@ -4,7 +4,7 @@ import {getServices} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
-export const metadata = createMetadata('Services', 'Integrated communications spanning PR, personal branding, content, media training, podcasts and events.')
+export const metadata = createMetadata('Services', 'Integrated communications spanning PR, personal branding, content, media training, podcasts and events.', undefined, '/services')
 
 export default async function ServicesPage() {
   const services = await getServices()

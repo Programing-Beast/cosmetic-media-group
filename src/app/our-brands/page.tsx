@@ -4,7 +4,7 @@ import {getBrands} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
-export const metadata = createMetadata('Our Brands', 'A connected portfolio spanning strategic communications, independent editorial, recognition, production and education.')
+export const metadata = createMetadata('Our Brands', 'A connected portfolio spanning strategic communications, independent editorial, recognition, production and education.', undefined, '/our-brands')
 
 export default async function OurBrandsPage() {
   const brands = await getBrands()

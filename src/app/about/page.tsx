@@ -20,7 +20,7 @@ const FALLBACK_PRINCIPLES = [
 
 export async function generateMetadata() {
   const about = await getAboutPage()
-  return createMetadata('About', 'More than PR. A platform for influence.', about?.seo)
+  return createMetadata('About', 'More than PR. A platform for influence.', about?.seo, '/about')
 }
 
 export default async function AboutPage() {

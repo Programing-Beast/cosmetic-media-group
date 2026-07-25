@@ -12,7 +12,7 @@ const FALLBACK_PACKAGES: SponsorshipPackage[] = [
 
 export async function generateMetadata() {
   const data = await getDiamondAwards()
-  return createMetadata('The Diamond Awards Dubai 2027', 'Celebrating excellence and elevating standards across the aesthetics industry.', data?.seo)
+  return createMetadata('The Diamond Awards Dubai 2027', 'Celebrating excellence and elevating standards across the aesthetics industry.', data?.seo, '/diamond-awards')
 }
 
 export default async function DiamondAwardsPage() {

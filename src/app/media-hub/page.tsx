@@ -5,7 +5,7 @@ import {getArticles} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
-export const metadata = createMetadata('Media Hub', 'Articles, interviews, videos, podcasts, news, trends, opinion and expert content.')
+export const metadata = createMetadata('Media Hub', 'Articles, interviews, videos, podcasts, news, trends, opinion and expert content.', undefined, '/media-hub')
 
 export default async function MediaHubPage() {
   const articles = await getArticles()

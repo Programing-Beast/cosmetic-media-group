@@ -6,7 +6,7 @@ import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
 export async function generateMetadata() {
   const homepage = await getHomepage()
-  return createMetadata('Home', 'A media and communications platform built to help the aesthetics industry be seen, trusted and remembered.', homepage.seo)
+  return createMetadata('Home', 'A media and communications platform built to help the aesthetics industry be seen, trusted and remembered.', homepage.seo, '/')
 }
 
 export default async function HomePage() {

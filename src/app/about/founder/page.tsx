@@ -28,7 +28,7 @@ const FALLBACK_NOTE = '* Media coverage figure is shown as supplied in the clien
 
 export async function generateMetadata() {
   const founder = await getFounder()
-  return createMetadata('Meet Lucy Hilson', 'Founder, PR specialist, speaker, interviewer and industry commentator.', founder?.seo)
+  return createMetadata('Meet Lucy Hilson', 'Founder, PR specialist, speaker, interviewer and industry commentator.', founder?.seo, '/about/founder')
 }
 
 export default async function FounderPage() {

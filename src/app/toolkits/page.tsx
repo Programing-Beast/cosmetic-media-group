@@ -2,7 +2,7 @@ import {NewsletterBand, PageHero} from '@/components/CommonSections'
 import {getToolkits} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 
-export const metadata = createMetadata('Toolkits', 'Downloadable guides, templates, reports and practical resources for aesthetics professionals and brands.')
+export const metadata = createMetadata('Toolkits', 'Downloadable guides, templates, reports and practical resources for aesthetics professionals and brands.', undefined, '/toolkits')
 
 export default async function ToolkitsPage() {
   const toolkits = await getToolkits()
