@@ -1013,3 +1013,8 @@
 .cookie-consent-actions{display:flex;gap:12px;flex-shrink:0}
 .cookie-consent .btn{min-height:44px;padding:0 22px}
 @media(max-width:760px){.cookie-consent-inner{flex-direction:column;align-items:stretch}.cookie-consent-actions{justify-content:stretch}.cookie-consent-actions .btn{flex:1}}
+/* next/image: force cover images to fill their CSS-sized boxes. next/image derives an aspect-ratio from
+   the width/height props, which can leave gaps when the box height comes from the layout; absolute+inset
+   pins the image to the box like the .brand-card pattern. Excludes grid-cell/background images. */
+.cmg-cover-image,.story-image,.portrait,.page-hero-photo,.article-hero-image,.cmg-founder-image,.cmg-founder-teaser-image,.cmg-side-story,.cmg-contact-image,.da-visual,.da-statement-visual,.da-experience-image{position:relative}
+.cmg-cover-image>img,.story-image>img,.portrait>img,.page-hero-photo>img,.article-hero-image>img,.cmg-founder-image>img,.cmg-founder-teaser-image>img,.cmg-side-story>img,.cmg-contact-image>img,.da-visual>img,.da-statement-visual>img,.da-experience-image>img{position:absolute;inset:0;width:100%;height:100%}

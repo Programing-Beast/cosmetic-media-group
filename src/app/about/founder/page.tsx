@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import {NewsletterBand, PageHero} from '@/components/CommonSections'
 import {getFounder} from '@/lib/content'
@@ -50,7 +51,7 @@ export default async function FounderPage() {
         <div className="shell cmg-founder-grid">
           <div className="cmg-founder-visual">
             <div className="cmg-founder-image">
-              <img src={imageUrl(image, 900, 1200)} alt={imageAlt(image, 'Lucy Hilson, founder of Cosmetic Media Group')} />
+              <Image src={imageUrl(image, 900, 1200)} alt={imageAlt(image, 'Lucy Hilson, founder of Cosmetic Media Group')} width={900} height={1200} priority sizes="(max-width: 980px) 100vw, 40vw" />
               <div className="cmg-founder-caption">
                 <b>{founder?.name || 'Lucy Hilson'}</b>
                 <span>Founder / speaker / interviewer / industry commentator</span>

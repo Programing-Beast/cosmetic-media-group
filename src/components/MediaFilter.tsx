@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import {useMemo, useState} from 'react'
 
@@ -46,7 +47,7 @@ export function MediaFilter({cards}: {cards: MediaCard[]}) {
         {visible.length ? (
           visible.map((card) => (
             <Link className="media-card" href={`/media-hub/${card.slug}`} key={card.slug}>
-              <div className="story-image"><img src={card.img} alt={card.alt} /></div>
+              <div className="story-image"><Image src={card.img} alt={card.alt} width={700} height={440} sizes="(max-width: 760px) 100vw, 33vw" /></div>
               <div className="story-meta">{card.format || card.category} / {card.category}</div>
               <h3>{card.title}</h3>
               <p>{card.excerpt}</p>

@@ -10,7 +10,9 @@ export function createMetadata(title: string, description: string, seo?: SEO, pa
   const metaDescription = seo?.metaDescription || description
   const image = seo?.ogImage ? imageUrl(seo.ogImage, 1200, 630) : `${siteUrl}/images/hero.jpg`
   return {
-    title: metaTitle,
+    // `absolute` bypasses the root layout's `%s — Cosmetic Media Group` template — metaTitle already
+    // carries the suffix, so without this the brand name would be appended twice.
+    title: {absolute: metaTitle},
     description: metaDescription,
     robots: seo?.noIndex ? {index: false, follow: false} : undefined,
     alternates: {canonical},
