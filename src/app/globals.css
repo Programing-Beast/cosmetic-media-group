@@ -428,8 +428,8 @@
     .da-hero-content{position:relative;z-index:2;min-height:760px;display:flex;flex-direction:column;justify-content:space-between;padding-top:58px;padding-bottom:55px}
     .da-hero-top{display:flex;justify-content:space-between;gap:30px;font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:var(--da-ivory)}
     .da-hero-copy{max-width:800px}
-    .da-hero-copy .kicker{color:var(--da-gold);font-size:11px;letter-spacing:.27em;text-transform:uppercase;font-weight:700}
-    .da-hero-copy h1{font-family:"Newsreader";font-size:clamp(83px,10vw,160px);font-weight:400;line-height:.72;letter-spacing:-.065em;margin:24px 0 30px;text-transform:uppercase}
+    .da-hero-copy .kicker{color:var(--da-gold);font-size:11px;letter-spacing:.27em;text-transform:uppercase;font-weight:700;display:block;margin-bottom:22px}
+    .da-hero-copy h1{font-family:"Newsreader";font-size:clamp(83px,10vw,160px);font-weight:400;line-height:.86;letter-spacing:-.065em;margin:0 0 34px;text-transform:uppercase}
     .da-hero-copy p{font-size:17px;line-height:1.65;max-width:600px;color:#d3cec7}
     .da-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
     .diamond-page .btn-da{border-color:var(--da-gold);background:var(--da-gold);color:#050505}
@@ -438,8 +438,8 @@
     .da-story-grid{display:grid;grid-template-columns:.84fr 1.16fr;gap:70px;align-items:center}
     .da-visual{border-radius:22px;overflow:hidden;position:relative;min-height:590px}
     .da-visual img{height:100%;object-fit:cover}
-    .da-copy .da-index{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--da-gold);font-weight:700}
-    .da-copy h2{font-family:"Newsreader";font-size:clamp(58px,6.6vw,104px);font-weight:400;line-height:.82;letter-spacing:-.055em;margin:24px 0 32px;text-transform:uppercase}
+    .da-index{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--da-gold);font-weight:700;margin-bottom:22px}
+    .da-copy h2{font-family:"Newsreader";font-size:clamp(58px,6.6vw,104px);font-weight:400;line-height:.82;letter-spacing:-.055em;margin:0 0 32px;text-transform:uppercase}
     .da-copy h3{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--da-gold);margin:0 0 20px}
     .da-copy p{color:#bdb7b0;line-height:1.75;font-size:15px}
     .da-statement{padding:120px 0;background:var(--da-ivory);color:#080808}
@@ -464,7 +464,7 @@
     .da-sponsor-hero{display:grid;grid-template-columns:1fr 1fr;min-height:680px;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.18)}
     .da-sponsor-hero img{height:100%;object-fit:cover}
     .da-sponsor-copy{padding:60px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 100% 100%,rgba(208,173,114,.18),transparent 44%),#060606}
-    .da-sponsor-copy h2{font-family:"Newsreader";font-size:clamp(61px,6.5vw,98px);font-weight:400;line-height:.8;letter-spacing:-.055em;margin:20px 0 30px;text-transform:uppercase}
+    .da-sponsor-copy h2{font-family:"Newsreader";font-size:clamp(61px,6.5vw,98px);font-weight:400;line-height:.8;letter-spacing:-.055em;margin:0 0 30px;text-transform:uppercase}
     .da-sponsor-copy p{color:#bbb4ad;line-height:1.65}
     .da-sponsor-benefits{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin-top:28px}
     .da-sponsor-benefits div{border-top:1px solid rgba(255,255,255,.18);padding-top:12px;color:#ddd6cf;font-size:13px;line-height:1.45}
@@ -478,7 +478,7 @@
     .da-experience-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:65px;align-items:center}
     .da-experience-image{border-radius:22px;overflow:hidden;height:670px}
     .da-experience-image img{height:100%;object-fit:cover}
-    .da-experience h2{font-family:"Newsreader";font-size:clamp(65px,7vw,110px);font-weight:400;line-height:.78;letter-spacing:-.055em;text-transform:uppercase;margin:20px 0 35px}
+    .da-experience h2{font-family:"Newsreader";font-size:clamp(65px,7vw,110px);font-weight:400;line-height:.78;letter-spacing:-.055em;text-transform:uppercase;margin:0 0 35px}
     .da-experience p{color:#504a45;line-height:1.65}
     .da-experience-list{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;border-top:1px solid rgba(0,0,0,.24);margin-top:30px}
     .da-experience-list span{padding:15px 0;border-bottom:1px solid rgba(0,0,0,.18);font-size:13px}
@@ -500,7 +500,7 @@
     .da-contact-card{display:grid;grid-template-columns:.86fr 1.14fr;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.2);min-height:610px}
     .da-contact-card img{height:100%;object-fit:cover}
     .da-contact-copy{padding:60px;display:flex;flex-direction:column;justify-content:center}
-    .da-contact-copy h2{font-family:"Newsreader";font-size:clamp(60px,7vw,105px);font-weight:400;line-height:.8;letter-spacing:-.055em;text-transform:uppercase;margin:20px 0 32px}
+    .da-contact-copy h2{font-family:"Newsreader";font-size:clamp(60px,7vw,105px);font-weight:400;line-height:.8;letter-spacing:-.055em;text-transform:uppercase;margin:0 0 32px}
     .da-contact-copy p{color:#aaa49d;line-height:1.65}
     .da-contact-links{display:grid;gap:10px;margin:28px 0}
     .da-contact-links a{border-top:1px solid rgba(255,255,255,.2);padding:14px 0;display:flex;justify-content:space-between;color:#eee7df}
