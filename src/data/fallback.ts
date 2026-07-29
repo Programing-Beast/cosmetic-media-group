@@ -227,6 +227,37 @@ export const articles: Article[] = [
     format: 'report',
     publishedAt: '2026-05-27T09:00:00.000Z',
     image: '/images/product.jpg'
+  },
+  {
+    title: 'The rise of evidence-led aesthetics',
+    slug: 'rise-of-evidence-led-aesthetics',
+    excerpt: 'Why credible data and transparent outcomes are becoming the new currency of trust in modern aesthetics.',
+    category: 'Feature',
+    format: 'article',
+    publishedAt: '2026-05-20T09:00:00.000Z',
+    readingTime: '5 min read',
+    image: '/images/editorial.jpg',
+    author: {name: 'Cosmetic Media Group Editorial', role: 'Editorial Team'}
+  },
+  {
+    title: 'Rethinking beauty standards in a global market',
+    slug: 'rethinking-beauty-standards',
+    excerpt: 'A perspective on identity, influence and responsibility as aesthetics moves into the mainstream.',
+    category: 'Opinion',
+    format: 'opinion',
+    publishedAt: '2026-05-15T09:00:00.000Z',
+    readingTime: '5 min read',
+    image: '/images/beauty.jpg',
+    author: {name: 'Cosmetic Media Group Editorial', role: 'Editorial Team'}
+  },
+  {
+    title: 'Video Testing',
+    slug: 'video-testing',
+    excerpt: 'A short test of the external video embed in the Media Hub.',
+    category: 'Video',
+    format: 'video',
+    publishedAt: '2026-07-28T14:28:29.034Z',
+    externalVideoUrl: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'
   }
 ]
 
