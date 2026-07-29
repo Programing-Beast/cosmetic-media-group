@@ -25,6 +25,15 @@ const CHIPS: Array<{label: string; value: string}> = [
   {label: 'Expert content', value: 'report'}
 ]
 
+// Card eyebrow: show "FORMAT / CATEGORY", but collapse to a single label when
+// they are the same word (avoids "INTERVIEW / INTERVIEW").
+function metaLabel(card: MediaCard): string {
+  const left = (card.format || card.category || '').trim()
+  const right = (card.category || '').trim()
+  if (!right) return left
+  return left.toLowerCase() === right.toLowerCase() ? right : `${left} / ${right}`
+}
+
 export function MediaFilter({cards}: {cards: MediaCard[]}) {
   const [active, setActive] = useState('all')
   const visible = useMemo(() => (active === 'all' ? cards : cards.filter((c) => c.format === active)), [active, cards])
@@ -48,7 +57,7 @@ export function MediaFilter({cards}: {cards: MediaCard[]}) {
           visible.map((card) => (
             <Link className="media-card" href={`/media-hub/${card.slug}`} key={card.slug}>
               <div className="story-image"><Image src={card.img} alt={card.alt} width={700} height={440} sizes="(max-width: 760px) 100vw, 33vw" /></div>
-              <div className="story-meta">{card.format || card.category} / {card.category}</div>
+              <div className="story-meta">{metaLabel(card)}</div>
               <h3>{card.title}</h3>
               <p>{card.excerpt}</p>
             </Link>
