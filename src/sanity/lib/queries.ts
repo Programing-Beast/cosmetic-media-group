@@ -82,5 +82,11 @@ export const MEDIA_DESK_QUERY = defineQuery(`*[_type == "mediaDesk"][0]{headline
 export const DIAMOND_AWARDS_QUERY = defineQuery(`*[_type == "diamondAwards"][0]{
   eventName,date,venue,location,history,mission,missionPoints,audience,eventExperience,sponsorBenefits,
   sponsorshipPackages,contactEmail,contactPhoneUae,contactPhoneUk,seo,
-  "heroImage":heroImage{...,"asset":asset->{_id,_ref,url}}
+  "heroImage":heroImage{...,"asset":asset->{_id,_ref,url}},
+  "historyImage":historyImage{...,"asset":asset->{_id,_ref,url}},
+  "missionImage":missionImage{...,"asset":asset->{_id,_ref,url}},
+  "whyDubaiImage":whyDubaiImage{...,"asset":asset->{_id,_ref,url}},
+  "sponsorImage":sponsorImage{...,"asset":asset->{_id,_ref,url}},
+  "experienceImage":experienceImage{...,"asset":asset->{_id,_ref,url}},
+  "contactImage":contactImage{...,"asset":asset->{_id,_ref,url}}
 }`)

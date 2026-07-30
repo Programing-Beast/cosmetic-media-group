@@ -187,6 +187,12 @@ export type DiamondAwards = {
   venue?: string
   location?: string
   heroImage?: ImageValue
+  historyImage?: ImageValue
+  missionImage?: ImageValue
+  whyDubaiImage?: ImageValue
+  sponsorImage?: ImageValue
+  experienceImage?: ImageValue
+  contactImage?: ImageValue
   missionPoints?: string[]
   audience?: string[]
   eventExperience?: string[]
