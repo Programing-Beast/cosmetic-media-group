@@ -8,14 +8,29 @@ const megaMenuFields = [
   {name: 'ctaHref', title: 'Button link', type: 'string'}
 ]
 
+const PAGE_OPTIONS = [
+  {title: 'Home', value: '/'},
+  {title: 'About', value: '/about'},
+  {title: 'Meet the Founder', value: '/about/founder'},
+  {title: 'Services', value: '/services'},
+  {title: 'Media Hub', value: '/media-hub'},
+  {title: 'Diamond Awards', value: '/diamond-awards'},
+  {title: 'Our Brands', value: '/our-brands'},
+  {title: 'Toolkits', value: '/toolkits'},
+  {title: 'Membership', value: '/membership'},
+  {title: 'Media Desk (for journalists)', value: '/media-desk'},
+  {title: 'Contact', value: '/contact'}
+]
+
 const menuLink = {
   type: 'object' as const,
   name: 'menuLink',
   fields: [
     {name: 'label', title: 'Label', type: 'string'},
-    {name: 'href', title: 'Link (e.g. /about or /media-desk)', type: 'string'}
+    {name: 'page', title: 'Page', type: 'string', options: {list: PAGE_OPTIONS}, description: 'Choose a page on the site.'},
+    {name: 'externalUrl', title: 'External / custom URL', type: 'url', description: 'Optional — for links outside the site. Overrides the Page selection.'}
   ],
-  preview: {select: {title: 'label', subtitle: 'href'}}
+  preview: {select: {title: 'label', subtitle: 'page'}}
 }
 
 export const navigation = defineType({

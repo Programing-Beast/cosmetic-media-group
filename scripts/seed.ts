@@ -324,7 +324,7 @@ async function main() {
       text: navigation.about.text,
       ctaLabel: navigation.about.ctaLabel,
       ctaHref: navigation.about.ctaHref,
-      links: navigation.about.links.map((link, index) => ({_key: `about-${index}`, label: link.label, href: link.href}))
+      links: navigation.about.links.map((link, index) => ({_key: `about-${index}`, label: link.label, page: link.href}))
     },
     services: {
       eyebrow: navigation.services.eyebrow,

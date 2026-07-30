@@ -288,7 +288,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
 
 type MegaInput = {eyebrow?: string | null; heading?: string | null; text?: string | null; ctaLabel?: string | null; ctaHref?: string | null} | null | undefined
 type NavigationInput = {
-  about?: (MegaInput & {links?: Array<{label?: string | null; href?: string | null}> | null}) | null
+  about?: (MegaInput & {links?: Array<{label?: string | null; page?: string | null; externalUrl?: string | null}> | null}) | null
   services?: MegaInput
 } | null
 
@@ -306,7 +306,7 @@ export async function getNavigation(): Promise<Navigation> {
   const data = await sanityFetch<NavigationInput>(NAVIGATION_QUERY)
   if (!data) return fallbackNavigation
   const aboutLinks = (data.about?.links ?? [])
-    .map((link) => ({label: link.label ?? '', href: link.href ?? ''}))
+    .map((link) => ({label: link.label ?? '', href: (link.externalUrl ?? '').trim() || (link.page ?? '')}))
     .filter((link) => link.label && link.href)
   return {
     about: {
