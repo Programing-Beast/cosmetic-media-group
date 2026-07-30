@@ -13,8 +13,11 @@ export const metadata: Metadata = {
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   const [settings, services] = await Promise.all([getSiteSettings(), getServices()])
   const footerServices = services.map((service) => ({slug: service.slug, title: service.title}))
+  // `data-scroll-behavior` opts into Next's smooth-scroll suppression: without it the router's
+  // scroll-to-top on navigation inherits `html{scroll-behavior:smooth}` from globals.css and
+  // visibly animates the page upward during every route change.
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
