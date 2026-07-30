@@ -31,7 +31,8 @@ const structure: StructureResolver = (S) =>
       ),
       S.divider(),
       S.documentTypeListItem('service').title('Services'),
-      S.documentTypeListItem('article').title('Media Hub content'),
+      S.documentTypeListItem('videoGallery').title('Media Hub'),
+      S.documentTypeListItem('article').title('Articles (archive)'),
       S.documentTypeListItem('author').title('Authors and contributors'),
       S.documentTypeListItem('brand').title('Brands'),
       S.documentTypeListItem('toolkit').title('Toolkits and reports')

@@ -1004,6 +1004,25 @@
 .form-status.success{color:#147a42}.form-status.error{color:#9f1d35}
 .external-video{position:relative;width:100%;aspect-ratio:16/9;margin:0 0 40px;border-radius:var(--radius-panel,22px);overflow:hidden;background:#090909}
 .external-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Video gallery + video-first detail */
+.video-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+.video-card{cursor:pointer;display:flex;flex-direction:column;gap:10px}
+.video-card .story-image{height:230px;margin-bottom:2px}
+.video-card h3{font-size:23px;line-height:1.1;margin:0}
+.video-hero{background:var(--ink);color:#fff;padding:80px 0 60px;text-align:center}
+.video-hero .crumbs{justify-content:center;color:rgba(255,255,255,.5)}
+.video-hero .crumbs a{color:rgba(255,255,255,.72)}
+.video-hero h1{font-size:clamp(46px,7vw,90px);line-height:.96;margin:16px 0 0;color:#fff}
+.video-hero-sub{margin:14px 0 0;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.video-detail{max-width:900px;margin:0 auto;padding:56px 0}
+.video-detail>.intro{margin:0 0 44px}
+.video-block{margin:0 0 48px}
+.video-block h2{font-size:30px;line-height:1.12;margin:0 0 18px}
+.video-block .external-video{margin:0}
+.video-caption{margin:14px 0 0}
+.video-back{margin-top:8px}
+@media (max-width:980px){.video-gallery-grid{grid-template-columns:1fr}.video-detail{padding:44px 0}}
 .membership-signup{display:flex;align-items:center;justify-content:center;gap:10px;max-width:650px;margin:0 auto}
 .membership-signup input{min-height:52px;min-width:0;flex:1;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;border-radius:12px;padding:0 18px;outline:0}
 .membership-signup input::placeholder{color:#aaa39e}

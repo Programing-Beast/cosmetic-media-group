@@ -79,8 +79,26 @@ export const FOUNDER_QUERY = defineQuery(`*[_type == "founder"][0]{
 
 export const MEDIA_DESK_QUERY = defineQuery(`*[_type == "mediaDesk"][0]{headline,intro,requestTypes,futureResources,seo}`)
 
+export const VIDEOS_QUERY = defineQuery(`*[_type == "videoGallery"] | order(coalesce(order, 999) asc, title asc){
+  title, "slug": slug.current, category, intro, order,
+  "poster": poster{..., "asset": asset->{_id,_ref,url}},
+  videos[]{heading, url, caption}
+}`)
+
+export const VIDEO_QUERY = defineQuery(`*[_type == "videoGallery" && slug.current == $slug][0]{
+  title, "slug": slug.current, category, intro, order,
+  "poster": poster{..., "asset": asset->{_id,_ref,url}},
+  videos[]{heading, url, caption}, seo
+}`)
+
 export const DIAMOND_AWARDS_QUERY = defineQuery(`*[_type == "diamondAwards"][0]{
   eventName,date,venue,location,history,mission,missionPoints,audience,eventExperience,sponsorBenefits,
   sponsorshipPackages,contactEmail,contactPhoneUae,contactPhoneUk,seo,
-  "heroImage":heroImage{...,"asset":asset->{_id,_ref,url}}
+  "heroImage":heroImage{...,"asset":asset->{_id,_ref,url}},
+  "historyImage":historyImage{...,"asset":asset->{_id,_ref,url}},
+  "missionImage":missionImage{...,"asset":asset->{_id,_ref,url}},
+  "whyDubaiImage":whyDubaiImage{...,"asset":asset->{_id,_ref,url}},
+  "sponsorImage":sponsorImage{...,"asset":asset->{_id,_ref,url}},
+  "experienceImage":experienceImage{...,"asset":asset->{_id,_ref,url}},
+  "contactImage":contactImage{...,"asset":asset->{_id,_ref,url}}
 }`)

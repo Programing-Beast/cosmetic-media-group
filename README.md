@@ -6,12 +6,13 @@ Production-oriented developer handoff for the Cosmetic Media Group editorial web
 
 - Next.js App Router and React frontend
 - Embedded Sanity Studio at `/studio`
-- Structured Sanity schemas for the homepage, services, Media Hub content, authors, brands, toolkits, founder page, Media Desk and Diamond Awards
+- Structured Sanity schemas for the homepage, services, Media Hub videos, archived articles, authors, brands, toolkits, founder page, Media Desk and Diamond Awards
 - Reorderable homepage sections in Sanity
 - Responsive editorial design based on the approved V10 mockup
 - Hover and click mega menus for About and Services
 - Service listing and dynamic service pages
-- Media Hub listing and dynamic article, interview, video and podcast pages
+- Media Hub video gallery with a category filter and a page per entry that embeds one or more videos
+- Archived editorial articles (previous Media Hub) retained at `/media-archive`
 - External video embeds so large video files do not affect website performance
 - Diamond Awards Dubai 2027 page
 - Membership waiting-list form
@@ -113,20 +114,21 @@ Open the Homepage document in Sanity. The `Homepage section order` array allows 
 
 The frontend falls back to the approved section order if the array is empty.
 
-## 7. Adding Media Hub content
+## 7. Adding Media Hub videos
 
-Create a `Media Hub content` document and complete:
+The Media Hub (`/media-hub`) is a video gallery. In Sanity, open **Media Hub** and create a document with:
 
 - title and slug
-- excerpt and category
-- format: article, interview, video, podcast, news, opinion or report
-- publication date and author
-- feature image
-- Portable Text body
-- optional external media URL
-- SEO fields
+- label / category (drives the gallery's filter chips, e.g. Live Broadcast, Streaming, Content)
+- poster image (the gallery thumbnail)
+- optional intro
+- a **Videos** list — add one or more items, each with a heading and a video URL (YouTube, Vimeo or Mux); optional caption
 
-The content automatically appears on `/media-hub` and has its own route at `/media-hub/[slug]`.
+Each document appears as a card on `/media-hub`, filterable by category, with its own page at `/media-hub/[slug]` that embeds every video in the list. Do not upload large video files — always paste an external share URL (see section 5).
+
+### Archived articles
+
+The previous article-based Media Hub is preserved as **Articles (archive)** in Sanity and served at `/media-archive` and `/media-archive/[slug]`. It is `noindex` and unlinked from the main navigation; use it for legacy editorial content or repurpose it later.
 
 ## 8. Adding services
 
