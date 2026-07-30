@@ -26,9 +26,10 @@ const menuLink = {
   type: 'object' as const,
   name: 'menuLink',
   fields: [
-    {name: 'label', title: 'Label', type: 'string'},
+    {name: 'label', title: 'Label', type: 'string', description: 'Leave blank to use the selected service’s name.'},
     {name: 'page', title: 'Page', type: 'string', options: {list: PAGE_OPTIONS}, description: 'Choose a page on the site.'},
-    {name: 'externalUrl', title: 'External / custom URL', type: 'url', description: 'Optional — for links outside the site. Overrides the Page selection.'}
+    {name: 'service', title: 'Service', type: 'reference', to: [{type: 'service'}], description: 'Or link to a specific service page.'},
+    {name: 'externalUrl', title: 'External / custom URL', type: 'url', description: 'Optional — for links outside the site. Overrides Page and Service.'}
   ],
   preview: {select: {title: 'label', subtitle: 'page'}}
 }
@@ -52,8 +53,11 @@ export const navigation = defineType({
       name: 'services',
       title: 'Services menu',
       type: 'object',
-      description: 'The Services dropdown links are generated automatically from your Service documents (by order). These fields control the intro panel only.',
-      fields: megaMenuFields
+      description: 'Leave “Dropdown links” empty to list all Service documents automatically (by order). Add links to hand-pick and order the dropdown instead.',
+      fields: [
+        ...megaMenuFields,
+        {name: 'links', title: 'Dropdown links', type: 'array', of: [menuLink]}
+      ]
     })
   ],
   preview: {prepare: () => ({title: 'Navigation'})}

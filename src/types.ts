@@ -25,7 +25,7 @@ export type MegaMenuContent = {
 
 export type Navigation = {
   about: MegaMenuContent & {links: MenuLink[]}
-  services: MegaMenuContent
+  services: MegaMenuContent & {links: MenuLink[]}
 }
 
 export type Stat = {

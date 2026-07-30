@@ -80,8 +80,8 @@ export const FOUNDER_QUERY = defineQuery(`*[_type == "founder"][0]{
 export const MEDIA_DESK_QUERY = defineQuery(`*[_type == "mediaDesk"][0]{headline,intro,requestTypes,futureResources,seo}`)
 
 export const NAVIGATION_QUERY = defineQuery(`*[_type == "navigation"][0]{
-  about{eyebrow, heading, text, ctaLabel, ctaHref, links[]{label, page, externalUrl}},
-  services{eyebrow, heading, text, ctaLabel, ctaHref}
+  about{eyebrow, heading, text, ctaLabel, ctaHref, links[]{label, page, externalUrl, service->{title, "slug": slug.current}}},
+  services{eyebrow, heading, text, ctaLabel, ctaHref, links[]{label, page, externalUrl, service->{title, "slug": slug.current}}}
 }`)
 
 export const VIDEOS_QUERY = defineQuery(`*[_type == "videoGallery"] | order(coalesce(order, 999) asc, title asc){

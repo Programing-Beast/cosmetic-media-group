@@ -19,7 +19,8 @@ export const navigation: Navigation = {
     heading: 'Build visibility, trust and influence.',
     text: 'A connected offer spanning reputation, profile, content, training, podcasts and experiences.',
     ctaLabel: 'View all services',
-    ctaHref: '/services'
+    ctaHref: '/services',
+    links: []
   }
 }
 

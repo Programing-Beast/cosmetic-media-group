@@ -15,7 +15,10 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
   const pathname = usePathname()
 
   const aboutLinks = navigation.about.links
-  const serviceLinks: MenuLink[] = services.map((service) => ({label: service.title, href: `/services/${service.slug}`}))
+  // Use the hand-picked Services list if the editor set one; otherwise list all Service documents.
+  const serviceLinks: MenuLink[] = navigation.services.links.length
+    ? navigation.services.links
+    : services.map((service) => ({label: service.title, href: `/services/${service.slug}`}))
 
   // Close any open menus when the route changes. React's supported pattern for
   // adjusting state in response to a prop/value change is a guarded update
