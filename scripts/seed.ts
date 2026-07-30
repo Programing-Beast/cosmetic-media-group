@@ -331,7 +331,8 @@ async function main() {
       heading: navigation.services.heading,
       text: navigation.services.text,
       ctaLabel: navigation.services.ctaLabel,
-      ctaHref: navigation.services.ctaHref
+      ctaHref: navigation.services.ctaHref,
+      links: services.map((service, index) => ({_key: `service-${index}`, service: {_type: 'reference', _ref: `service-${service.slug}`}}))
     }
   })
 
