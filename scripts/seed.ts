@@ -1,7 +1,7 @@
 import {createClient} from '@sanity/client'
 import {createReadStream, existsSync} from 'node:fs'
 import {join} from 'node:path'
-import {articles, brands, homepage, services, siteSettings, toolkits, videoGalleries} from '../src/data/fallback'
+import {articles, brands, homepage, navigation, services, siteSettings, toolkits, videoGalleries} from '../src/data/fallback'
 
 try { process.loadEnvFile('.env.local') } catch {}
 
@@ -313,6 +313,27 @@ async function main() {
     contactEmail: 'lucy@cosmeticpr.com',
     contactPhoneUae: '+971 58 582 7507',
     contactPhoneUk: '+44 7958 429 130'
+  })
+
+  await client.createOrReplace({
+    _id: 'navigation',
+    _type: 'navigation',
+    about: {
+      eyebrow: navigation.about.eyebrow,
+      heading: navigation.about.heading,
+      text: navigation.about.text,
+      ctaLabel: navigation.about.ctaLabel,
+      ctaHref: navigation.about.ctaHref,
+      links: navigation.about.links.map((link, index) => ({_key: `about-${index}`, label: link.label, page: link.href}))
+    },
+    services: {
+      eyebrow: navigation.services.eyebrow,
+      heading: navigation.services.heading,
+      text: navigation.services.text,
+      ctaLabel: navigation.services.ctaLabel,
+      ctaHref: navigation.services.ctaHref,
+      links: services.map((service, index) => ({_key: `service-${index}`, service: {_type: 'reference', _ref: `service-${service.slug}`}}))
+    }
   })
 
   // Video galleries are fully seed-managed; clear any previous docs so renamed/removed entries don't linger.

@@ -7,6 +7,7 @@ import {founder} from './documents/founder'
 import {homepage} from './documents/homepage'
 import {mediaDesk} from './documents/mediaDesk'
 import {membershipPage} from './documents/membershipPage'
+import {navigation} from './documents/navigation'
 import {service} from './documents/service'
 import {siteSettings} from './documents/siteSettings'
 import {toolkit} from './documents/toolkit'
@@ -19,6 +20,7 @@ import {stat} from './objects/stat'
 
 export const schemaTypes = [
   siteSettings,
+  navigation,
   homepage,
   aboutPage,
   founder,

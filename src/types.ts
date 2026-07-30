@@ -13,6 +13,21 @@ export type CTA = {
   style?: 'dark' | 'pink' | 'light' | 'white' | 'media'
 }
 
+export type MenuLink = {label: string; href: string}
+
+export type MegaMenuContent = {
+  eyebrow?: string
+  heading?: string
+  text?: string
+  ctaLabel?: string
+  ctaHref?: string
+}
+
+export type Navigation = {
+  about: MegaMenuContent & {links: MenuLink[]}
+  services: MegaMenuContent & {links: MenuLink[]}
+}
+
 export type Stat = {
   value: string
   numericValue?: number

@@ -2,7 +2,7 @@ import type {Metadata} from 'next'
 import './globals.css'
 import {SiteChrome} from '@/components/SiteChrome'
 import {TopProgressBar} from '@/components/TopProgressBar'
-import {getServices, getSiteSettings} from '@/lib/content'
+import {getNavigation, getServices, getSiteSettings} from '@/lib/content'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
-  const [settings, services] = await Promise.all([getSiteSettings(), getServices()])
+  const [settings, services, navigation] = await Promise.all([getSiteSettings(), getServices(), getNavigation()])
   const footerServices = services.map((service) => ({slug: service.slug, title: service.title}))
   // `data-scroll-behavior` opts into Next's smooth-scroll suppression: without it the router's
   // scroll-to-top on navigation inherits `html{scroll-behavior:smooth}` from globals.css and
@@ -25,7 +25,7 @@ export default async function RootLayout({children}: Readonly<{children: React.R
       </head>
       <body suppressHydrationWarning>
         <TopProgressBar />
-        <SiteChrome settings={settings} services={footerServices}>{children}</SiteChrome>
+        <SiteChrome settings={settings} services={footerServices} navigation={navigation}>{children}</SiteChrome>
       </body>
     </html>
   )

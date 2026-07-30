@@ -1,4 +1,28 @@
-import type {Article, Brand, Homepage, Service, SiteSettings, Toolkit, VideoGallery} from '@/types'
+import type {Article, Brand, Homepage, Navigation, Service, SiteSettings, Toolkit, VideoGallery} from '@/types'
+
+export const navigation: Navigation = {
+  about: {
+    eyebrow: 'Our story and authority',
+    heading: 'The people and purpose behind the platform.',
+    text: 'Discover Cosmetic Media Group, meet founder Lucy Hilson and access the dedicated Media Desk for journalists.',
+    ctaLabel: 'Explore About',
+    ctaHref: '/about',
+    links: [
+      {label: 'About Cosmetic Media Group', href: '/about'},
+      {label: 'Meet the Founder', href: '/about/founder'},
+      {label: 'Media Desk for Journalists', href: '/media-desk'},
+      {label: 'Contact the Team', href: '/contact'}
+    ]
+  },
+  services: {
+    eyebrow: 'Integrated communications',
+    heading: 'Build visibility, trust and influence.',
+    text: 'A connected offer spanning reputation, profile, content, training, podcasts and experiences.',
+    ctaLabel: 'View all services',
+    ctaHref: '/services',
+    links: []
+  }
+}
 
 export const siteSettings: SiteSettings = {
   title: 'Cosmetic Media Group',
