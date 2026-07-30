@@ -4,30 +4,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useRef, useState} from 'react'
-
-const services = [
-  ['PR', '/services/pr'],
-  ['Personal Branding', '/services/personal-branding'],
-  ['Content Studio', '/services/content-studio'],
-  ['Media Training', '/services/media-training'],
-  ['Podcast Production', '/services/podcast-production'],
-  ['Events', '/services/events']
-]
-
-const about = [
-  ['About Cosmetic Media Group', '/about'],
-  ['Meet the Founder', '/about/founder'],
-  ['Media Desk for Journalists', '/media-desk'],
-  ['Contact the Team', '/contact']
-]
+import type {FooterNavItem, MegaMenuContent, MenuLink, Navigation} from '@/types'
 
 type MenuName = 'about' | 'services' | null
 
-export function SiteHeader() {
+export function SiteHeader({navigation, services}: {navigation: Navigation; services: FooterNavItem[]}) {
   const [open, setOpen] = useState<MenuName>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pathname = usePathname()
+
+  const aboutLinks = navigation.about.links
+  const serviceLinks: MenuLink[] = services.map((service) => ({label: service.title, href: `/services/${service.slug}`}))
 
   // Close any open menus when the route changes. React's supported pattern for
   // adjusting state in response to a prop/value change is a guarded update
@@ -74,8 +62,8 @@ export function SiteHeader() {
             <button className="menu-btn" type="button" onClick={() => setMobileOpen(true)} aria-label="Open menu">☰</button>
           </div>
         </div>
-        <MegaMenu name="about" open={open === 'about'} links={about} onEnter={() => enter('about')} onLeave={leave} />
-        <MegaMenu name="services" open={open === 'services'} links={services} onEnter={() => enter('services')} onLeave={leave} />
+        <MegaMenu name="about" open={open === 'about'} content={navigation.about} links={aboutLinks} onEnter={() => enter('about')} onLeave={leave} />
+        <MegaMenu name="services" open={open === 'services'} content={navigation.services} links={serviceLinks} onEnter={() => enter('services')} onLeave={leave} />
       </header>
       <div className={`mobile-overlay ${mobileOpen ? 'open' : ''}`} role="dialog" aria-modal="true" aria-label="Mobile navigation">
         <div className="mobile-top">
@@ -85,12 +73,9 @@ export function SiteHeader() {
         <div className="mobile-links">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
-          <div className="mobile-sub">
-            <Link href="/about/founder">Meet the Founder</Link>
-            <Link href="/media-desk">Media Desk for Journalists</Link>
-          </div>
+          <div className="mobile-sub">{aboutLinks.filter((link) => link.href !== '/about').map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
           <Link href="/services">Services</Link>
-          <div className="mobile-sub">{services.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
+          <div className="mobile-sub">{serviceLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
           <Link href="/media-hub">Media Hub</Link>
           <Link href="/diamond-awards">Diamond Awards</Link>
           <Link href="/our-brands">Our Brands</Link>
@@ -103,19 +88,18 @@ export function SiteHeader() {
   )
 }
 
-function MegaMenu({name, open, links, onEnter, onLeave}: {name: 'about' | 'services'; open: boolean; links: string[][]; onEnter: () => void; onLeave: () => void}) {
-  const isAbout = name === 'about'
+function MegaMenu({name, open, content, links, onEnter, onLeave}: {name: 'about' | 'services'; open: boolean; content: MegaMenuContent; links: MenuLink[]; onEnter: () => void; onLeave: () => void}) {
   return (
     <div id={`${name}Mega`} className={`mega ${open ? 'open' : ''}`} onMouseEnter={onEnter} onMouseLeave={onLeave}>
       <div className="mega-grid">
         <div className="mega-intro">
-          <div className="eyebrow">{isAbout ? 'Our story and authority' : 'Integrated communications'}</div>
-          <h3>{isAbout ? 'The people and purpose behind the platform.' : 'Build visibility, trust and influence.'}</h3>
-          <p>{isAbout ? 'Discover Cosmetic Media Group, meet founder Lucy Hilson and access the dedicated Media Desk for journalists.' : 'A connected offer spanning reputation, profile, content, training, podcasts and experiences.'}</p>
-          <Link className="btn btn-white" href={isAbout ? '/about' : '/services'}>{isAbout ? 'Explore About' : 'View all services'} ↗</Link>
+          {content.eyebrow && <div className="eyebrow">{content.eyebrow}</div>}
+          {content.heading && <h3>{content.heading}</h3>}
+          {content.text && <p>{content.text}</p>}
+          {content.ctaLabel && content.ctaHref && <Link className="btn btn-white" href={content.ctaHref}>{content.ctaLabel} ↗</Link>}
         </div>
         <div className="mega-links">
-          {links.map(([label, href]) => <Link className="mega-link" key={href} href={href}><span>{label}</span><span>↗</span></Link>)}
+          {links.map((link) => <Link className="mega-link" key={link.href} href={link.href}><span>{link.label}</span><span>↗</span></Link>)}
         </div>
       </div>
     </div>

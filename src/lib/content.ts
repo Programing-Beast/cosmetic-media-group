@@ -1,7 +1,7 @@
-import {articles as fallbackArticles, brands as fallbackBrands, homepage as fallbackHomepage, services as fallbackServices, siteSettings as fallbackSettings, toolkits as fallbackToolkits, videoGalleries as fallbackVideos} from '@/data/fallback'
-import type {AboutPage, Article, Author, Brand, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MembershipPage, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit, VideoGallery} from '@/types'
+import {articles as fallbackArticles, brands as fallbackBrands, homepage as fallbackHomepage, navigation as fallbackNavigation, services as fallbackServices, siteSettings as fallbackSettings, toolkits as fallbackToolkits, videoGalleries as fallbackVideos} from '@/data/fallback'
+import type {AboutPage, Article, Author, Brand, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MembershipPage, Navigation, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit, VideoGallery} from '@/types'
 import {sanityFetch} from '@/sanity/lib/fetch'
-import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEMBERSHIP_PAGE_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY, VIDEOS_QUERY, VIDEO_QUERY} from '@/sanity/lib/queries'
+import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEMBERSHIP_PAGE_QUERY, NAVIGATION_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY, VIDEOS_QUERY, VIDEO_QUERY} from '@/sanity/lib/queries'
 import type {ABOUT_PAGE_QUERY_RESULT, ARTICLE_QUERY_RESULT, ARTICLES_QUERY_RESULT, BRANDS_QUERY_RESULT, DIAMOND_AWARDS_QUERY_RESULT, FOUNDER_QUERY_RESULT, HOMEPAGE_QUERY_RESULT, MEDIA_DESK_QUERY_RESULT, MEMBERSHIP_PAGE_QUERY_RESULT, SERVICE_QUERY_RESULT, SERVICES_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT, TOOLKITS_QUERY_RESULT} from '../../sanity.types'
 
 /**
@@ -284,6 +284,37 @@ export async function getArticles(): Promise<Article[]> {
 export async function getArticle(slug: string): Promise<Article | null> {
   const data = await sanityFetch<ARTICLE_QUERY_RESULT>(ARTICLE_QUERY, {slug})
   return data ? toArticle(data) : fallbackArticles.find((article) => article.slug === slug) || null
+}
+
+type MegaInput = {eyebrow?: string | null; heading?: string | null; text?: string | null; ctaLabel?: string | null; ctaHref?: string | null} | null | undefined
+type NavigationInput = {
+  about?: (MegaInput & {links?: Array<{label?: string | null; href?: string | null}> | null}) | null
+  services?: MegaInput
+} | null
+
+function toMega(src: MegaInput, fallback: Navigation['services']): Navigation['services'] {
+  return {
+    eyebrow: src?.eyebrow ?? fallback.eyebrow,
+    heading: src?.heading ?? fallback.heading,
+    text: src?.text ?? fallback.text,
+    ctaLabel: src?.ctaLabel ?? fallback.ctaLabel,
+    ctaHref: src?.ctaHref ?? fallback.ctaHref
+  }
+}
+
+export async function getNavigation(): Promise<Navigation> {
+  const data = await sanityFetch<NavigationInput>(NAVIGATION_QUERY)
+  if (!data) return fallbackNavigation
+  const aboutLinks = (data.about?.links ?? [])
+    .map((link) => ({label: link.label ?? '', href: link.href ?? ''}))
+    .filter((link) => link.label && link.href)
+  return {
+    about: {
+      ...toMega(data.about, fallbackNavigation.about),
+      links: aboutLinks.length ? aboutLinks : fallbackNavigation.about.links
+    },
+    services: toMega(data.services, fallbackNavigation.services)
+  }
 }
 
 export async function getVideos(): Promise<VideoGallery[]> {
