@@ -1,7 +1,7 @@
-import {articles as fallbackArticles, brands as fallbackBrands, homepage as fallbackHomepage, services as fallbackServices, siteSettings as fallbackSettings, toolkits as fallbackToolkits} from '@/data/fallback'
-import type {AboutPage, Article, Author, Brand, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MembershipPage, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit} from '@/types'
+import {articles as fallbackArticles, brands as fallbackBrands, homepage as fallbackHomepage, services as fallbackServices, siteSettings as fallbackSettings, toolkits as fallbackToolkits, videoGalleries as fallbackVideos} from '@/data/fallback'
+import type {AboutPage, Article, Author, Brand, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MembershipPage, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit, VideoGallery} from '@/types'
 import {sanityFetch} from '@/sanity/lib/fetch'
-import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEMBERSHIP_PAGE_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY} from '@/sanity/lib/queries'
+import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEMBERSHIP_PAGE_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY, VIDEOS_QUERY, VIDEO_QUERY} from '@/sanity/lib/queries'
 import type {ABOUT_PAGE_QUERY_RESULT, ARTICLE_QUERY_RESULT, ARTICLES_QUERY_RESULT, BRANDS_QUERY_RESULT, DIAMOND_AWARDS_QUERY_RESULT, FOUNDER_QUERY_RESULT, HOMEPAGE_QUERY_RESULT, MEDIA_DESK_QUERY_RESULT, MEMBERSHIP_PAGE_QUERY_RESULT, SERVICE_QUERY_RESULT, SERVICES_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT, TOOLKITS_QUERY_RESULT} from '../../sanity.types'
 
 /**
@@ -143,6 +143,32 @@ function toArticle(a: ArticleInput): Article {
   }
 }
 
+type VideoGalleryInput = {
+  title?: string | null
+  slug?: string | null
+  category?: string | null
+  intro?: string | null
+  order?: number | null
+  poster?: ImageInput
+  videos?: Array<{heading?: string | null; url?: string | null; caption?: string | null}> | null
+  seo?: SeoInput
+}
+
+function toVideoGallery(v: VideoGalleryInput): VideoGallery {
+  return {
+    title: v.title ?? '',
+    slug: v.slug ?? '',
+    category: v.category ?? undefined,
+    intro: v.intro ?? undefined,
+    order: v.order ?? undefined,
+    poster: toImage(v.poster),
+    videos: (v.videos ?? [])
+      .map((item) => ({heading: item.heading ?? undefined, url: item.url ?? undefined, caption: item.caption ?? undefined}))
+      .filter((item) => Boolean(item.url)),
+    seo: toSeo(v.seo)
+  }
+}
+
 function toService(s: ServiceInput): Service {
   return {
     _id: s._id,
@@ -258,6 +284,16 @@ export async function getArticles(): Promise<Article[]> {
 export async function getArticle(slug: string): Promise<Article | null> {
   const data = await sanityFetch<ARTICLE_QUERY_RESULT>(ARTICLE_QUERY, {slug})
   return data ? toArticle(data) : fallbackArticles.find((article) => article.slug === slug) || null
+}
+
+export async function getVideos(): Promise<VideoGallery[]> {
+  const data = await sanityFetch<VideoGalleryInput[]>(VIDEOS_QUERY)
+  return data?.length ? data.map(toVideoGallery) : fallbackVideos
+}
+
+export async function getVideo(slug: string): Promise<VideoGallery | null> {
+  const data = await sanityFetch<VideoGalleryInput>(VIDEO_QUERY, {slug})
+  return data ? toVideoGallery(data) : fallbackVideos.find((video) => video.slug === slug) || null
 }
 
 export async function getBrands(): Promise<Brand[]> {

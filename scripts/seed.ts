@@ -1,7 +1,7 @@
 import {createClient} from '@sanity/client'
 import {createReadStream, existsSync} from 'node:fs'
 import {join} from 'node:path'
-import {articles, brands, homepage, services, siteSettings, toolkits} from '../src/data/fallback'
+import {articles, brands, homepage, services, siteSettings, toolkits, videoGalleries} from '../src/data/fallback'
 
 try { process.loadEnvFile('.env.local') } catch {}
 
@@ -314,6 +314,22 @@ async function main() {
     contactPhoneUae: '+971 58 582 7507',
     contactPhoneUk: '+44 7958 429 130'
   })
+
+  // Video galleries are fully seed-managed; clear any previous docs so renamed/removed entries don't linger.
+  await client.delete({query: '*[_type == "videoGallery"]'})
+  for (const [index, gallery] of videoGalleries.entries()) {
+    await client.createOrReplace({
+      _id: `video-${gallery.slug}`,
+      _type: 'videoGallery',
+      title: gallery.title,
+      slug: {_type: 'slug', current: gallery.slug},
+      category: gallery.category,
+      intro: gallery.intro,
+      order: gallery.order ?? index + 1,
+      poster: await sanityImage(typeof gallery.poster === 'string' ? gallery.poster : undefined, gallery.title),
+      videos: gallery.videos.map((item, itemIndex) => ({_key: `video-${itemIndex}`, heading: item.heading, url: item.url, caption: item.caption}))
+    })
+  }
 
   console.log('Seed complete. Open /studio and review the content before launch.')
 }

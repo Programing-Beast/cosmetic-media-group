@@ -1,4 +1,4 @@
-import type {Article, Brand, Homepage, Service, SiteSettings, Toolkit} from '@/types'
+import type {Article, Brand, Homepage, Service, SiteSettings, Toolkit, VideoGallery} from '@/types'
 
 export const siteSettings: SiteSettings = {
   title: 'Cosmetic Media Group',
@@ -302,6 +302,73 @@ export const toolkits: Toolkit[] = [
   {title: 'A Clinic’s Guide to Reputation Strategy', slug: 'clinic-reputation-strategy', type: 'Strategic guide', description: 'How to build trust before a reputational issue arises.', access: 'members', coverStyle: 'dark'},
   {title: 'The Annual State of Aesthetics Report', slug: 'state-of-aesthetics', type: 'Research report', description: 'Data, perspectives and emerging market themes.', access: 'members', coverStyle: 'pink'},
   {title: 'Launch Campaign Planning Toolkit', slug: 'launch-campaign-toolkit', type: 'Planning template', description: 'A structured communications plan for launches and announcements.', access: 'members', coverStyle: 'cream'}
+]
+
+export const videoGalleries: VideoGallery[] = [
+  {
+    title: 'Dubai NYE 2025',
+    slug: 'dubai-nye-2025',
+    category: 'Live Broadcast',
+    poster: '/images/hero.jpg',
+    intro: 'Multi-camera live production and broadcast direction from the control room.',
+    order: 1,
+    videos: [
+      {heading: 'Live Broadcast (PCR)', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'},
+      {heading: 'Dubai NYE 2025 — Split Screen', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ', caption: 'Multi-feed split-screen coverage.'}
+    ]
+  },
+  {
+    title: 'Awards Show',
+    slug: 'awards-show',
+    category: 'Live Broadcast',
+    poster: '/images/awards.jpg',
+    order: 2,
+    videos: [
+      {heading: 'Awards Show Broadcast', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+    ]
+  },
+  {
+    title: 'Product Launch',
+    slug: 'product-launch',
+    category: 'Streaming',
+    poster: '/images/product.jpg',
+    intro: 'Polished live and on-demand streams for aesthetic brand launches.',
+    order: 3,
+    videos: [
+      {heading: 'Product Launch Stream', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+    ]
+  },
+  {
+    title: 'Clinic Webinar',
+    slug: 'clinic-webinar',
+    category: 'Streaming',
+    poster: '/images/studio.jpg',
+    order: 4,
+    videos: [
+      {heading: 'Clinic Webinar', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+    ]
+  },
+  {
+    title: 'Brand Film',
+    slug: 'brand-film',
+    category: 'Content',
+    poster: '/images/editorial.jpg',
+    intro: 'Original content and brand films produced end to end.',
+    order: 5,
+    videos: [
+      {heading: 'Brand Film', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+    ]
+  },
+  {
+    title: 'Founder Interview',
+    slug: 'founder-interview',
+    category: 'Content',
+    poster: '/images/founder.jpg',
+    order: 6,
+    videos: [
+      {heading: 'Founder Interview', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+    ]
+  }
 ]
 
 export const homepage: Homepage = {

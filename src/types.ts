@@ -181,6 +181,23 @@ export type MediaDesk = {
 
 export type SponsorshipPackage = {tier?: string; name: string; description?: string; features?: string[]}
 
+export type VideoItem = {
+  heading?: string
+  url?: string
+  caption?: string
+}
+
+export type VideoGallery = {
+  title: string
+  slug: string
+  category?: string
+  poster?: ImageValue
+  intro?: string
+  videos: VideoItem[]
+  order?: number
+  seo?: SEO
+}
+
 export type DiamondAwards = {
   eventName?: string
   date?: string

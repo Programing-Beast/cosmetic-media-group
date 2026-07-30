@@ -10,6 +10,7 @@ import {membershipPage} from './documents/membershipPage'
 import {service} from './documents/service'
 import {siteSettings} from './documents/siteSettings'
 import {toolkit} from './documents/toolkit'
+import {videoGallery} from './documents/videoGallery'
 import {homeSection} from './objects/homeSection'
 import {link} from './objects/link'
 import {portableText} from './objects/portableText'
@@ -29,6 +30,7 @@ export const schemaTypes = [
   article,
   brand,
   toolkit,
+  videoGallery,
   seo,
   link,
   stat,
