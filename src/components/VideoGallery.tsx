@@ -39,7 +39,7 @@ export function VideoGallery({cards}: {cards: VideoCard[]}) {
       )}
       <div className="video-gallery-grid" style={{marginTop: categories.length > 1 ? 28 : 8}}>
         {visible.map((card) => (
-          <Link className="video-card" href={`/media-hub/${card.slug}`} key={card.slug}>
+          <Link className="video-card" href={`/video/${card.slug}`} key={card.slug}>
             <div className="story-image">
               <Image src={card.img} alt={card.alt} width={760} height={480} sizes="(max-width: 760px) 100vw, 33vw" />
             </div>
