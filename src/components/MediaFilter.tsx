@@ -41,16 +41,23 @@ export function MediaFilter({cards}: {cards: MediaCard[]}) {
   return (
     <>
       <div className="filter-bar">
-        {CHIPS.map((chip) => (
-          <button
-            key={chip.value}
-            type="button"
-            className={`filter-chip ${active === chip.value ? 'active' : ''}`}
-            onClick={() => setActive(chip.value)}
-          >
-            {chip.label}
-          </button>
-        ))}
+        {CHIPS.map((chip) =>
+          // "Videos" isn't an in-place filter — it opens the dedicated video gallery.
+          chip.value === 'video' ? (
+            <Link key={chip.value} href="/video" className="filter-chip">
+              {chip.label}
+            </Link>
+          ) : (
+            <button
+              key={chip.value}
+              type="button"
+              className={`filter-chip ${active === chip.value ? 'active' : ''}`}
+              onClick={() => setActive(chip.value)}
+            >
+              {chip.label}
+            </button>
+          )
+        )}
       </div>
       <div className="media-grid" style={{marginTop: 42}}>
         {visible.length ? (

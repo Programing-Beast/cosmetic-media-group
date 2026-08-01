@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {PageHero} from '@/components/CommonSections'
-import {VideoGallery, type VideoCard} from '@/components/VideoGallery'
+import {VideoGallery, type VideoCardData} from '@/components/VideoGallery'
 import {getVideos} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
@@ -9,7 +9,7 @@ export const metadata = createMetadata('Video', 'Live broadcast, streaming, cont
 
 export default async function MediaHubPage() {
   const videos = await getVideos()
-  const cards: VideoCard[] = videos.map((video) => ({
+  const cards: VideoCardData[] = videos.map((video) => ({
     slug: video.slug,
     title: video.title,
     category: video.category,

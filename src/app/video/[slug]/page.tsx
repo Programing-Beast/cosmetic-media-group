@@ -32,13 +32,15 @@ export default async function VideoPage({params}: {params: Promise<{slug: string
       <section>
         <div className="shell video-detail">
           {video.intro && <p className="intro">{video.intro}</p>}
-          {video.videos.map((item, index) => (
-            <div className="video-block" key={`${item.url}-${index}`}>
-              {item.heading && <h2>{item.heading}</h2>}
-              {item.url && <ExternalVideo url={item.url} title={item.heading || video.title} />}
-              {item.caption && <p className="muted video-caption">{item.caption}</p>}
-            </div>
-          ))}
+          <div className="video-clip-grid">
+            {video.videos.map((item, index) => (
+              <div className="video-clip" key={`${item.url}-${index}`}>
+                {item.url && <ExternalVideo url={item.url} title={item.heading || video.title} />}
+                {item.heading && <h2>{item.heading}</h2>}
+                {item.caption && <p className="muted video-caption">{item.caption}</p>}
+              </div>
+            ))}
+          </div>
           <div className="video-back"><Link className="text-link" href="/video">← Back to Video</Link></div>
         </div>
       </section>
