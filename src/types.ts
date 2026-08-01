@@ -206,6 +206,18 @@ export type MediaHubPage = {
   seo?: SEO
 }
 
+export type VideoPage = {
+  heroTitle?: string
+  heroAccent?: string
+  intro?: string
+  ctaEyebrow?: string
+  ctaHeading?: string
+  ctaText?: string
+  ctaButtonLabel?: string
+  ctaButtonHref?: string
+  seo?: SEO
+}
+
 export type SponsorshipPackage = {tier?: string; name: string; description?: string; features?: string[]}
 
 export type VideoItem = {

@@ -298,6 +298,19 @@ async function main() {
   })
 
   await client.createOrReplace({
+    _id: 'videoPage',
+    _type: 'videoPage',
+    heroTitle: 'Video',
+    heroAccent: 'Gallery.',
+    intro: 'Live broadcast, streaming, content and video production — a selection of work from across the aesthetics industry.',
+    ctaEyebrow: 'For journalists',
+    ctaHeading: 'Need an expert comment or interview?',
+    ctaText: 'Use the dedicated media desk to submit your subject, deadline and required expertise.',
+    ctaButtonLabel: 'Open the media desk',
+    ctaButtonHref: '/media-desk'
+  })
+
+  await client.createOrReplace({
     _id: 'diamondAwards',
     _type: 'diamondAwards',
     eventName: 'The Diamond Awards Dubai',
