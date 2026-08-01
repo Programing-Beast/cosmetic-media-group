@@ -24,7 +24,6 @@ export default async function VideoPage({params}: {params: Promise<{slug: string
     <div className="page-enter">
       <div className="video-hero">
         <div className="shell">
-          <div className="crumbs"><Link href="/">Home</Link><span>/</span><Link href="/video">Video</Link><span>/</span><span>{video.title}</span></div>
           <h1>{video.title}</h1>
           {video.category && <p className="video-hero-sub">{video.category}</p>}
         </div>

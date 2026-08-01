@@ -345,7 +345,7 @@ export const videoGalleries: VideoGallery[] = [
   {
     title: 'Awards Show',
     slug: 'awards-show',
-    category: 'Live Broadcast',
+    category: 'Awards',
     poster: '/images/awards.jpg',
     order: 2,
     videos: [
@@ -391,7 +391,7 @@ export const videoGalleries: VideoGallery[] = [
   {
     title: 'Founder Interview',
     slug: 'founder-interview',
-    category: 'Content',
+    category: 'Interviews',
     poster: '/images/founder.jpg',
     order: 6,
     videos: [
