@@ -1,8 +1,8 @@
 import {articles as fallbackArticles, brands as fallbackBrands, homepage as fallbackHomepage, navigation as fallbackNavigation, services as fallbackServices, siteSettings as fallbackSettings, toolkits as fallbackToolkits, videoGalleries as fallbackVideos} from '@/data/fallback'
-import type {AboutPage, Article, Author, Brand, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MediaHubPage, MegaMenuContent, MembershipPage, MenuLink, Navigation, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit, VideoGallery} from '@/types'
+import type {AboutPage, Article, Author, Brand, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MediaHubPage, MegaMenuContent, MembershipPage, MenuLink, Navigation, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit, VideoGallery, VideoPage} from '@/types'
 import {sanityFetch} from '@/sanity/lib/fetch'
-import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEDIA_HUB_QUERY, MEMBERSHIP_PAGE_QUERY, NAVIGATION_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY, VIDEOS_QUERY, VIDEO_QUERY} from '@/sanity/lib/queries'
-import type {ABOUT_PAGE_QUERY_RESULT, ARTICLE_QUERY_RESULT, ARTICLES_QUERY_RESULT, BRANDS_QUERY_RESULT, DIAMOND_AWARDS_QUERY_RESULT, FOUNDER_QUERY_RESULT, HOMEPAGE_QUERY_RESULT, MEDIA_DESK_QUERY_RESULT, MEDIA_HUB_QUERY_RESULT, MEMBERSHIP_PAGE_QUERY_RESULT, SERVICE_QUERY_RESULT, SERVICES_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT, TOOLKITS_QUERY_RESULT} from '../../sanity.types'
+import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEDIA_HUB_QUERY, VIDEO_PAGE_QUERY, MEMBERSHIP_PAGE_QUERY, NAVIGATION_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY, VIDEOS_QUERY, VIDEO_QUERY} from '@/sanity/lib/queries'
+import type {ABOUT_PAGE_QUERY_RESULT, ARTICLE_QUERY_RESULT, ARTICLES_QUERY_RESULT, BRANDS_QUERY_RESULT, DIAMOND_AWARDS_QUERY_RESULT, FOUNDER_QUERY_RESULT, HOMEPAGE_QUERY_RESULT, MEDIA_DESK_QUERY_RESULT, MEDIA_HUB_QUERY_RESULT, VIDEO_PAGE_QUERY_RESULT, MEMBERSHIP_PAGE_QUERY_RESULT, SERVICE_QUERY_RESULT, SERVICES_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT, TOOLKITS_QUERY_RESULT} from '../../sanity.types'
 
 /**
  * This module is the single translation boundary between Sanity and the app.
@@ -408,6 +408,22 @@ export async function getMediaDesk(): Promise<MediaDesk | null> {
 
 export async function getMediaHubPage(): Promise<MediaHubPage | null> {
   const data = await sanityFetch<MEDIA_HUB_QUERY_RESULT>(MEDIA_HUB_QUERY)
+  if (!data) return null
+  return {
+    heroTitle: data.heroTitle ?? undefined,
+    heroAccent: data.heroAccent ?? undefined,
+    intro: data.intro ?? undefined,
+    ctaEyebrow: data.ctaEyebrow ?? undefined,
+    ctaHeading: data.ctaHeading ?? undefined,
+    ctaText: data.ctaText ?? undefined,
+    ctaButtonLabel: data.ctaButtonLabel ?? undefined,
+    ctaButtonHref: data.ctaButtonHref ?? undefined,
+    seo: toSeo(data.seo)
+  }
+}
+
+export async function getVideoPage(): Promise<VideoPage | null> {
+  const data = await sanityFetch<VIDEO_PAGE_QUERY_RESULT>(VIDEO_PAGE_QUERY)
   if (!data) return null
   return {
     heroTitle: data.heroTitle ?? undefined,

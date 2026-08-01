@@ -81,6 +81,8 @@ export const MEDIA_DESK_QUERY = defineQuery(`*[_type == "mediaDesk"][0]{headline
 
 export const MEDIA_HUB_QUERY = defineQuery(`*[_type == "mediaHubPage"][0]{heroTitle,heroAccent,intro,ctaEyebrow,ctaHeading,ctaText,ctaButtonLabel,ctaButtonHref,seo}`)
 
+export const VIDEO_PAGE_QUERY = defineQuery(`*[_type == "videoPage"][0]{heroTitle,heroAccent,intro,ctaEyebrow,ctaHeading,ctaText,ctaButtonLabel,ctaButtonHref,seo}`)
+
 export const NAVIGATION_QUERY = defineQuery(`*[_type == "navigation"][0]{
   about{eyebrow, heading, text, ctaLabel, ctaHref, links[]{label, page, externalUrl, service->{title, "slug": slug.current}}},
   services{eyebrow, heading, text, ctaLabel, ctaHref, links[]{label, page, externalUrl, service->{title, "slug": slug.current}}}

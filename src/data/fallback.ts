@@ -337,8 +337,9 @@ export const videoGalleries: VideoGallery[] = [
     intro: 'Multi-camera live production and broadcast direction from the control room.',
     order: 1,
     videos: [
-      {heading: 'Live Broadcast (PCR)', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'},
-      {heading: 'Dubai NYE 2025 — Split Screen', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ', caption: 'Multi-feed split-screen coverage.'}
+      {heading: 'Live Broadcast (PCR)', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ', caption: 'Main programme feed from the production control room.'},
+      {heading: 'Countdown Show', url: 'https://vimeo.com/76979871', caption: 'Vimeo — headline countdown segment.'},
+      {heading: 'Split-Screen Coverage', url: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', caption: 'Multi-feed split-screen coverage.'}
     ]
   },
   {
@@ -348,7 +349,9 @@ export const videoGalleries: VideoGallery[] = [
     poster: '/images/awards.jpg',
     order: 2,
     videos: [
-      {heading: 'Awards Show Broadcast', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+      {heading: 'Awards Show Broadcast', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'},
+      {heading: 'Red Carpet Stream', url: 'https://vimeo.com/148751763', caption: 'Vimeo — pre-show red carpet.'},
+      {heading: 'Highlights Reel', url: 'https://vimeo.com/22439234', caption: 'Vimeo — post-event highlights.'}
     ]
   },
   {
@@ -359,7 +362,8 @@ export const videoGalleries: VideoGallery[] = [
     intro: 'Polished live and on-demand streams for aesthetic brand launches.',
     order: 3,
     videos: [
-      {heading: 'Product Launch Stream', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+      {heading: 'Product Launch Stream', url: 'https://vimeo.com/76979871', caption: 'Vimeo — live launch stream.'},
+      {heading: 'Behind the Scenes', url: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ'}
     ]
   },
   {
@@ -369,7 +373,7 @@ export const videoGalleries: VideoGallery[] = [
     poster: '/images/studio.jpg',
     order: 4,
     videos: [
-      {heading: 'Clinic Webinar', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+      {heading: 'Clinic Webinar', url: 'https://vimeo.com/148751763', caption: 'Vimeo — full webinar recording.'}
     ]
   },
   {
@@ -380,7 +384,8 @@ export const videoGalleries: VideoGallery[] = [
     intro: 'Original content and brand films produced end to end.',
     order: 5,
     videos: [
-      {heading: 'Brand Film', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+      {heading: 'Brand Film', url: 'https://vimeo.com/22439234', caption: 'Vimeo — hero brand film.'},
+      {heading: 'Teaser Cut', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
     ]
   },
   {
@@ -390,7 +395,7 @@ export const videoGalleries: VideoGallery[] = [
     poster: '/images/founder.jpg',
     order: 6,
     videos: [
-      {heading: 'Founder Interview', url: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'}
+      {heading: 'Founder Interview', url: 'https://www.youtube.com/watch?v=aqz-KE-bpKQ', caption: 'YouTube — long-form founder conversation.'}
     ]
   }
 ]
