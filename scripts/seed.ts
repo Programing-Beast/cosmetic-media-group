@@ -332,7 +332,10 @@ async function main() {
       text: navigation.services.text,
       ctaLabel: navigation.services.ctaLabel,
       ctaHref: navigation.services.ctaHref,
-      links: services.map((service, index) => ({_key: `service-${index}`, service: {_type: 'reference', _ref: `service-${service.slug}`}}))
+      // Left empty on purpose: an empty Services list makes the header auto-list every
+      // Service document (ordered by each service's `order` field), so new services appear
+      // automatically. Editors can hand-pick/reorder by adding links in the Navigation doc.
+      links: []
     }
   })
 
