@@ -6,6 +6,7 @@ import {diamondAwards} from './documents/diamondAwards'
 import {founder} from './documents/founder'
 import {homepage} from './documents/homepage'
 import {mediaDesk} from './documents/mediaDesk'
+import {mediaHubPage} from './documents/mediaHubPage'
 import {membershipPage} from './documents/membershipPage'
 import {navigation} from './documents/navigation'
 import {service} from './documents/service'
@@ -25,6 +26,7 @@ export const schemaTypes = [
   aboutPage,
   founder,
   mediaDesk,
+  mediaHubPage,
   diamondAwards,
   membershipPage,
   service,

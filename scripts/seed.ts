@@ -3,7 +3,9 @@ import {createReadStream, existsSync} from 'node:fs'
 import {join} from 'node:path'
 import {articles, brands, homepage, navigation, services, siteSettings, toolkits, videoGalleries} from '../src/data/fallback'
 
-try { process.loadEnvFile('.env.local') } catch {}
+// Defaults to .env.local; set SEED_ENV_FILE to target another dataset,
+// e.g. SEED_ENV_FILE=.env.handover.local npm run seed
+try { process.loadEnvFile(process.env.SEED_ENV_FILE || '.env.local') } catch {}
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
@@ -280,6 +282,19 @@ async function main() {
       {_key: 'press', title: 'Press resources', description: 'Approved biographies, imagery, company information and background documents.'},
       {_key: 'topics', title: 'Current topics', description: 'Timely expert perspectives linked to industry news and editorial deadlines.'}
     ]
+  })
+
+  await client.createOrReplace({
+    _id: 'mediaHubPage',
+    _type: 'mediaHubPage',
+    heroTitle: 'The industry’s next',
+    heroAccent: 'conversation.',
+    intro: 'Editorial coverage, expert interviews, industry news, trends, opinion, podcasts, video and practical intelligence from across aesthetics.',
+    ctaEyebrow: 'For journalists',
+    ctaHeading: 'Need an expert comment or interview?',
+    ctaText: 'Use the dedicated media desk to submit your subject, deadline and required expertise.',
+    ctaButtonLabel: 'Open the media desk',
+    ctaButtonHref: '/media-desk'
   })
 
   await client.createOrReplace({
