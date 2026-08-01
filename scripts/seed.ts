@@ -3,7 +3,9 @@ import {createReadStream, existsSync} from 'node:fs'
 import {join} from 'node:path'
 import {articles, brands, homepage, navigation, services, siteSettings, toolkits, videoGalleries} from '../src/data/fallback'
 
-try { process.loadEnvFile('.env.local') } catch {}
+// Defaults to .env.local; set SEED_ENV_FILE to target another dataset,
+// e.g. SEED_ENV_FILE=.env.handover.local npm run seed
+try { process.loadEnvFile(process.env.SEED_ENV_FILE || '.env.local') } catch {}
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
