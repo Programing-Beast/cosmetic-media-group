@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {PageHero} from '@/components/CommonSections'
-import {VideoGallery, type VideoCardData} from '@/components/VideoGallery'
+import {VideoFilter} from '@/components/VideoFilter'
+import {type VideoCardData} from '@/components/VideoCard'
 import {getVideos, getVideoPage} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
@@ -31,7 +32,7 @@ export default async function VideoGalleryPage() {
       />
       <section>
         <div className="shell">
-          <VideoGallery cards={cards} />
+          <VideoFilter cards={cards} />
         </div>
       </section>
       <section className="media-hub-desk-cta">

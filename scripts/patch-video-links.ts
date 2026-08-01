@@ -1,8 +1,8 @@
 import {createClient} from '@sanity/client'
 import {videoGalleries} from '../src/data/fallback'
 
-// Patches ONLY the `videos` array on existing videoGallery docs, so we can
-// verify YouTube + Vimeo playback without a full re-seed.
+// Patches the `videos` array and `category` on existing videoGallery docs, so we
+// can verify playback and the list filter without a full re-seed.
 // Usage: SEED_ENV_FILE=.env.handover.local npx tsx scripts/patch-video-links.ts
 try { process.loadEnvFile(process.env.SEED_ENV_FILE || '.env.local') } catch {}
 
@@ -27,8 +27,8 @@ async function run() {
       url: item.url,
       caption: item.caption
     }))
-    await client.patch(`video-${gallery.slug}`).set({videos}).commit()
-    console.log(`  ✓ ${gallery.slug} — ${videos.length} clip(s)`)
+    await client.patch(`video-${gallery.slug}`).set({videos, category: gallery.category}).commit()
+    console.log(`  ✓ ${gallery.slug} — ${videos.length} clip(s), ${gallery.category}`)
   }
   console.log('Done.')
 }
