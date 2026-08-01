@@ -2,14 +2,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {PageHero} from '@/components/CommonSections'
 import {MediaFilter, type MediaCard} from '@/components/MediaFilter'
-import {getArticles} from '@/lib/content'
+import {getArticles, getMediaHubPage} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
-export const metadata = createMetadata('Media Hub', 'Articles, interviews, podcasts, news, trends, opinion and expert content from across aesthetics.', undefined, '/media-hub')
+const DEFAULT_INTRO = 'Editorial coverage, expert interviews, industry news, trends, opinion, podcasts, video and practical intelligence from across aesthetics.'
+
+export async function generateMetadata() {
+  const page = await getMediaHubPage()
+  return createMetadata('Media Hub', page?.intro || DEFAULT_INTRO, page?.seo, '/media-hub')
+}
 
 export default async function MediaHubPage() {
-  const articles = await getArticles()
+  const [articles, page] = await Promise.all([getArticles(), getMediaHubPage()])
   const [featured, ...rest] = articles
   const cards: MediaCard[] = rest.map((article) => ({
     slug: article.slug,
@@ -23,9 +28,9 @@ export default async function MediaHubPage() {
   return (
     <div className="page-enter">
       <PageHero
-        title="The industry’s next"
-        accent="conversation."
-        intro="Editorial coverage, expert interviews, industry news, trends, opinion, podcasts, video and practical intelligence from across aesthetics."
+        title={page?.heroTitle || 'The industry’s next'}
+        accent={page?.heroAccent || 'conversation.'}
+        intro={page?.intro || DEFAULT_INTRO}
         crumbs={[{label: 'Home', href: '/'}, {label: 'Media Hub'}]}
       />
       <section>
@@ -49,12 +54,12 @@ export default async function MediaHubPage() {
       <section className="media-hub-desk-cta">
         <div className="shell">
           <div>
-            <div className="eyebrow">For journalists</div>
-            <h2>Need an expert comment or interview?</h2>
+            <div className="eyebrow">{page?.ctaEyebrow || 'For journalists'}</div>
+            <h2>{page?.ctaHeading || 'Need an expert comment or interview?'}</h2>
           </div>
           <div>
-            <p>Use the dedicated media desk to submit your subject, deadline and required expertise.</p>
-            <Link className="btn btn-dark" href="/media-desk">Open the media desk ↗</Link>
+            <p>{page?.ctaText || 'Use the dedicated media desk to submit your subject, deadline and required expertise.'}</p>
+            <Link className="btn btn-dark" href={page?.ctaButtonHref || '/media-desk'}>{page?.ctaButtonLabel || 'Open the media desk'} ↗</Link>
           </div>
         </div>
       </section>

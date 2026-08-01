@@ -194,6 +194,18 @@ export type MediaDesk = {
   seo?: SEO
 }
 
+export type MediaHubPage = {
+  heroTitle?: string
+  heroAccent?: string
+  intro?: string
+  ctaEyebrow?: string
+  ctaHeading?: string
+  ctaText?: string
+  ctaButtonLabel?: string
+  ctaButtonHref?: string
+  seo?: SEO
+}
+
 export type SponsorshipPackage = {tier?: string; name: string; description?: string; features?: string[]}
 
 export type VideoItem = {

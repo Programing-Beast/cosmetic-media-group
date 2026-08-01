@@ -283,6 +283,19 @@ async function main() {
   })
 
   await client.createOrReplace({
+    _id: 'mediaHubPage',
+    _type: 'mediaHubPage',
+    heroTitle: 'The industry’s next',
+    heroAccent: 'conversation.',
+    intro: 'Editorial coverage, expert interviews, industry news, trends, opinion, podcasts, video and practical intelligence from across aesthetics.',
+    ctaEyebrow: 'For journalists',
+    ctaHeading: 'Need an expert comment or interview?',
+    ctaText: 'Use the dedicated media desk to submit your subject, deadline and required expertise.',
+    ctaButtonLabel: 'Open the media desk',
+    ctaButtonHref: '/media-desk'
+  })
+
+  await client.createOrReplace({
     _id: 'diamondAwards',
     _type: 'diamondAwards',
     eventName: 'The Diamond Awards Dubai',
