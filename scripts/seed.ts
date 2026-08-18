@@ -164,22 +164,41 @@ async function main() {
     heroImage: await sanityImage(homepage.hero.image, 'Aesthetics editorial portrait'),
     heroImageCaption: homepage.hero.imageCaption,
     heroImageMeta: homepage.hero.imageMeta,
+    heroFilm: [
+      {...(await sanityImage('/images/podcast.jpg', 'Podcast and interview content')), _key: 'film-podcast'},
+      {...(await sanityImage('/images/event.jpg', 'Industry event and behind-the-scenes content')), _key: 'film-event'}
+    ],
+    heroFilmBadge: 'Looping editorial film / client footage',
     storyHeading: 'More than PR.',
-    storyOpening: 'Cosmetic Media Group is one destination for the experts, brands and ideas shaping the future of aesthetics.',
+    storyOpening: 'Cosmetic Media Group is the umbrella platform connecting the experts, brands and ideas shaping the future of aesthetics.',
     storyBody: [
-      block('For more than 20 years, we have helped aesthetic professionals earn the recognition they deserve through strategic PR. Today, we are taking that one step further.', 'story-1'),
-      block('Cosmetic Media Group brings media visibility, content, education, podcasts, events, personal branding and industry resources into one platform.', 'story-2'),
-      block('The future of aesthetics will not be led by the loudest voices. It will be led by the most trusted ones.', 'story-3')
+      block('For more than 20 years, we have helped aesthetic professionals earn the recognition they deserve through strategic PR. Cosmetic PR remains the flagship specialist agency at the heart of that heritage.', 'story-1'),
+      block('Today, Cosmetic Media Group takes that experience further. Through media visibility, content, education, podcasts, events, personal branding, awards and industry resources, we are creating one destination where experts can raise their profile, share their knowledge, build credibility and grow their influence.', 'story-2'),
+      block('Because the future of aesthetics will not be led by the loudest voices. It will be led by the most trusted ones.', 'story-3')
     ],
     stats: homepage.stats.map((stat, index) => ({_type: 'stat', _key: `stat-${index}`, ...stat})),
     credibilityFacts: [
       {_key: 'leadership', label: '01 / Leadership', title: 'Founder of Cosmetic Media Group'},
       {_key: 'recognition', label: '02 / Recognition', title: 'Founder of the Diamond Awards Dubai'},
-      {_key: 'editorial', label: '03 / Editorial', title: 'Co-founder of The Aesthetics Edit'},
+      {_key: 'editorial', label: '03 / Editorial', title: 'Co-founder of The Aesthetics Edit — Dubai’s first and only aesthetics guide'},
       {_key: 'voice', label: '04 / Voice', title: 'Host of industry interviews and podcasts'}
     ],
     publications: homepage.publications,
     clientLogos: homepage.clientLogos.map((item, index) => ({_key: `client-${index}`, name: item.name})),
+    latestRail: (homepage.latestRail || []).map((item, index) => ({_key: `rail-${index}`, ...item})),
+    cprEyebrow: homepage.cprSpotlight?.eyebrow,
+    cprHeading: homepage.cprSpotlight?.heading,
+    cprAccent: homepage.cprSpotlight?.accent,
+    cprIntro: homepage.cprSpotlight?.intro,
+    cprStatusChips: homepage.cprSpotlight?.statusChips,
+    cprCards: await Promise.all((homepage.cprSpotlight?.cards || []).map(async (card, index) => ({
+      _key: `cpr-card-${index}`,
+      label: card.label,
+      title: card.title,
+      text: card.text,
+      ctaLabel: card.ctaLabel,
+      ...(typeof card.image === 'string' ? {image: await sanityImage(card.image, card.title)} : {})
+    }))),
     sections: homepage.sectionOrder.map((sectionType, index) => ({_type: 'homeSection', _key: `${index}-${sectionType}`, sectionType, enabled: true})),
     featuredArticles: articleRefs.slice(0, 3),
     featuredServices: serviceRefs,
@@ -224,7 +243,7 @@ async function main() {
     _type: 'aboutPage',
     heroTitle: 'More than PR.',
     heroAccent: 'A platform for influence.',
-    intro: 'Cosmetic Media Group helps the aesthetics industry be seen, trusted and remembered through media visibility, content, education, podcasts, events, personal branding, awards and practical resources.',
+    intro: 'Cosmetic Media Group is the umbrella media and communications platform built on the established foundation of Cosmetic PR. Together, the group helps the aesthetics industry be seen, trusted and remembered through media visibility, content, education, podcasts, events, personal branding, awards and practical resources.',
     stats: [
       {value: '20+', label: 'Years in aesthetics communications'},
       {value: 'Global', label: 'UK, Middle East and international reach'},
@@ -235,7 +254,8 @@ async function main() {
     evolutionHeading: 'A media company, not simply an agency.',
     evolutionBody: [
       block('Cosmetic Media Group is a modern media and communications company for the global aesthetics industry. We do not just help brands gain publicity. We create the conversations that shape the industry, connecting professionals, clinics, brands and consumers in one trusted ecosystem.', 'about-1'),
-      block('The group brings together strategic PR, personal branding, content production, editorial publishing, education, podcasts, events, research and recognition. Each platform has its own purpose, but they are connected by one ambition: to help credible experts and organisations build authority that lasts.', 'about-2')
+      block('The group brings together strategic PR, personal branding, content production, editorial publishing, education, podcasts, events, research and recognition. Each platform has its own purpose, but they are connected by one ambition: to help credible experts and organisations build authority that lasts.', 'about-2'),
+      block('Cosmetic PR remains the flagship specialist PR agency within the group, while Cosmetic Media Group provides the wider platform for editorial, content, education, events, awards and future membership.', 'about-3')
     ],
     quote: 'We elevate the people, brands and ideas shaping the future of aesthetics.',
     image: await sanityImage('/images/magazine.jpg', 'The Cosmetic Media Group editorial ecosystem'),
@@ -247,6 +267,78 @@ async function main() {
       {_key: 'editorial', title: 'Editorial intelligence', description: 'We look beyond promotion to uncover the ideas, evidence and voices that deserve attention.'},
       {_key: 'authority', title: 'Long-term authority', description: 'We build platforms, profiles and reputations that become more valuable and trusted over time.'}
     ]
+  })
+
+  await client.createOrReplace({
+    _id: 'cosmeticPrPage',
+    _type: 'cosmeticPrPage',
+    heroEyebrow: 'Flagship PR agency / Cosmetic Media Group',
+    heroTitle: 'COSMETIC',
+    heroAccent: 'PR.',
+    heroIntro: 'The established specialist PR agency behind more than a decade of recognised work across medical aesthetics, beauty and wellness.',
+    heroBody: 'Cosmetic Media Group is the umbrella brand. Cosmetic PR remains its flagship communications agency — combining deep sector knowledge, long-standing media relationships and bespoke strategy to build trusted reputations.',
+    heroImage: await sanityImage('/images/editorial.jpg', 'Cosmetic PR editorial and media work'),
+    heroCaption: 'Specialist PR. Lasting authority.',
+    heroCaptionMeta: 'Medical aesthetics / beauty / wellness',
+    identityStrip: [
+      {_key: 'position', label: 'Position', value: 'Flagship agency within CMG'},
+      {_key: 'established', label: 'Established', value: '12+ years of brand recognition'},
+      {_key: 'markets', label: 'Markets', value: 'UK · Dubai · Global'},
+      {_key: 'focus', label: 'Focus', value: 'Trust · media · reputation'}
+    ],
+    storyEyebrow: '01 — The agency',
+    storySideHeading: 'Built inside the aesthetics industry.',
+    storySideText: 'A specialist agency with a long history of representing clinicians, clinics, devices, products and recognised industry names.',
+    storyHeading: 'PR that builds',
+    storyAccent: 'recognition with substance.',
+    storyBody: [
+      block('Cosmetic PR is a boutique, full-service public relations agency specialising in medical aesthetics, beauty and wellness. Its sector knowledge supports campaigns that do more than generate coverage — helping clients strengthen credibility, visibility and commercial positioning.', 'cpr-story-1'),
+      block('Long-standing relationships with consumer, trade, beauty and business media enable the agency to connect the right experts and stories with the publications and platforms that matter. That heritage now sits within the wider Cosmetic Media Group ecosystem, giving clients access to a broader mix of editorial, personal branding, content, education, podcasts, events and industry platforms.', 'cpr-story-2')
+    ],
+    capabilitiesEyebrow: '02 — Specialist capability',
+    capabilitiesNote: 'A concise summary of the current Cosmetic PR website. Final live service list to be approved by the client before migration.',
+    capabilitiesHeading: 'WHAT COSMETIC PR BRINGS TO THE TABLE',
+    capabilities: [
+      {_key: 'pr', title: 'PR & Communications', description: 'Media relations, expert positioning, editorial opportunities, press launches, awards and long-term reputation strategy.'},
+      {_key: 'digital', title: 'Digital Marketing', description: 'Audience communications, email marketing and digital activity designed to keep clients informed and engaged.'},
+      {_key: 'content', title: 'Content Creation', description: 'Written and creative content, newsletters, brand materials and campaign assets aligned to wider communications objectives.'},
+      {_key: 'brand', title: 'Brand Development', description: 'Strategic support for businesses and products developing their identity, positioning and route to market.'},
+      {_key: 'events', title: 'Events', description: 'Launches, press events and industry experiences managed from concept and guest strategy through to activation.'},
+      {_key: 'social', title: 'Social Media', description: 'Social strategy, consultancy, management and content designed to build a connected public profile.'}
+    ],
+    casesEyebrow: '03 — Selected impact',
+    casesHeading: 'Proof built through real campaigns.',
+    cases: [
+      {_key: 'nina', label: 'Dr Nina Bal / expert positioning', title: 'From national coverage to a 10-minute ITV This Morning appearance.', description: "Cosmetic PR built Dr Nina's media credibility through quality national coverage before securing the television opportunity that had been a central campaign objective.", tags: 'Television / national press / expert authority'},
+      {_key: 'tatiana', label: 'Dr Tatiana / long-term profile', title: 'Top-tier press and broadcast visibility.', description: 'Long-term PR and social support secured coverage across leading fashion, beauty, newspaper and lifestyle titles alongside Channel 5 and MTV exposure.', tags: 'Press / broadcast / brand growth'},
+      {_key: 'inmode', label: 'InMode / brand awareness', title: '140+ pieces of published press coverage.', description: 'National and trade press, award wins, influencer partnerships, events and wider marketing support helped raise awareness of InMode and its treatment technologies.', tags: 'PR / awards / influencers / events'}
+    ],
+    testimonialsEyebrow: '04 — Client perspective',
+    testimonialsHeading: 'Trusted because the work delivers.',
+    testimonials: [
+      {_key: 'nina', name: 'Dr Nina Bal', quote: "Highlights professionalism, kindness and the team's ability to deliver meaningful press and television opportunities."},
+      {_key: 'usman', name: 'Dr Usman Qureshi', quote: "Credits the team's specialist cosmetic-industry understanding, media connections and consistent delivery against profile-building goals."},
+      {_key: 'inmode', name: 'InMode UK', quote: 'Describes Cosmetic PR as proactive, creative and willing to go beyond the expected to make a measurable difference to the business.'}
+    ],
+    publicationsEyebrow: '05 — Media relationships',
+    publicationsHeading: 'Stories placed where credibility grows.',
+    publicationsIntro: 'Cosmetic PR connects expert stories with the consumer, beauty, trade, lifestyle and broadcast platforms that shape visibility and trust.',
+    publications: ['VOGUE', "Harper's Bazaar", 'GRAZIA', 'Tatler', 'Marie Claire', 'Cosmopolitan', 'The Telegraph', 'Daily Mail', 'HELLO!', 'Channel 5', 'MTV', 'This Morning'],
+    summaryEyebrow: '06 — What the legacy site proves',
+    summaryHeading: 'A full-site summary, refined into one editorial page.',
+    summaryBody: [
+      block('This page is intentionally a concise editorial summary of the previous Cosmetic PR website, bringing its strongest proof points into the new Cosmetic Media Group design system without recreating the older site page-for-page.', 'cpr-summary-1'),
+      block('It captures the essentials of the original platform: sector specialism, service breadth, award and event support, content creation, social and digital communications, proven media relationships, long-term client trust and selected campaign outcomes.', 'cpr-summary-2'),
+      block('For the final live build, this page can be expanded with additional approved case studies, publication logos, testimonials, before-and-after campaign outcomes or archived press examples if a deeper legacy showcase is wanted.', 'cpr-summary-3')
+    ],
+    summaryPoints: [
+      {_key: 'included', label: 'Included here', text: 'Agency positioning, services, case studies and testimonials'},
+      {_key: 'later', label: 'Can be added later', text: 'More case studies, press logos, screenshots, awards and archived campaign highlights'},
+      {_key: 'role', label: 'Role in the new site', text: 'The flagship agency page within the wider Cosmetic Media Group ecosystem'}
+    ],
+    newsletterEyebrow: 'Stay connected',
+    newsletterHeading: 'PR insight from inside the industry.',
+    newsletterText: 'Follow the latest campaigns, media opportunities, expert perspectives and wider Cosmetic Media Group updates.'
   })
 
   await client.createOrReplace({

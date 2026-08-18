@@ -144,6 +144,48 @@ export type AboutPage = {
   seo?: SEO
 }
 
+export type CosmeticPrCase = {label?: string; title: string; description?: string; tags?: string}
+
+export type CosmeticPrPage = {
+  heroEyebrow?: string
+  heroTitle?: string
+  heroAccent?: string
+  heroIntro?: string
+  heroBody?: string
+  heroImage?: ImageValue
+  heroCaption?: string
+  heroCaptionMeta?: string
+  identityStrip?: Array<{label: string; value: string}>
+  storyEyebrow?: string
+  storySideHeading?: string
+  storySideText?: string
+  storyHeading?: string
+  storyAccent?: string
+  storyBody?: PortableTextBlock[]
+  capabilitiesEyebrow?: string
+  capabilitiesNote?: string
+  capabilitiesHeading?: string
+  capabilities?: Principle[]
+  casesEyebrow?: string
+  casesHeading?: string
+  cases?: CosmeticPrCase[]
+  testimonialsEyebrow?: string
+  testimonialsHeading?: string
+  testimonials?: Array<{name: string; quote: string}>
+  publicationsEyebrow?: string
+  publicationsHeading?: string
+  publicationsIntro?: string
+  publications?: string[]
+  summaryEyebrow?: string
+  summaryHeading?: string
+  summaryBody?: PortableTextBlock[]
+  summaryPoints?: Array<{label: string; text: string}>
+  newsletterEyebrow?: string
+  newsletterHeading?: string
+  newsletterText?: string
+  seo?: SEO
+}
+
 export type MembershipPage = {
   comingSoonLabel?: string
   heroTitle?: string
@@ -163,6 +205,7 @@ export type HomeSectionType =
   | 'trustedBrands'
   | 'services'
   | 'mediaHub'
+  | 'cprSpotlight'
   | 'mediaDesk'
   | 'awardsSpotlight'
   | 'brands'
@@ -260,6 +303,19 @@ export type DiamondAwards = {
   seo?: SEO
 }
 
+export type LatestRailItem = {label: string; title: string; actionLabel?: string; href?: string}
+
+export type CprSpotlightCard = {label?: string; title: string; text?: string; ctaLabel?: string; image?: ImageValue}
+
+export type CprSpotlight = {
+  eyebrow?: string
+  heading?: string
+  accent?: string
+  intro?: string
+  statusChips?: string[]
+  cards?: CprSpotlightCard[]
+}
+
 export type Homepage = {
   hero: {
     eyebrowLeft: string
@@ -271,6 +327,9 @@ export type Homepage = {
     image: ImageValue
     imageCaption: string
     imageMeta: string
+    film?: ImageValue[]
+    videoUrl?: string
+    filmBadge?: string
     primaryCta: CTA
     secondaryCta: CTA
   }
@@ -280,6 +339,8 @@ export type Homepage = {
   credibilityFacts?: Array<{label: string; title: string}>
   publications: string[]
   clientLogos: Array<{name: string; image?: ImageValue}>
+  latestRail?: LatestRailItem[]
+  cprSpotlight?: CprSpotlight
   featuredArticles?: Article[]
   featuredServices?: Service[]
   featuredBrands?: Brand[]

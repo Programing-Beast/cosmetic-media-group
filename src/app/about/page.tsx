@@ -34,7 +34,7 @@ export default async function AboutPage() {
       <PageHero
         title={about?.heroTitle || 'More than PR.'}
         accent={about?.heroAccent || 'A platform for influence.'}
-        intro={about?.intro || 'Cosmetic Media Group helps the aesthetics industry be seen, trusted and remembered through media visibility, content, education, podcasts, events, personal branding, awards and practical resources.'}
+        intro={about?.intro || 'Cosmetic Media Group is the umbrella media and communications platform built on the established foundation of Cosmetic PR. Together, the group helps the aesthetics industry be seen, trusted and remembered through media visibility, content, education, podcasts, events, personal branding, awards and practical resources.'}
         crumbs={[{label: 'Home', href: '/'}, {label: 'About'}]}
       />
       <div className="shell stats">
@@ -56,6 +56,7 @@ export default async function AboutPage() {
               </>
             )}
             <blockquote className="quote">{about?.quote || 'We elevate the people, brands and ideas shaping the future of aesthetics.'}</blockquote>
+            <p><Link className="text-link" href="/cosmetic-pr">Explore Cosmetic PR ↗</Link></p>
             <div className="hero-actions">
               <Link className="btn btn-dark" href="/about/founder">Meet the Founder ↗</Link>
               <Link className="btn btn-media" href="/media-desk">Media enquiries ↗</Link>

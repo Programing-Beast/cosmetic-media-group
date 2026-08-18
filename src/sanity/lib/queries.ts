@@ -12,6 +12,19 @@ export const ABOUT_PAGE_QUERY = defineQuery(`*[_type == "aboutPage"][0]{
   "image": image{..., "asset": asset->{_id,_ref,url}}
 }`)
 
+export const COSMETIC_PR_PAGE_QUERY = defineQuery(`*[_type == "cosmeticPrPage"][0]{
+  heroEyebrow, heroTitle, heroAccent, heroIntro, heroBody,
+  "heroImage": heroImage{..., "asset": asset->{_id,_ref,url}},
+  heroCaption, heroCaptionMeta, identityStrip,
+  storyEyebrow, storySideHeading, storySideText, storyHeading, storyAccent, storyBody,
+  capabilitiesEyebrow, capabilitiesNote, capabilitiesHeading, capabilities,
+  casesEyebrow, casesHeading, cases,
+  testimonialsEyebrow, testimonialsHeading, testimonials,
+  publicationsEyebrow, publicationsHeading, publicationsIntro, publications,
+  summaryEyebrow, summaryHeading, summaryBody, summaryPoints,
+  newsletterEyebrow, newsletterHeading, newsletterText, seo
+}`)
+
 export const MEMBERSHIP_PAGE_QUERY = defineQuery(`*[_type == "membershipPage"][0]{
   comingSoonLabel, heroTitle, heroAccent, intro,
   benefitsEyebrow, benefitsHeading, benefitsIntro, benefits, seo
@@ -20,9 +33,15 @@ export const MEMBERSHIP_PAGE_QUERY = defineQuery(`*[_type == "membershipPage"][0
 export const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0]{
   heroEyebrowLeft, heroEyebrowRight, heroTitleBefore, heroTitleAccent,
   heroIdentity, heroSummary, "heroImage": heroImage{..., "asset": asset->{_id,_ref,url}},
-  heroImageCaption, heroImageMeta, storyHeading, storyOpening, storyBody,
+  heroImageCaption, heroImageMeta,
+  "heroFilm": heroFilm[]{..., "asset": asset->{_id,_ref,url}},
+  heroVideoUrl, heroFilmBadge,
+  storyHeading, storyOpening, storyBody,
   stats, credibilityFacts, publications,
   clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},
+  latestRail,
+  cprEyebrow, cprHeading, cprAccent, cprIntro, cprStatusChips,
+  cprCards[]{label, title, text, ctaLabel, "image": image{..., "asset": asset->{_id,_ref,url}}},
   sections[]{sectionType,enabled}, seo,
   featuredArticles[]->{_id,title,"slug":slug.current,excerpt,category,format,publishedAt,readingTime,featured,
     "image": image{..., "asset": asset->{_id,_ref,url}}, externalVideoUrl,

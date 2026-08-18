@@ -10,7 +10,12 @@ const nextConfig: NextConfig = {
     ]
   },
   poweredByHeader: false,
-  reactStrictMode: true
+  reactStrictMode: true,
+  async redirects() {
+    // V19 §6: the dedicated Cosmetic PR page replaces the PR service page —
+    // no competing duplicate PR page.
+    return [{source: '/services/pr', destination: '/cosmetic-pr', permanent: true}]
+  }
 }
 
 export default nextConfig

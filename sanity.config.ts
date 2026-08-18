@@ -8,11 +8,12 @@ import {schemaTypes} from './src/sanity/schemaTypes'
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'demo1234'
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 
-const singletonTypes = new Set(['siteSettings', 'navigation', 'homepage', 'aboutPage', 'founder', 'mediaHubPage', 'videoPage', 'mediaDesk', 'diamondAwards', 'membershipPage'])
+const singletonTypes = new Set(['siteSettings', 'navigation', 'homepage', 'cosmeticPrPage', 'aboutPage', 'founder', 'mediaHubPage', 'videoPage', 'mediaDesk', 'diamondAwards', 'membershipPage'])
 const singletonItems = [
   ['siteSettings', 'Site settings'],
   ['navigation', 'Navigation'],
   ['homepage', 'Homepage'],
+  ['cosmeticPrPage', 'Cosmetic PR page'],
   ['aboutPage', 'About page'],
   ['founder', 'Founder page'],
   ['mediaHubPage', 'Media Hub page'],

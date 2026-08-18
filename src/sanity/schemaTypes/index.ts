@@ -2,6 +2,7 @@ import {aboutPage} from './documents/aboutPage'
 import {article} from './documents/article'
 import {author} from './documents/author'
 import {brand} from './documents/brand'
+import {cosmeticPrPage} from './documents/cosmeticPrPage'
 import {diamondAwards} from './documents/diamondAwards'
 import {founder} from './documents/founder'
 import {homepage} from './documents/homepage'
@@ -24,6 +25,7 @@ export const schemaTypes = [
   siteSettings,
   navigation,
   homepage,
+  cosmeticPrPage,
   aboutPage,
   founder,
   mediaDesk,
