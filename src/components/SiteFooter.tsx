@@ -10,13 +10,6 @@ export function SiteFooter({settings, services}: {settings: SiteSettings; servic
             <div className="footer-wordmark">COSMETIC<br /><span>MEDIA GROUP</span></div>
             <h2>{settings.tagline}</h2>
             <p>{settings.description}</p>
-            {(settings.email || settings.phone || settings.locations) && (
-              <div className="footer-contact">
-                {settings.email && <a href={`mailto:${settings.email}`}>{settings.email}</a>}
-                {settings.phone && <a href={`tel:${settings.phone.replace(/[^+\d]/g, '')}`}>{settings.phone}</a>}
-                {settings.locations && <span>{settings.locations}</span>}
-              </div>
-            )}
           </div>
           <div className="footer-col"><h4>Company</h4><Link href="/about">About</Link><Link href="/cosmetic-pr">Cosmetic PR</Link><Link href="/about/founder">Meet the Founder</Link><Link href="/media-hub">Media Hub</Link><Link href="/diamond-awards">Diamond Awards</Link><Link href="/our-brands">Our Brands</Link><Link href="/membership">Membership</Link></div>
           <div className="footer-col"><h4>Services</h4>{services.length ? services.map((service) => <Link key={service.slug} href={service.slug === 'pr' ? '/cosmetic-pr' : `/services/${service.slug}`}>{service.title}</Link>) : <Link href="/services">All services</Link>}</div>
