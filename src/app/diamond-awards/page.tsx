@@ -19,7 +19,15 @@ export async function generateMetadata() {
 export default async function DiamondAwardsPage() {
   const data = await getDiamondAwards()
   const hero = data?.heroImage || '/images/diamond1.jpeg'
-  const eventDate = data?.date ? new Date(`${data.date}T12:00:00`).toLocaleDateString('en-GB', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) : 'Saturday 10th April 2027'
+  const formatEventDate = (iso: string) => {
+    const d = new Date(`${iso}T12:00:00`)
+    const day = d.getDate()
+    const ordinal = day % 10 === 1 && day !== 11 ? 'st' : day % 10 === 2 && day !== 12 ? 'nd' : day % 10 === 3 && day !== 13 ? 'rd' : 'th'
+    const weekday = d.toLocaleDateString('en-GB', {weekday: 'long'})
+    const month = d.toLocaleDateString('en-GB', {month: 'long'})
+    return `${weekday} ${day}${ordinal} ${month} ${d.getFullYear()}`
+  }
+  const eventDate = data?.date ? formatEventDate(data.date) : 'Saturday 10th April 2027'
   const venue = data?.venue || 'Atlantis The Royal'
   const location = data?.location || 'Palm Jumeirah'
   const missionPoints = data?.missionPoints || [
@@ -33,7 +41,7 @@ export default async function DiamondAwardsPage() {
   return <div className="page-enter diamond-page">
     <section className="da-hero"><Image src={imageUrl(hero, 1800, 1100)} alt="The Diamond Awards Dubai 2027" width={1800} height={1100} priority sizes="100vw" /><div className="shell da-hero-content"><div className="da-hero-top"><span>{venue}, {location}</span><span>{eventDate}</span></div><div className="da-hero-copy"><div className="kicker">The first ever Dubai edition</div><h1>{data?.eventName || 'The Diamond Awards Dubai'}</h1><p>Celebrating excellence. Elevating standards. Bringing the global aesthetics industry together in one of the world’s most ambitious cities.</p><div className="da-hero-actions"><Link className="btn btn-da" href="/contact">Sponsorship opportunities ↗</Link><a className="btn btn-da-ghost" href={`mailto:${data?.contactEmail || 'lucy@cosmeticpr.com'}?subject=Diamond%20Awards%20Dubai%202027`}>Register interest ↗</a></div></div></div></section>
 
-    <section className="da-story"><div className="shell da-story-grid"><div className="da-visual"><Image src={imageUrl(data?.historyImage || '/images/diamond2.jpg', 1000, 800)} alt={imageAlt(data?.historyImage, 'A legacy of excellence')} width={1000} height={800} sizes="(max-width: 980px) 100vw, 50vw" /></div><div className="da-copy"><div className="da-index">01 — Our history</div><h2>A legacy of excellence. A new chapter in Dubai.</h2><p>Established in the UK in 2013, The Diamond Awards were created with one clear purpose: to champion safety, ethics and excellence within the global aesthetics and beauty industry.</p><p>Over the past decade, the Awards have grown into one of the sector’s most respected and influential platforms, recognising the clinics, practitioners, brands and innovators who go above and beyond.</p><p>Now, for the first time, this internationally recognised platform comes to Dubai, a city synonymous with innovation, luxury and world-class aesthetic standards.</p></div></div></section>
+    <section className="da-story"><div className="shell da-story-grid"><div className="da-visual"><Image src={imageUrl(data?.historyImage || '/images/diamond2.jpg', 1000, 800)} alt={imageAlt(data?.historyImage, 'A legacy of excellence')} width={1000} height={800} sizes="(max-width: 980px) 100vw, 50vw" /></div><div className="da-copy"><div className="da-index">01 — Our history</div><h2>A legacy of excellence. A new chapter in Dubai.</h2><p>Established in the UK in 2013, The Diamond Awards were created with one clear purpose: to champion safety, ethics and excellence within the global aesthetics and beauty industry.</p><p>Over the past decade, the Awards have grown into one of the sector’s most respected and influential platforms, recognising the clinics, practitioners, brands and innovators who go above and beyond.</p><p>Now, for the first time, this internationally recognised platform comes to Dubai — a city synonymous with innovation, luxury and world-class aesthetic standards.</p></div></div></section>
 
     <section className="da-statement"><div className="shell da-statement-grid"><div><div className="da-index">02 — Our mission</div><h2>Raising global standards. Celebrating those who lead the way.</h2><p>At its core, this platform exists to protect, celebrate and elevate the aesthetic industry. Dubai is the perfect home for its next chapter.</p><div className="da-bullets">{missionPoints.map((point: string, index: number) => <div className="da-bullet" key={point}><b>{String(index + 1).padStart(2, '0')}</b><span>{point}</span></div>)}</div></div><div className="da-statement-visual"><Image src={imageUrl(data?.missionImage || '/images/diamond3.jpg', 1000, 1000)} alt={imageAlt(data?.missionImage, 'The Diamond Awards mission')} width={1000} height={1000} sizes="(max-width: 980px) 100vw, 50vw" /></div></div></section>
 

@@ -13,6 +13,7 @@ export const aboutPage = defineType({
     defineField({name: 'evolutionHeading', title: 'Evolution — heading', type: 'string'}),
     defineField({name: 'evolutionBody', title: 'Evolution — body', type: 'portableText'}),
     defineField({name: 'quote', title: 'Pull quote', type: 'text', rows: 2}),
+    defineField({name: 'closingNote', title: 'Closing paragraph', description: 'Paragraph after the pull quote (V19: “Cosmetic Media Group exists to help…”)', type: 'text', rows: 3}),
     defineField({name: 'image', title: 'Image', type: 'image', options: {hotspot: true}, fields: [{name: 'alt', type: 'string'}]}),
     defineField({name: 'principlesEyebrow', title: 'Principles — eyebrow', type: 'string'}),
     defineField({name: 'principlesHeading', title: 'Principles — heading', type: 'string'}),

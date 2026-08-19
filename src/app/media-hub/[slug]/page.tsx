@@ -30,7 +30,7 @@ export default async function ArticlePage({params}: {params: Promise<{slug: stri
       <div className="page-hero">
         <div className="shell">
           <div className="crumbs"><Link href="/">Home</Link><span>/</span><Link href="/media-hub">Media Hub</Link><span>/</span><span>{article.category}</span></div>
-          <div className="eyebrow" style={{marginTop: 45}}>{article.category} / {article.format}</div>
+          <div className="eyebrow" style={{marginTop: 45}}>{article.readingTime ? `${article.category} · ${article.readingTime}` : `${article.category} / ${article.format}`}</div>
           <h1>{article.title}</h1>
           <p className="intro">{article.excerpt}</p>
         </div>

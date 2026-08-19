@@ -14,7 +14,7 @@ const FALLBACK_STATS = [
 ]
 
 const FALLBACK_PRINCIPLES = [
-  {title: 'Industry depth', description: 'We understand aesthetics from the inside: its experts, audiences, opportunities and responsibilities.'},
+  {title: 'Industry depth', description: 'We understand aesthetics from the inside — its experts, audiences, opportunities and responsibilities.'},
   {title: 'Editorial intelligence', description: 'We look beyond promotion to uncover the ideas, evidence and voices that deserve attention.'},
   {title: 'Long-term authority', description: 'We build platforms, profiles and reputations that become more valuable and trusted over time.'}
 ]
@@ -44,33 +44,34 @@ export default async function AboutPage() {
       </div>
       <section>
         <div className="shell two-col">
+          <div className="portrait"><Image src={imageUrl(image, 900, 1100)} alt={imageAlt(image, 'Cosmetic Media Group editorial platform')} width={900} height={1100} sizes="(max-width: 980px) 100vw, 40vw" /></div>
           <div className="editorial-copy">
             <div className="eyebrow">{about?.evolutionEyebrow || 'Our evolution'}</div>
-            <h2>{about?.evolutionHeading || 'A media company, not simply an agency.'}</h2>
+            <h2>{about?.evolutionHeading || 'From specialist PR to a connected media company.'}</h2>
             {about?.evolutionBody ? (
               <RichText value={about.evolutionBody} />
             ) : (
               <>
-                <p>Cosmetic Media Group is a modern media and communications company for the global aesthetics industry. We do not just help brands gain publicity. We create the conversations that shape the industry, connecting professionals, clinics, brands and consumers in one trusted ecosystem.</p>
-                <p>The group brings together strategic PR, personal branding, content production, editorial publishing, education, podcasts, events, research and recognition. Each platform has its own purpose, but they are connected by one ambition: to help credible experts and organisations build authority that lasts.</p>
+                <p>For more than 20 years, the business has helped aesthetic professionals earn recognition through strategic communications and media visibility. Cosmetic Media Group takes that experience further by bringing together PR, editorial content, education, podcasts, events, personal branding, awards and practical industry resources.</p>
+                <p>The result is one connected destination where experts and brands can raise their profile, share their knowledge, build credibility and grow their influence.</p>
+                <p>Cosmetic PR remains the flagship specialist PR agency within the group, while Cosmetic Media Group provides the wider platform for editorial, content, education, events, awards and future membership.</p>
               </>
             )}
-            <blockquote className="quote">{about?.quote || 'We elevate the people, brands and ideas shaping the future of aesthetics.'}</blockquote>
             <p><Link className="text-link" href="/cosmetic-pr">Explore Cosmetic PR ↗</Link></p>
+            <blockquote className="quote">{about?.quote || 'The future of aesthetics will not be led by the loudest voices. It will be led by the most trusted ones.'}</blockquote>
+            <p>{about?.closingNote || 'Cosmetic Media Group exists to help the right people and ideas become seen, trusted and remembered — while creating useful platforms that move the wider industry forward.'}</p>
             <div className="hero-actions">
-              <Link className="btn btn-dark" href="/about/founder">Meet the Founder ↗</Link>
-              <Link className="btn btn-media" href="/media-desk">Media enquiries ↗</Link>
+              <Link className="btn btn-dark" href="/about/founder">Meet founder Lucy Hilson ↗</Link>
             </div>
           </div>
-          <div className="portrait"><Image src={imageUrl(image, 900, 1100)} alt={imageAlt(image, 'The Cosmetic Media Group editorial ecosystem')} width={900} height={1100} sizes="(max-width: 980px) 100vw, 40vw" /></div>
         </div>
       </section>
       <section style={{background: '#fff'}}>
         <div className="shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow">{about?.principlesEyebrow || 'Our principles'}</div>
-              <h2>{about?.principlesHeading || 'Recognition with substance.'}</h2>
+              <div className="eyebrow">{about?.principlesEyebrow || 'Our point of view'}</div>
+              <h2>{about?.principlesHeading || 'Credibility before noise.'}</h2>
             </div>
             <p>{about?.principlesIntro || 'Every part of the platform is designed to create recognition with substance, authority with relevance and influence that lasts.'}</p>
           </div>

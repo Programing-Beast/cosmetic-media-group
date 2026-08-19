@@ -44,7 +44,7 @@ const FALLBACK_PUBLICATIONS = ['VOGUE', "Harper's Bazaar", 'GRAZIA', 'Tatler', '
 const FALLBACK_SUMMARY = [
   'This page is intentionally a concise editorial summary of the previous Cosmetic PR website, bringing its strongest proof points into the new Cosmetic Media Group design system without recreating the older site page-for-page.',
   'It captures the essentials of the original platform: sector specialism, service breadth, award and event support, content creation, social and digital communications, proven media relationships, long-term client trust and selected campaign outcomes.',
-  'For the final live build, this page can be expanded with additional approved case studies, publication logos, testimonials, before-and-after campaign outcomes or archived press examples if a deeper legacy showcase is wanted.'
+  'For the final live build, the developer can further expand this page with additional approved case studies, publication logos, testimonials, before-and-after campaign outcomes or archived press examples if the client wants a deeper legacy showcase.'
 ]
 
 const FALLBACK_SUMMARY_POINTS = [
@@ -118,7 +118,7 @@ export default async function CosmeticPrPage() {
         <div className="cpr-services-head">
           <div>
             <div className="cmg-section-no">{page?.capabilitiesEyebrow || '02 — Specialist capability'}</div>
-            <p className="muted">{page?.capabilitiesNote || 'A concise summary of the current Cosmetic PR website. Final live service list to be approved by the client before migration.'}</p>
+            <p className="muted">{page?.capabilitiesNote || 'A concise summary of the current Cosmetic PR website. Final live service list should be approved by the client before migration.'}</p>
           </div>
           <h2>{page?.capabilitiesHeading || 'WHAT COSMETIC PR BRINGS TO THE TABLE'}</h2>
         </div>

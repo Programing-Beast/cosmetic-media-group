@@ -2,10 +2,10 @@ import type {Article, Brand, Homepage, Navigation, Service, SiteSettings, Toolki
 
 export const navigation: Navigation = {
   about: {
-    eyebrow: 'Our story and authority',
-    heading: 'The people and purpose behind the platform.',
-    text: 'Discover Cosmetic Media Group, meet founder Lucy Hilson and access the dedicated Media Desk for journalists.',
-    ctaLabel: 'Explore About',
+    eyebrow: 'Inside Cosmetic Media Group',
+    heading: 'The people, purpose and perspective behind the platform.',
+    text: 'Discover the story of Cosmetic Media Group, meet founder Lucy Hilson and access the dedicated media desk for journalists.',
+    ctaLabel: 'Explore our story',
     ctaHref: '/about',
     links: [
       {label: 'About Cosmetic Media Group', href: '/about'},
@@ -15,9 +15,9 @@ export const navigation: Navigation = {
     ]
   },
   services: {
-    eyebrow: 'Integrated communications',
-    heading: 'Build visibility, trust and influence.',
-    text: 'A connected offer spanning reputation, profile, content, training, podcasts and experiences.',
+    eyebrow: 'Strategic services',
+    heading: 'Influence built with intention.',
+    text: 'Integrated communications, positioning and content for the people and brands shaping modern aesthetics.',
     ctaLabel: 'View all services',
     ctaHref: '/services',
     links: []
@@ -48,18 +48,22 @@ export const services: Service[] = [
   {
     title: 'PR',
     slug: 'pr',
-    eyebrow: 'Strategic communications',
+    eyebrow: 'Public relations & strategic communications',
     intro: 'Strategic communications through the established Cosmetic PR agency, built around trust, credibility and industry relevance.',
+    listDescription: 'Reputation, credibility and media relevance built through intelligent, bespoke campaigns.',
+    listCta: 'Explore Cosmetic PR ↗',
+    detailIntro: 'Specialist PR that builds trust, creates relevance and positions experts and brands at the centre of the aesthetics conversation.',
     body:
-      'Our PR work combines clear positioning, media relationships, expert profiling, strategic storytelling and reputation management. The objective is not simply coverage. It is recognition that builds trust, relevance and long-term commercial value.',
+      'Drawing on deep industry knowledge and long-standing media relationships, Cosmetic Media Group develops bespoke campaigns that move beyond short-term exposure. Every strategy is designed to build authority, support commercial growth and create a meaningful public profile.',
     image: '/images/editorial.jpg',
     deliverables: [
-      'Strategic PR planning and positioning',
-      'Media relations and press office support',
-      'Expert commentary and thought leadership',
-      'Launches, announcements and campaigns',
-      'Reputation and issues guidance',
-      'Coverage reporting and amplification'
+      'Bespoke PR strategy and campaign planning',
+      'Press releases, features and media alerts',
+      'Consumer and trade media relations',
+      'Expert positioning and commentary opportunities',
+      'Influencer partnerships and collaborations',
+      'Awards strategy, entries and launch support',
+      'Ongoing business and brand counsel'
     ],
     outcomes: [
       'A more trusted public reputation',
@@ -70,18 +74,22 @@ export const services: Service[] = [
   {
     title: 'Personal Branding',
     slug: 'personal-branding',
-    eyebrow: 'Recognised authority',
+    eyebrow: 'Build the name behind the expertise',
     intro: 'Distinctive positioning for founders, clinicians and experts ready to lead the conversation.',
+    listDescription: 'A clear point of view and visible platform for founders, clinicians and recognised experts.',
+    listCta: 'Explore personal branding ↗',
+    detailIntro: 'Distinctive personal brands for founders, clinicians, experts and industry leaders ready to become recognised voices.',
     body:
-      'We build personal brands around expertise, credibility and a clear point of view. This includes positioning, narrative, media presence, content planning, speaking opportunities and a platform that makes the individual easier to discover, trust and remember.',
+      'We clarify what makes you relevant, shape your point of view and create a visible platform around your expertise. From thought leadership and media opportunities to keynote positioning and content direction, the goal is a credible personal brand with lasting influence.',
     image: '/images/speaker.jpg',
     deliverables: [
-      'Personal positioning and message development',
-      'Expert biography and profile architecture',
-      'Thought-leadership content direction',
-      'Media and speaking opportunity planning',
-      'Social and editorial presence guidance',
-      'Long-term authority-building roadmap'
+      'Personal positioning and narrative development',
+      'Thought leadership strategy',
+      'Founder and expert media profiles',
+      'LinkedIn and social content direction',
+      'Speaking and panel opportunities',
+      'Signature topics and editorial pillars',
+      'Reputation and visibility roadmap'
     ],
     outcomes: [
       'A distinctive professional position',
@@ -92,18 +100,22 @@ export const services: Service[] = [
   {
     title: 'Content Studio',
     slug: 'content-studio',
-    eyebrow: 'Editorial production',
-    intro: 'Film, photography and editorial storytelling created with strategic purpose.',
+    eyebrow: 'Premium content and brand storytelling',
+    intro: 'Editorial, film, photography and social storytelling created with strategic purpose.',
+    listDescription: 'Premium editorial, film, photography and social content created with strategic purpose.',
+    listCta: 'Explore the studio ↗',
+    detailIntro: 'Editorial, social, video and campaign content created for the way audiences discover and experience brands today.',
     body:
-      'The Content Studio creates premium visual and editorial assets that communicate expertise clearly. Every piece is planned around an audience, a message and a commercial or reputational objective rather than content for content’s sake.',
+      'The Content Studio brings strategic thinking and premium production together. We create connected content systems rather than isolated assets, ensuring every film, photograph, article and campaign feels unmistakably on-brand.',
     image: '/images/studio.jpg',
     deliverables: [
-      'Editorial photography and creative direction',
-      'Brand films and social-first video',
-      'Interview and expert-led content',
-      'Campaign concepts and production planning',
-      'Multi-format content packages',
-      'External video-platform delivery and embeds'
+      'Creative direction and campaign concepts',
+      'Editorial photography and video production',
+      'Social-first content and short-form video',
+      'Website, brochure and campaign copywriting',
+      'Expert interviews and branded storytelling',
+      'Before-and-after content direction',
+      'Content calendars and launch assets'
     ],
     outcomes: [
       'A premium and consistent visual presence',
@@ -114,18 +126,22 @@ export const services: Service[] = [
   {
     title: 'Media Training',
     slug: 'media-training',
-    eyebrow: 'Confident communication',
-    intro: 'Practical preparation for interviews, panels, podcasts, video and high-pressure media moments.',
+    eyebrow: 'Communicate with clarity and confidence',
+    intro: 'Clear, confident communication for interviews, panels, podcasts and high-pressure moments.',
+    listDescription: 'Confident, clear communication for interviews, panels, podcasts, video and keynotes.',
+    listCta: 'Explore media training ↗',
+    detailIntro: 'Practical preparation for interviews, panels, keynote appearances, video content and high-pressure media moments.',
     body:
-      'Media training helps experts communicate complex subjects with clarity, confidence and credibility. Sessions are tailored to real opportunities and include message development, interview technique, difficult questions and practical rehearsal.',
+      'Our media training helps spokespeople communicate complex topics clearly while staying authoritative, human and on message. Sessions can be tailored to an individual, leadership team or wider organisation.',
     image: '/images/team.jpg',
     deliverables: [
-      'Core-message and soundbite development',
-      'Interview and broadcast preparation',
-      'Difficult-question handling',
-      'Panel, podcast and speaking preparation',
-      'Practical recorded rehearsal',
-      'Individual feedback and improvement plan'
+      'Core message and narrative development',
+      'Interview technique and response structure',
+      'Camera and broadcast confidence',
+      'Handling difficult or sensitive questions',
+      'Panel, keynote and podcast preparation',
+      'Mock interviews and constructive feedback',
+      'Crisis communications preparation'
     ],
     outcomes: [
       'More confident interviews and appearances',
@@ -136,18 +152,22 @@ export const services: Service[] = [
   {
     title: 'Podcast Production',
     slug: 'podcast-production',
-    eyebrow: 'Owned media',
+    eyebrow: 'Ideas worth hearing',
     intro: 'End-to-end audio formats for brands and experts ready to own an industry conversation.',
+    listDescription: 'End-to-end podcast creation for brands ready to own a meaningful industry conversation.',
+    listCta: 'Explore podcast production ↗',
+    detailIntro: 'End-to-end podcast development for brands and experts who want to own a meaningful industry conversation.',
     body:
-      'We develop podcast concepts that support a clear strategic position, then manage the format, guests, production and content amplification. Audio and video are hosted externally and embedded into the website to protect performance.',
+      'From concept and format to recording, editing and launch, we create polished podcast series with a clear editorial purpose. Each programme is designed to build authority, generate reusable content and deepen audience connection.',
     image: '/images/podcast.jpg',
     deliverables: [
-      'Podcast concept, name and format',
-      'Editorial calendar and guest strategy',
-      'Recording and production management',
-      'Editing, sound design and show notes',
-      'External hosting and distribution setup',
-      'Short-form content and campaign amplification'
+      'Concept, title and format development',
+      'Guest strategy and episode planning',
+      'Studio recording and remote production',
+      'Editing, sound design and mastering',
+      'Show notes, trailers and social clips',
+      'Distribution and platform set-up',
+      'Ongoing series production and reporting'
     ],
     outcomes: [
       'An owned platform for your ideas',
@@ -158,18 +178,22 @@ export const services: Service[] = [
   {
     title: 'Events',
     slug: 'events',
-    eyebrow: 'Experiences with impact',
-    intro: 'Launches, press experiences and gatherings designed to create value beyond the room.',
+    eyebrow: 'Experiences that become conversations',
+    intro: 'Launches, press experiences and gatherings designed to create impact beyond the room.',
+    listDescription: 'Launches, press experiences and gatherings designed to generate lasting attention and value.',
+    listCta: 'Explore events ↗',
+    detailIntro: 'Strategic events, launches and industry gatherings designed to create attention before, during and after the room fills.',
     body:
-      'Events are planned as media, content and relationship opportunities. We connect the physical experience to a wider communications strategy so attention is created before, during and after the event.',
+      'From intimate press dinners to major brand launches and industry events, we shape the concept, guest experience, media story and content opportunity. The result is an event that delivers far beyond the day itself.',
     image: '/images/event.jpg',
     deliverables: [
-      'Event concept and communications strategy',
-      'Media and influencer invitation planning',
-      'Press materials and speaker messaging',
-      'Content capture and amplification',
-      'Partnership and sponsor communications',
-      'Post-event editorial and media follow-up'
+      'Creative event concept and positioning',
+      'Venue, supplier and production coordination',
+      'Guest list, media and influencer outreach',
+      'Launch events and press experiences',
+      'Panel sessions and thought-leadership programmes',
+      'Event content and social coverage',
+      'Post-event media and content strategy'
     ],
     outcomes: [
       'Attention before, during and after the event',
@@ -275,13 +299,50 @@ export const articles: Article[] = [
     author: {name: 'Cosmetic Media Group Editorial', role: 'Editorial Team'}
   },
   {
-    title: 'Video Testing',
-    slug: 'video-testing',
-    excerpt: 'A short test of the external video embed in the Media Hub.',
-    category: 'Video',
+    title: 'From publicity to platform: the future of influence in aesthetics',
+    slug: 'from-publicity-to-platform',
+    excerpt: 'The companies shaping the next era will not simply promote themselves. They will build trust, create ideas and contribute meaningfully to the industry around them.',
+    category: 'Industry perspective',
+    format: 'article',
+    publishedAt: '2026-07-17T09:00:00.000Z',
+    readingTime: '8 minute read',
+    image: '/images/magazine.jpg',
+    author: {name: 'Cosmetic Media Group Editorial', role: 'Editorial Team'},
+    tags: ['Influence', 'Media strategy', 'Industry leadership'],
+    body: [
+      {_key: 'pp-1', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-1-s', _type: 'span', marks: [], text: 'For years, visibility was often treated as the final objective. Secure coverage, generate attention, stay present. But in a crowded, fast-moving category, attention without meaning has a short lifespan.'}]},
+      {_key: 'pp-2', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-2-s', _type: 'span', marks: [], text: 'The next generation of influential aesthetics brands will think differently. They will not see communications as a promotional function operating around the edges of the business. They will use it to define a category, establish a point of view and create genuine value for the audiences they want to reach.'}]},
+      {_key: 'pp-h1', _type: 'block', style: 'h2', markDefs: [], children: [{_key: 'pp-h1-s', _type: 'span', marks: [], text: 'Authority is built through contribution'}]},
+      {_key: 'pp-3', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-3-s', _type: 'span', marks: [], text: 'Modern influence is increasingly earned through what a business contributes to the conversation. That could be original research, a strong expert perspective, better patient education, an industry event, a useful guide or an editorial platform that gives important voices somewhere to be heard.'}]},
+      {_key: 'pp-4', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-4-s', _type: 'span', marks: [], text: 'This is the distinction between receiving attention and becoming a source of attention. One is campaign-led. The other becomes an asset.'}]},
+      {_key: 'pp-h2', _type: 'block', style: 'h2', markDefs: [], children: [{_key: 'pp-h2-s', _type: 'span', marks: [], text: 'From isolated channels to connected ecosystems'}]},
+      {_key: 'pp-5', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-5-s', _type: 'span', marks: [], text: 'PR, content, podcasts, events, awards, reports and membership products are often developed separately. The stronger opportunity is to connect them around a coherent purpose. A research report can become a media story, an event theme, a podcast discussion, a toolkit and a year-long source of expert content.'}]},
+      {_key: 'pp-6', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-6-s', _type: 'span', marks: [], text: 'When ideas move intelligently across formats, every channel becomes more valuable. Audiences encounter the same authority in different ways, while the organisation builds a growing library of intellectual and editorial assets.'}]},
+      {_key: 'pp-q', _type: 'block', style: 'blockquote', markDefs: [], children: [{_key: 'pp-q-s', _type: 'span', marks: [], text: 'The goal is no longer to appear in the conversation. It is to help shape what the conversation becomes.'}]},
+      {_key: 'pp-h3', _type: 'block', style: 'h2', markDefs: [], children: [{_key: 'pp-h3-s', _type: 'span', marks: [], text: 'A more meaningful model of influence'}]},
+      {_key: 'pp-7', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-7-s', _type: 'span', marks: [], text: 'For aesthetics businesses, credibility matters. The industry is highly visible, deeply personal and continually evolving. The organisations that lead it will balance commercial ambition with clear standards, informed communication and a willingness to add substance.'}]},
+      {_key: 'pp-8', _type: 'block', style: 'normal', markDefs: [], children: [{_key: 'pp-8-s', _type: 'span', marks: [], text: 'That is the opportunity behind Cosmetic Media Group: not simply to promote the industry, but to help it think, communicate and evolve more intelligently.'}]}
+    ]
+  },
+  {
+    title: 'In conversation: building authority in a changing aesthetics market',
+    slug: 'in-conversation-building-authority',
+    excerpt: 'Original insight, thoughtful context and expert perspectives from across the global aesthetics industry.',
+    category: 'Interview',
     format: 'video',
-    publishedAt: '2026-07-28T14:28:29.034Z',
+    publishedAt: '2026-07-25T09:00:00.000Z',
+    image: '/images/event.jpg',
     externalVideoUrl: 'https://www.youtube.com/watch?v=jQrVaPozhnQ'
+  },
+  {
+    title: 'The people raising standards across modern aesthetics',
+    slug: 'people-raising-standards',
+    excerpt: 'Original insight, thoughtful context and expert perspectives from across the global aesthetics industry.',
+    category: 'Interview',
+    format: 'interview',
+    publishedAt: '2026-07-24T09:00:00.000Z',
+    image: '/images/team.jpg',
+    author: {name: 'Cosmetic Media Group Editorial', role: 'Editorial Team'}
   }
 ]
 
@@ -289,43 +350,47 @@ export const brands: Brand[] = [
   {
     title: 'Cosmetic PR',
     slug: 'cosmetic-pr',
-    type: 'Communications',
-    description: 'The established flagship PR agency within Cosmetic Media Group.',
+    type: 'Strategic communications',
+    description: 'Specialist PR and communications for the leading experts, clinics and brands shaping aesthetics, beauty and wellness.',
     image: '/images/editorial.jpg',
-    href: '/cosmetic-pr'
+    href: '/cosmetic-pr',
+    ctaLabel: 'Explore Cosmetic PR ↗'
   },
   {
     title: 'The Aesthetics Edit',
     slug: 'the-aesthetics-edit',
     type: 'Independent editorial platform',
-    description: 'Editorial coverage, expert commentary and intelligent consumer-facing content.',
-    image: '/images/magazine.jpg'
+    description: 'Editorial coverage, expert commentary and intelligent consumer-facing content from across the aesthetics landscape.',
+    image: '/images/magazine.jpg',
+    ctaLabel: 'Visit the standalone brand ↗'
   },
   {
     title: 'Diamond Awards',
     slug: 'diamond-awards',
     type: 'Industry recognition',
-    description: 'A credible platform celebrating the people, practices and innovations raising standards.',
+    description: 'A credible platform celebrating the people, practices and innovations raising standards across aesthetics.',
     image: '/images/awards.jpg',
-    href: '/diamond-awards'
+    href: '/diamond-awards',
+    ctaLabel: 'Explore the awards ↗'
   },
   {
     title: 'Content Studio',
     slug: 'content-studio',
     type: 'Creative production',
-    description: 'Premium photography, film, editorial production and brand storytelling.',
+    description: 'Premium photography, film, editorial production and brand storytelling built for modern channels.',
     image: '/images/studio.jpg',
-    href: '/services/content-studio'
+    href: '/services/content-studio',
+    ctaLabel: 'Enter the studio ↗'
   }
 ]
 
 export const toolkits: Toolkit[] = [
-  {title: 'The Aesthetics Trends Guide 2027', slug: 'trends-guide-2027', type: 'Annual report', description: 'A forward-looking editorial guide to the themes shaping aesthetics.', access: 'free', coverStyle: 'pink'},
-  {title: 'Building an Expert Personal Brand', slug: 'expert-personal-brand', type: 'Practical guide', description: 'A framework for positioning and communicating professional authority.', access: 'free', coverStyle: 'dark'},
-  {title: 'Media Interview Preparation Workbook', slug: 'media-interview-workbook', type: 'Template', description: 'A practical preparation workbook for media opportunities.', access: 'free', coverStyle: 'cream'},
-  {title: 'A Clinic’s Guide to Reputation Strategy', slug: 'clinic-reputation-strategy', type: 'Strategic guide', description: 'How to build trust before a reputational issue arises.', access: 'members', coverStyle: 'dark'},
-  {title: 'The Annual State of Aesthetics Report', slug: 'state-of-aesthetics', type: 'Research report', description: 'Data, perspectives and emerging market themes.', access: 'members', coverStyle: 'pink'},
-  {title: 'Launch Campaign Planning Toolkit', slug: 'launch-campaign-toolkit', type: 'Planning template', description: 'A structured communications plan for launches and announcements.', access: 'members', coverStyle: 'cream'}
+  {title: 'The Aesthetics Trends Guide 2027', slug: 'trends-guide-2027', type: 'Annual Report', description: 'Clear, practical insight designed specifically for the aesthetics industry.', access: 'free', coverStyle: 'pink'},
+  {title: 'Building an Expert Personal Brand', slug: 'expert-personal-brand', type: 'Practical Guide', description: 'Clear, practical insight designed specifically for the aesthetics industry.', access: 'free', coverStyle: 'dark'},
+  {title: 'Media Interview Preparation Workbook', slug: 'media-interview-workbook', type: 'Template', description: 'Clear, practical insight designed specifically for the aesthetics industry.', access: 'free', coverStyle: 'cream'},
+  {title: 'A Clinic’s Guide to Reputation Strategy', slug: 'clinic-reputation-strategy', type: 'Strategic Guide', description: 'Clear, practical insight designed specifically for the aesthetics industry.', access: 'members', coverStyle: 'dark'},
+  {title: 'The Annual State of Aesthetics Report', slug: 'state-of-aesthetics', type: 'Research Report', description: 'Clear, practical insight designed specifically for the aesthetics industry.', access: 'members', coverStyle: 'pink'},
+  {title: 'Launch Campaign Planning Toolkit', slug: 'launch-campaign-toolkit', type: 'Planning Template', description: 'Clear, practical insight designed specifically for the aesthetics industry.', access: 'members', coverStyle: 'cream'}
 ]
 
 export const videoGalleries: VideoGallery[] = [
@@ -466,6 +531,17 @@ export const homepage: Homepage = {
     {label: 'PR insight', title: 'Why expert positioning matters more than visibility alone.', actionLabel: 'Read insight ↗', href: '/media-hub'},
     {label: 'Behind the scenes', title: 'Inside the conversations, shoots and events shaping CMG.', actionLabel: 'Follow the story ↗', href: '/about/founder'},
     {label: 'Podcast', title: 'Trust, influence and the next chapter for aesthetics media.', actionLabel: 'Listen / watch ↗', href: '/media-hub'}
+  ],
+  brandRail: [
+    {label: 'Communications', title: 'Cosmetic PR', description: 'The established flagship PR agency within Cosmetic Media Group.', href: '/cosmetic-pr'},
+    {label: 'Editorial', title: 'The Aesthetics Edit', description: 'An independent standalone editorial platform and influential industry voice.', href: '/our-brands'},
+    {label: 'Recognition', title: 'Diamond Awards', description: 'A trusted platform championing safety, ethics, innovation and excellence.', href: '/diamond-awards'},
+    {label: 'Intelligence', title: 'Education & Insights', description: 'Research, annual guides, reports, training and practical resources.', href: '/toolkits'}
+  ],
+  resourceTiles: [
+    {tag: 'Guide / Free', title: 'Media Interview Preparation Kit', actionLabel: 'Download ↗', href: '/toolkits'},
+    {tag: 'Annual report', title: 'Aesthetics Industry Outlook', actionLabel: 'Explore ↗', href: '/toolkits'},
+    {tag: 'Template / Free', title: 'PR Campaign Planning Toolkit', actionLabel: 'Download ↗', href: '/toolkits'}
   ],
   cprSpotlight: {
     eyebrow: '05 — Cosmetic PR',

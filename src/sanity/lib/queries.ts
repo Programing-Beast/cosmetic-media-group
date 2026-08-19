@@ -7,7 +7,7 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_type == "siteSettings"][0]{
 
 export const ABOUT_PAGE_QUERY = defineQuery(`*[_type == "aboutPage"][0]{
   heroTitle, heroAccent, intro, stats,
-  evolutionEyebrow, evolutionHeading, evolutionBody, quote,
+  evolutionEyebrow, evolutionHeading, evolutionBody, quote, closingNote,
   principlesEyebrow, principlesHeading, principlesIntro, principles, seo,
   "image": image{..., "asset": asset->{_id,_ref,url}}
 }`)
@@ -39,7 +39,7 @@ export const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0]{
   storyHeading, storyOpening, storyBody,
   stats, credibilityFacts, publications,
   clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},
-  latestRail,
+  latestRail, brandRail, resourceTiles,
   cprEyebrow, cprHeading, cprAccent, cprIntro, cprStatusChips,
   cprCards[]{label, title, text, ctaLabel, "image": image{..., "asset": asset->{_id,_ref,url}}},
   sections[]{sectionType,enabled}, seo,
@@ -56,12 +56,12 @@ export const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0]{
 }`)
 
 export const SERVICES_QUERY = defineQuery(`*[_type == "service"] | order(order asc, title asc){
-  _id,title,"slug":slug.current,eyebrow,intro,body,outcomes,deliverables,order,seo,
+  _id,title,"slug":slug.current,eyebrow,intro,listDescription,listCta,detailIntro,body,outcomes,deliverables,order,seo,
   "image":image{...,"asset":asset->{_id,_ref,url}}
 }`)
 
 export const SERVICE_QUERY = defineQuery(`*[_type == "service" && slug.current == $slug][0]{
-  _id,title,"slug":slug.current,eyebrow,intro,body,outcomes,deliverables,order,seo,
+  _id,title,"slug":slug.current,eyebrow,intro,listDescription,listCta,detailIntro,body,outcomes,deliverables,order,seo,
   "image":image{...,"asset":asset->{_id,_ref,url}}
 }`)
 
@@ -81,7 +81,7 @@ export const ARTICLE_QUERY = defineQuery(`*[_type == "article" && slug.current =
 }`)
 
 export const BRANDS_QUERY = defineQuery(`*[_type == "brand"] | order(order asc, title asc){
-  title,"slug":slug.current,type,description,href,external,order,
+  title,"slug":slug.current,type,description,href,external,ctaLabel,order,
   "image":image{...,"asset":asset->{_id,_ref,url}}
 }`)
 
