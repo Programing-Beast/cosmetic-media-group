@@ -1,12 +1,13 @@
 import {defineField, defineType} from 'sanity'
 
 const sectionOptions = [
+  ['trustedBrands', 'Proof bands (As featured in + Trusted by)'],
   ['story', 'Story and vision'],
-  ['credibility', 'By the numbers and featured publications'],
+  ['credibility', 'By the numbers'],
   ['founderTeaser', 'Founder teaser'],
-  ['trustedBrands', 'Trusted brands'],
   ['services', 'Services'],
-  ['mediaHub', 'Media Hub'],
+  ['mediaHub', 'Latest from Cosmetic Media Group'],
+  ['cprSpotlight', 'Cosmetic PR spotlight'],
   ['mediaDesk', 'Journalist Media Desk'],
   ['awardsSpotlight', 'Diamond Awards spotlight'],
   ['brands', 'Our brands'],

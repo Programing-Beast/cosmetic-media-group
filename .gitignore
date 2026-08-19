@@ -5,10 +5,9 @@ node_modules
 .next
 out
 
-# Environment files
-.env
-.env.local
-.env*.local
+# Environment files — every .env variant (incl. .bak/backup copies) except the template
+.env*
+!.env.example
 copy.txt
 
 # Next.js / TypeScript generated

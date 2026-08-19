@@ -16,9 +16,10 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
 
   const aboutLinks = navigation.about.links
   // Use the hand-picked Services list if the editor set one; otherwise list all Service documents.
+  // The PR entry routes to the dedicated Cosmetic PR page rather than a competing PR service page (V19 §6).
   const serviceLinks: MenuLink[] = navigation.services.links.length
     ? navigation.services.links
-    : services.map((service) => ({label: service.title, href: `/services/${service.slug}`}))
+    : services.map((service) => (service.slug === 'pr' ? {label: 'PR / Cosmetic PR', href: '/cosmetic-pr'} : {label: service.title, href: `/services/${service.slug}`}))
 
   // Close any open menus when the route changes. React's supported pattern for
   // adjusting state in response to a prop/value change is a guarded update
@@ -50,6 +51,7 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
             <div className="nav-group" onMouseEnter={() => enter('about')} onMouseLeave={leave}>
               <button className="nav-trigger" type="button" aria-expanded={open === 'about'} onClick={() => setOpen(open === 'about' ? null : 'about')}>About</button>
             </div>
+            <Link href="/cosmetic-pr">Cosmetic PR</Link>
             <div className="nav-group" onMouseEnter={() => enter('services')} onMouseLeave={leave}>
               <button className="nav-trigger" type="button" aria-expanded={open === 'services'} onClick={() => setOpen(open === 'services' ? null : 'services')}>Services</button>
             </div>
@@ -77,6 +79,7 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <div className="mobile-sub">{aboutLinks.filter((link) => link.href !== '/about').map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
+          <Link href="/cosmetic-pr">Cosmetic PR</Link>
           <Link href="/services">Services</Link>
           <div className="mobile-sub">{serviceLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
           <Link href="/media-hub">Media Hub</Link>

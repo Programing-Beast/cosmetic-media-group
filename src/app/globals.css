@@ -1055,3 +1055,577 @@
 .footer-contact a,.footer-contact span{color:#d5d0cc;font-size:13px;line-height:1.4}
 .footer-contact a:hover{color:var(--pink)}
 .footer-contact span{color:#8a8580}
+
+/* =========================================================
+       EDITORIAL V11 — CLIENT ROUND 1 IMPLEMENTATION
+       Keeps the approved visual system while strengthening trust,
+       founder presence, Cosmetic PR and live-media behaviour.
+       ========================================================= */
+
+    /* Accommodate the new top-level Cosmetic PR navigation item. */
+    @media(min-width:1161px){
+      .header-inner{grid-template-columns:170px minmax(0,1fr) 250px}
+nav{gap:15px;font-size:10px}
+}
+/* Hero: slightly reduce media dominance and simulate the future looping film. */
+    .cmg-cover-grid{grid-template-columns:minmax(0,1.08fr) minmax(400px,.92fr)}
+.cmg-cover-film{isolation:isolate}
+.cmg-cover-film .cmg-film-frames{position:absolute;inset:0;z-index:0}
+.cmg-cover-film .film-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;opacity:0;animation:cmgFilmCycle 13.5s infinite;filter:saturate(.78) contrast(1.02)}
+.cmg-cover-film .film-frame:nth-child(1){animation-delay:0s}
+.cmg-cover-film .film-frame:nth-child(2){animation-delay:4.5s}
+.cmg-cover-film .film-frame:nth-child(3){animation-delay:9s}
+.cmg-cover-film:after{z-index:1}
+.cmg-cover-film .cmg-cover-caption{z-index:3}
+.cmg-film-badge{position:absolute;z-index:3;top:22px;left:22px;background:rgba(254,250,247,.92);color:var(--ink);padding:9px 11px;border-radius:var(--radius-label);font-size:8px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;backdrop-filter:blur(10px)}
+@keyframes cmgFilmCycle{0%,29%{opacity:1;transform:scale(1)}
+33%,96%{opacity:0;transform:scale(1.025)}
+100%{opacity:1;transform:scale(1)}
+}
+/* Immediate social proof directly beneath the hero. */
+    .cmg-proof-bands{padding:0;background:var(--paper);border-bottom:1px solid var(--line);overflow:hidden}
+.cmg-proof-bands .cmg-featured-marquee{border-top:0;margin-top:0}
+.cmg-proof-bands .cmg-marquee-label{padding-top:24px}
+.cmg-trusted-marquee{padding:8px 0 30px;border-top:1px solid var(--line)}
+.cmg-trusted-marquee .cmg-marquee-label{padding-bottom:14px}
+.cmg-client-logo-marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink);color:#fff}
+.cmg-client-logo-track{display:flex;width:max-content;animation:cmgClientMarquee 30s linear infinite}
+.cmg-client-logo-set{display:flex;align-items:center;white-space:nowrap}
+.cmg-client-logo-set span{display:grid;place-items:center;min-width:220px;height:92px;padding:0 28px;border-right:1px solid rgba(255,255,255,.2);font-family:"Newsreader";font-size:21px;color:#fff}
+.cmg-client-logo-set span small{font-family:"DM Sans";font-size:8px;letter-spacing:.17em;text-transform:uppercase;color:#aaa39e}
+@keyframes cmgClientMarquee{from{transform:translateX(0)}
+to{transform:translateX(-50%)}
+}
+/* Credibility rail sits after the brand story; publication marquee moved above. */
+    .cmg-credibility{padding-top:88px}
+.cmg-credibility .cmg-featured-marquee{display:none}
+/* Founder teaser becomes a moving editorial window using available mockup imagery. */
+    .cmg-founder-film{position:relative}
+.cmg-founder-film img{position:absolute!important;inset:0;width:100%;height:100%;opacity:0;animation:cmgFounderCycle 12s infinite}
+.cmg-founder-film img:nth-child(1){animation-delay:0s}
+.cmg-founder-film img:nth-child(2){animation-delay:4s}
+.cmg-founder-film img:nth-child(3){animation-delay:8s}
+.cmg-founder-film:after{z-index:1}
+.cmg-founder-film span{z-index:3}
+.cmg-founder-film .founder-film-label{position:absolute;z-index:3;left:20px;top:20px;bottom:auto;right:auto;border:0;background:rgba(254,250,247,.92);color:var(--ink);padding:8px 10px;border-radius:var(--radius-label);font-size:8px;letter-spacing:.15em;text-transform:uppercase}
+@keyframes cmgFounderCycle{0%,29%{opacity:1;transform:scale(1)}
+33%,96%{opacity:0;transform:scale(1.025)}
+100%{opacity:1;transform:scale(1)}
+}
+/* Mixed-format latest feed. */
+    .cmg-latest-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.cmg-latest-item{background:var(--paper);padding:25px 26px;min-height:185px;display:flex;flex-direction:column;justify-content:space-between;transition:.25s}
+.cmg-latest-item:hover{background:#fff}
+.cmg-latest-item small{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);font-weight:700}
+.cmg-latest-item h4{font-family:"Newsreader";font-size:27px;line-height:1.02;margin:20px 0 14px;font-weight:500}
+.cmg-latest-item span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+/* Cosmetic PR homepage spotlight. */
+    .cmg-cpr-spotlight{padding:115px 0;background:var(--paper);border-bottom:1px solid var(--line)}
+.cmg-cpr-spotlight-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:var(--editorial-gap);align-items:start}
+.cmg-cpr-intro{position:sticky;top:145px}
+.cmg-cpr-intro h2{font-family:"Newsreader";font-size:clamp(64px,6.7vw,108px);line-height:.82;letter-spacing:-.06em;font-weight:500;margin:0 0 26px}
+.cmg-cpr-intro h2 em{color:var(--pink);font-weight:400}
+.cmg-cpr-intro p{font-size:16px;line-height:1.7;color:var(--muted);max-width:510px}
+.cmg-cpr-status{display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid var(--ink);padding-top:17px;margin-top:30px}
+.cmg-cpr-status span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--pink)}
+.cmg-cpr-proof{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cmg-cpr-proof-card{border:1px solid var(--line);border-radius:var(--radius-card);background:#fff;overflow:hidden;min-height:310px;display:flex;flex-direction:column}
+.cmg-cpr-proof-card:first-child{grid-column:1/3;display:grid;grid-template-columns:.9fr 1.1fr;min-height:360px}
+.cmg-cpr-proof-image{min-height:230px;overflow:hidden;background:#ddd}
+.cmg-cpr-proof-image img{height:100%;object-fit:cover;filter:saturate(.75)}
+.cmg-cpr-proof-copy{padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+.cmg-cpr-proof-copy small{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--pink);font-weight:700}
+.cmg-cpr-proof-copy h3{font-family:"Newsreader";font-size:36px;line-height:.95;margin:18px 0;font-weight:500}
+.cmg-cpr-proof-copy p{font-size:13px;line-height:1.58;color:var(--muted);margin:0}
+.cmg-cpr-proof-copy b{font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-top:22px}
+/* Dedicated Cosmetic PR page. */
+    .cpr-page-hero{padding:70px 0 0;border-bottom:1px solid var(--line)}
+.cpr-hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:48px;align-items:end}
+.cpr-hero-copy{padding:35px 0 65px}
+.cpr-hero-copy h1{font-family:"Newsreader";font-size:clamp(82px,9vw,148px);line-height:.77;letter-spacing:-.07em;font-weight:500;margin:30px 0}
+.cpr-hero-copy h1 em{color:var(--pink);font-weight:400}
+.cpr-hero-copy .cpr-intro{font-family:"Newsreader";font-size:27px;line-height:1.2;max-width:670px;margin:0 0 22px}
+.cpr-hero-copy p{font-size:15px;line-height:1.7;color:var(--muted);max-width:650px}
+.cpr-hero-image{height:650px;border-radius:var(--radius-panel) var(--radius-panel) 0 0;overflow:hidden;position:relative}
+.cpr-hero-image img{height:100%;object-fit:cover;filter:grayscale(.22) saturate(.75)}
+.cpr-hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(9,9,9,.58))}
+.cpr-hero-caption{position:absolute;z-index:2;left:26px;right:26px;bottom:24px;color:#fff;border-top:1px solid rgba(255,255,255,.55);padding-top:13px;display:flex;justify-content:space-between;gap:24px}
+.cpr-hero-caption b{font-family:"Newsreader";font-size:24px;font-weight:500}
+.cpr-hero-caption span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;text-align:right}
+.cpr-identity-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.cpr-identity-strip div{padding:26px 28px;border-right:1px solid var(--line)}
+.cpr-identity-strip div:last-child{border-right:0}
+.cpr-identity-strip small{display:block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:13px}
+.cpr-identity-strip b{font-family:"Newsreader";font-size:23px;font-weight:500}
+.cpr-story{padding:110px 0;background:var(--paper);border-bottom:1px solid var(--line)}
+.cpr-story-grid{display:grid;grid-template-columns:.62fr 1.38fr;gap:var(--editorial-gap)}
+.cpr-story-side{border-top:3px solid var(--pink);padding-top:20px}
+.cpr-story-side h3{font-family:"Newsreader";font-size:34px;line-height:1;margin:20px 0 15px}
+.cpr-story-main h2{font-family:"Newsreader";font-size:clamp(62px,6.5vw,104px);line-height:.84;letter-spacing:-.06em;margin:0 0 34px;font-weight:500}
+.cpr-story-main h2 em{color:var(--pink);font-weight:400}
+.cpr-story-main p{font-size:16px;line-height:1.78;color:var(--muted);max-width:940px}
+.cpr-services{padding:105px 0;background:var(--ink);color:#fff}
+.cpr-services-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:var(--editorial-gap);align-items:end;margin-bottom:45px}
+.cpr-services-head h2{font-family:"Newsreader";font-size:clamp(70px,8vw,126px);line-height:.82;letter-spacing:-.065em;font-weight:400;margin:0;text-align:right}
+.cpr-service-index{border-top:1px solid rgba(255,255,255,.2)}
+.cpr-service-line{display:grid;grid-template-columns:65px 1fr 1.15fr;gap:28px;padding:25px 0;border-bottom:1px solid rgba(255,255,255,.2);align-items:center}
+.cpr-service-line span{font-family:"Newsreader";font-size:20px;color:var(--pink)}
+.cpr-service-line h3{font-family:"Newsreader";font-size:38px;line-height:.95;margin:0;font-weight:400}
+.cpr-service-line p{color:#aaa39e;font-size:13px;line-height:1.55;margin:0}
+.cpr-cases{padding:110px 0;background:#f3eee9;border-bottom:1px solid var(--line)}
+.cpr-cases-head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:45px}
+.cpr-cases-head h2{font-family:"Newsreader";font-size:clamp(60px,6vw,96px);line-height:.86;letter-spacing:-.055em;margin:0;font-weight:500;max-width:850px}
+.cpr-case-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:16px}
+.cpr-case{border-radius:var(--radius-card);background:#fff;border:1px solid var(--line);padding:30px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between}
+.cpr-case:first-child{background:var(--pink);color:var(--ink)}
+.cpr-case small{font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
+.cpr-case h3{font-family:"Newsreader";font-size:39px;line-height:.96;margin:28px 0 20px;font-weight:500}
+.cpr-case p{font-size:13px;line-height:1.6;color:var(--muted)}
+.cpr-case:first-child p{color:#2d2225}
+.cpr-case b{font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.cpr-client-voice{padding:100px 0;background:var(--paper)}
+.cpr-client-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:var(--editorial-gap);align-items:start}
+.cpr-client-grid h2{font-family:"Newsreader";font-size:clamp(55px,5.5vw,88px);line-height:.88;letter-spacing:-.05em;margin:0;font-weight:500}
+.cpr-client-list{border-top:1px solid var(--ink)}
+.cpr-client-row{display:grid;grid-template-columns:170px 1fr;gap:30px;padding:24px 0;border-bottom:1px solid var(--line)}
+.cpr-client-row span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--pink);font-weight:700}
+.cpr-client-row p{margin:0;font-family:"Newsreader";font-size:25px;line-height:1.2}
+@media(max-width:1200px){
+      .cmg-cover-grid,.cpr-hero-grid{grid-template-columns:1fr 1fr}
+.cmg-cpr-spotlight-grid,.cpr-story-grid,.cpr-client-grid{grid-template-columns:1fr}
+.cmg-cpr-intro{position:static}
+.cpr-case-grid{grid-template-columns:1fr 1fr}
+.cpr-case:first-child{grid-column:1/3}
+.cpr-services-head{grid-template-columns:1fr}
+.cpr-services-head h2{text-align:left}
+}
+@media(max-width:800px){
+      .cmg-latest-rail,.cmg-cpr-proof{grid-template-columns:1fr}
+.cmg-cpr-proof-card:first-child{grid-column:auto;display:flex}
+.cmg-cpr-proof-card:first-child .cmg-cpr-proof-image{min-height:250px}
+.cpr-hero-grid{grid-template-columns:1fr}
+.cpr-hero-image{height:520px;border-radius:var(--radius-panel)}
+.cpr-identity-strip{grid-template-columns:1fr 1fr}
+.cpr-identity-strip div:nth-child(2){border-right:0}
+.cpr-identity-strip div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.cpr-case-grid{grid-template-columns:1fr}
+.cpr-case:first-child{grid-column:auto}
+.cpr-service-line{grid-template-columns:45px 1fr}
+.cpr-service-line p{grid-column:2}
+.cpr-client-row{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+      .cmg-client-logo-set span{min-width:175px;height:78px;font-size:18px}
+.cpr-identity-strip{grid-template-columns:1fr}
+.cpr-identity-strip div{border-right:0;border-bottom:1px solid var(--line)}
+.cpr-hero-copy h1{font-size:78px}
+.cpr-hero-image{height:440px}
+.cpr-story,.cpr-services,.cpr-cases,.cpr-client-voice,.cmg-cpr-spotlight{padding:82px 0}
+}
+@media(prefers-reduced-motion:reduce){
+      .cmg-cover-film .film-frame,.cmg-founder-film img{animation:none!important}
+.cmg-cover-film .film-frame:first-child,.cmg-founder-film img:first-child{opacity:1!important}
+.cmg-client-logo-track{animation:none!important;transform:none!important}
+}
+    /* =========================================================
+       EDITORIAL V14 — 4:5 HERO VIDEO ALIGNMENT + DEVELOPER HANDOFF
+       Requested changes only:
+       - make the hero media a 4:5 portrait video area
+       - align the top of the video with the issue line on the left
+       - ensure the full hero media is visible on landing
+       - retain the separated proof / credibility treatment
+       ========================================================= */
+
+    /* Hero layout refinements for the final looping-video placeholder. */
+    .cmg-cover{padding-top:24px}
+.cmg-cover-grid{
+      grid-template-columns:minmax(0,1.06fr) minmax(460px,520px);
+      min-height:auto;
+      gap:54px;
+      align-items:start;
+    }
+.cmg-cover-copy{
+      padding:34px 0 18px;
+      justify-content:flex-start;
+    }
+.cmg-cover h1{margin:46px 0 24px}
+.cmg-cover-deck{margin-top:26px}
+.cmg-cover-image{
+      width:100%;
+      max-width:520px;
+      aspect-ratio:4/5;
+      height:auto;
+      min-height:0;
+      align-self:start;
+      justify-self:end;
+      margin-top:34px;
+      border-radius:var(--radius-panel)!important;
+    }
+.cmg-cover-film .film-frame{
+      object-position:center 28%;
+      image-rendering:auto;
+    }
+/* Under-hero proof sections remain visually distinct. */
+    .cmg-proof-bands{
+      padding:0 0 50px;
+      background:var(--cream);
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+.cmg-proof-bands .cmg-featured-marquee{
+      margin:0;
+      padding:24px 0 28px;
+    }
+.cmg-proof-bands .cmg-marquee-label{padding-top:22px}
+.cmg-trusted-panel{margin-top:34px}
+.cmg-trusted-head{padding-bottom:16px}
+.cmg-trusted-grid{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);background:rgba(255,255,255,.42)}
+.cmg-trusted-card{min-height:118px;padding:18px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;background:rgba(255,255,255,.55)}
+.cmg-trusted-card b{font-family:"Newsreader",Georgia,serif;font-size:24px;font-weight:500;line-height:.95}
+.cmg-trusted-card small{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+/* Cosmetic PR page remains expanded and editorial. */
+    .cpr-publications{padding:96px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.cpr-publications-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--editorial-gap);align-items:end;margin-bottom:34px}
+.cpr-publications-head h2{font-family:"Newsreader";font-size:clamp(56px,5.7vw,92px);line-height:.88;letter-spacing:-.055em;font-weight:500;margin:0}
+.cpr-publications-head p{font-size:15px;line-height:1.7;color:var(--muted);margin:0;max-width:620px}
+.cpr-publication-rail{display:flex;flex-wrap:wrap;gap:12px}
+.cpr-publication-rail span{padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:#f7f3ef;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.cpr-summary{padding:100px 0;background:var(--paper)}
+.cpr-summary-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:var(--editorial-gap);align-items:start}
+.cpr-summary-copy h2{font-family:"Newsreader";font-size:clamp(58px,6vw,98px);line-height:.88;letter-spacing:-.06em;font-weight:500;margin:0 0 22px}
+.cpr-summary-copy p{font-size:16px;line-height:1.78;color:var(--muted);max-width:900px}
+.cpr-summary-points{display:grid;gap:16px}
+.cpr-summary-points div{padding:24px 24px 26px;border:1px solid var(--line);border-radius:var(--radius-card);background:#fff}
+.cpr-summary-points small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:12px}
+.cpr-summary-points b{font-family:"Newsreader";font-size:29px;line-height:1.04;font-weight:500}
+/* Crisp imagery across the concept. */
+    .cmg-cover-image img,.cmg-founder-image img,.cmg-founder-teaser-image img,
+    .cmg-feature-story img,.cmg-side-story img,.cmg-cpr-proof-image img,
+    .cpr-hero-image img,.service-feature-image img,.story-image img,.page-hero-photo img,
+    .portrait img,.brand-card img,.article-hero-image img,.cmg-contact-image img{
+      image-rendering:auto;
+      backface-visibility:hidden;
+    }
+@media(max-width:1240px){
+      .cmg-cover-grid{grid-template-columns:minmax(0,1fr) minmax(390px,460px);gap:38px}
+.cmg-cover-image{max-width:460px;margin-top:34px}
+.cmg-trusted-grid{grid-template-columns:repeat(3,1fr)}
+.cpr-publications-head,.cpr-summary-grid{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+      .cmg-cover-grid{grid-template-columns:1fr}
+.cmg-cover-copy{padding-top:18px}
+.cmg-cover-image{max-width:none;width:100%;aspect-ratio:4/5;height:auto;min-height:0;margin-top:0;justify-self:stretch}
+.cmg-trusted-grid{grid-template-columns:repeat(2,1fr)}
+.cpr-publications{padding:78px 0}
+.cpr-summary{padding:82px 0}
+}
+@media(max-width:760px){
+      .cmg-cover{padding-top:14px}
+.cmg-cover h1{margin:34px 0 18px}
+.cmg-proof-bands{padding-bottom:34px}
+.cmg-trusted-panel{margin-top:28px}
+.cmg-trusted-grid{grid-template-columns:1fr}
+.cmg-trusted-card{min-height:92px}
+}
+/* =========================================================
+       EDITORIAL V15 — LATEST FROM CMG SECTION REFINEMENT
+       Requested changes only:
+       - fix the overly tall featured story block
+       - reduce the white space in the lead content card
+       - improve the section heading copy
+       ========================================================= */
+    .cmg-media-title h2{max-width:980px}
+.cmg-media-layout{grid-template-columns:1.12fr .88fr;gap:20px;align-items:stretch}
+.cmg-feature-story{grid-template-columns:1.02fr .98fr;min-height:430px}
+.cmg-feature-story img{height:100%;min-height:430px;object-position:center center}
+.cmg-feature-copy{padding:34px;gap:24px}
+.cmg-feature-copy h3{font-size:clamp(34px,3.9vw,54px);margin:18px 0 14px;line-height:.94}
+.cmg-feature-copy p{font-size:15px;line-height:1.65;max-width:420px;margin:0}
+.cmg-side-stories{gap:20px}
+.cmg-side-story{min-height:205px}
+.cmg-side-story h4{font-size:28px;line-height:1.02}
+@media(max-width:900px){
+      .cmg-feature-story{min-height:unset}
+.cmg-feature-story img{min-height:320px}
+.cmg-side-story{min-height:220px}
+}
+/* =========================================================
+       EDITORIAL V16 — LATEST FROM CMG LAYOUT CORRECTION
+       Targeted fix only: reduce the LEFT featured story block and
+       keep the RIGHT supporting stories compact.
+       ========================================================= */
+    .cmg-media-layout{
+      grid-template-columns:minmax(0,1.28fr) minmax(320px,.72fr);
+      gap:20px;
+      align-items:start;
+    }
+.cmg-feature-story{
+      grid-template-columns:1.05fr .95fr;
+      height:380px;
+      min-height:0;
+      align-self:start;
+    }
+.cmg-feature-story > img{
+      width:100%;
+      height:380px;
+      min-height:0;
+      object-fit:cover;
+      object-position:center 42%;
+    }
+.cmg-feature-copy{
+      height:380px;
+      min-height:0;
+      padding:30px 32px;
+      justify-content:space-between;
+      overflow:hidden;
+    }
+.cmg-feature-copy h3{
+      font-size:clamp(32px,3.2vw,49px);
+      line-height:.95;
+      margin:15px 0 12px;
+    }
+.cmg-feature-copy p{
+      font-size:14px;
+      line-height:1.55;
+      max-width:390px;
+      margin:0;
+    }
+.cmg-side-stories{
+      display:grid;
+      grid-template-rows:180px 180px;
+      gap:20px;
+      height:380px;
+      align-self:start;
+    }
+.cmg-side-story{
+      height:180px;
+      min-height:0;
+    }
+.cmg-side-story img{
+      height:180px;
+      object-fit:cover;
+    }
+.cmg-side-story div{left:20px;right:20px;bottom:17px}
+.cmg-side-story h4{font-size:24px;line-height:1.02;margin-top:8px}
+@media(max-width:1100px){
+      .cmg-media-layout{grid-template-columns:1fr}
+.cmg-feature-story{height:360px}
+.cmg-feature-story > img,.cmg-feature-copy{height:360px}
+.cmg-side-stories{grid-template-columns:1fr 1fr;grid-template-rows:none;height:auto}
+.cmg-side-story,.cmg-side-story img{height:210px}
+}
+@media(max-width:760px){
+      .cmg-feature-story{display:grid;grid-template-columns:1fr;height:auto}
+.cmg-feature-story > img{height:300px}
+.cmg-feature-copy{height:auto;padding:26px}
+.cmg-side-stories{grid-template-columns:1fr}
+.cmg-side-story,.cmg-side-story img{height:220px}
+}
+/* =========================================================
+       EDITORIAL V17 — LATEST FROM CMG 16:9 VIDEO CORRECTION
+       Targeted fix only:
+       - right-hand video cards are true 16:9
+       - the left feature expands to match their combined height
+       - no banner-like video crops
+       ========================================================= */
+    .cmg-media-layout{
+      grid-template-columns:minmax(0,1.28fr) minmax(360px,.72fr);
+      gap:20px;
+      align-items:stretch;
+    }
+.cmg-side-stories{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      height:auto;
+      align-self:stretch;
+    }
+.cmg-side-story{
+      width:100%;
+      height:auto;
+      min-height:0;
+      aspect-ratio:16/9;
+    }
+.cmg-side-story img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+.cmg-side-story div{left:22px;right:22px;bottom:19px}
+.cmg-side-story h4{font-size:27px;line-height:1.02;margin-top:8px}
+.cmg-feature-story{
+      grid-template-columns:1.08fr .92fr;
+      height:auto;
+      min-height:0;
+      align-self:stretch;
+    }
+.cmg-feature-story > img{
+      width:100%;
+      height:100%;
+      min-height:0;
+      object-fit:cover;
+      object-position:center 42%;
+    }
+.cmg-feature-copy{
+      height:auto;
+      min-height:0;
+      padding:34px 34px;
+      justify-content:space-between;
+      overflow:visible;
+    }
+.cmg-feature-copy h3{
+      font-size:clamp(34px,3.55vw,52px);
+      line-height:.95;
+      margin:17px 0 14px;
+    }
+.cmg-feature-copy p{
+      font-size:14px;
+      line-height:1.6;
+      max-width:400px;
+      margin:0;
+    }
+@media(max-width:1100px){
+      .cmg-media-layout{grid-template-columns:1fr}
+.cmg-feature-story{height:auto;min-height:420px}
+.cmg-feature-story > img{height:auto;min-height:420px}
+.cmg-feature-copy{height:auto;min-height:420px}
+.cmg-side-stories{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cmg-side-story{aspect-ratio:16/9;height:auto}
+.cmg-side-story img{height:100%}
+}
+@media(max-width:760px){
+      .cmg-feature-story{display:grid;grid-template-columns:1fr;min-height:0}
+.cmg-feature-story > img{height:auto;min-height:0;aspect-ratio:16/10}
+.cmg-feature-copy{height:auto;min-height:0;padding:26px}
+.cmg-side-stories{grid-template-columns:1fr}
+.cmg-side-story{aspect-ratio:16/9;height:auto}
+}
+/* =========================================================
+       EDITORIAL V18 — LATEST SECTION ALIGNMENT + COSMETIC PR TEXT FIX
+       Targeted changes only:
+       - force the left Latest from CMG feature card to finish level with the
+         bottom edge of the second 16:9 card on the right
+       - prevent text collisions in Homepage Section 05 / Cosmetic PR
+       ========================================================= */
+
+    /* The actual desktop height is synchronised in JS to the rendered right column. */
+    .cmg-feature-story{overflow:hidden;min-width:0}
+.cmg-feature-story > img,.cmg-feature-copy{min-height:0}
+.cmg-feature-copy{box-sizing:border-box}
+/* Cosmetic PR homepage section: give the editorial headline and proof cards
+       enough line-height so text can never overwrite adjacent lines. */
+    .cmg-cpr-intro h2{
+      font-size:clamp(58px,5.8vw,94px);
+      line-height:.91;
+      letter-spacing:-.055em;
+      margin-bottom:30px;
+      max-width:560px;
+    }
+.cmg-cpr-intro p{line-height:1.72}
+.cmg-cpr-proof-copy{min-width:0}
+.cmg-cpr-proof-copy h3{
+      line-height:1.02;
+      overflow-wrap:anywhere;
+    }
+.cmg-cpr-proof-card:not(:first-child) .cmg-cpr-proof-copy h3{
+      font-size:31px;
+      line-height:1.03;
+      margin:15px 0 14px;
+    }
+.cmg-cpr-proof-card:not(:first-child) .cmg-cpr-proof-copy{padding:26px}
+@media(max-width:1100px){
+      .cmg-feature-story{height:auto!important}
+.cmg-cpr-intro h2{max-width:none}
+}
+/* =========================================================
+       EDITORIAL V19 — EXACT LATEST-GRID ALIGNMENT + SECTION 05 TYPOGRAPHY
+       Fixes the two remaining issues identified in review.
+       ========================================================= */
+
+    /* Latest from CMG: the right column must size itself only from the two
+       16:9 cards, not stretch to the height of the left feature. */
+    .cmg-media-layout{
+      align-items:start !important;
+    }
+.cmg-side-stories{
+      align-self:start !important;
+      height:max-content !important;
+      min-height:0 !important;
+    }
+.cmg-side-story{
+      flex:0 0 auto;
+      aspect-ratio:16/9 !important;
+      height:auto !important;
+      min-height:0 !important;
+    }
+.cmg-side-story img{height:100% !important}
+.cmg-feature-story{
+      align-self:start !important;
+      min-height:0 !important;
+      overflow:hidden !important;
+    }
+.cmg-feature-story > img,
+    .cmg-feature-copy{
+      height:100% !important;
+      min-height:0 !important;
+    }
+.cmg-feature-copy{overflow:hidden !important}
+/* Section 05 / Cosmetic PR: eliminate any possibility of display type
+       colliding by using a deliberate two-line heading treatment and safer
+       proof-card typography. */
+    .cmg-cpr-intro h2{
+      font-size:clamp(52px,4.8vw,78px) !important;
+      line-height:1.02 !important;
+      letter-spacing:-.045em !important;
+      margin:0 0 30px !important;
+      max-width:520px !important;
+      overflow:visible !important;
+    }
+.cmg-cpr-intro h2 em{
+      display:block;
+      line-height:1.06 !important;
+      margin-top:.08em;
+    }
+.cmg-cpr-intro p{
+      line-height:1.75 !important;
+      margin-top:0;
+    }
+.cmg-cpr-proof-card{
+      min-height:330px;
+      overflow:hidden;
+    }
+.cmg-cpr-proof-card:first-child{min-height:380px}
+.cmg-cpr-proof-copy{
+      padding:28px !important;
+      gap:18px;
+      overflow:visible;
+    }
+.cmg-cpr-proof-copy h3{
+      font-size:32px !important;
+      line-height:1.12 !important;
+      letter-spacing:-.025em !important;
+      margin:16px 0 14px !important;
+      overflow-wrap:normal !important;
+      word-break:normal !important;
+    }
+.cmg-cpr-proof-card:not(:first-child) .cmg-cpr-proof-copy h3{
+      font-size:28px !important;
+      line-height:1.14 !important;
+    }
+.cmg-cpr-proof-copy p{line-height:1.65 !important}
+@media(max-width:1100px){
+      .cmg-feature-story,
+      .cmg-feature-story > img,
+      .cmg-feature-copy{height:auto !important}
+.cmg-cpr-intro h2{max-width:none !important}
+}
+
+/* next/image compatibility for V19 containers: pin imgs to their CSS-sized boxes
+   (same pattern as the fill rules above). */
+.cmg-cpr-proof-image{position:relative}
+.cpr-hero-image img,.cmg-cpr-proof-image img{position:absolute;inset:0;width:100%;height:100%}
+.cmg-feature-story{position:relative}
+
+/* Hero looping video (used when Homepage → Hero looping video URL is set). */
+.cmg-cover-film .cmg-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;filter:saturate(.78) contrast(1.02)}

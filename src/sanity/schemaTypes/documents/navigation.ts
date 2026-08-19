@@ -11,6 +11,7 @@ const megaMenuFields = [
 const PAGE_OPTIONS = [
   {title: 'Home', value: '/'},
   {title: 'About', value: '/about'},
+  {title: 'Cosmetic PR', value: '/cosmetic-pr'},
   {title: 'Meet the Founder', value: '/about/founder'},
   {title: 'Services', value: '/services'},
   {title: 'Media Hub', value: '/media-hub'},

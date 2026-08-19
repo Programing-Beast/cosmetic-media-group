@@ -1,8 +1,8 @@
 import {articles as fallbackArticles, brands as fallbackBrands, homepage as fallbackHomepage, navigation as fallbackNavigation, services as fallbackServices, siteSettings as fallbackSettings, toolkits as fallbackToolkits, videoGalleries as fallbackVideos} from '@/data/fallback'
-import type {AboutPage, Article, Author, Brand, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MediaHubPage, MegaMenuContent, MembershipPage, MenuLink, Navigation, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit, VideoGallery, VideoPage} from '@/types'
+import type {AboutPage, Article, Author, Brand, CosmeticPrPage, DiamondAwards, Founder, Homepage, HomeSectionType, ImageValue, MediaDesk, MediaHubPage, MegaMenuContent, MembershipPage, MenuLink, Navigation, PortableTextBlock, Principle, SEO, Service, SiteSettings, Stat, Toolkit, VideoGallery, VideoPage} from '@/types'
 import {sanityFetch} from '@/sanity/lib/fetch'
-import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEDIA_HUB_QUERY, VIDEO_PAGE_QUERY, MEMBERSHIP_PAGE_QUERY, NAVIGATION_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY, VIDEOS_QUERY, VIDEO_QUERY} from '@/sanity/lib/queries'
-import type {ABOUT_PAGE_QUERY_RESULT, ARTICLE_QUERY_RESULT, ARTICLES_QUERY_RESULT, BRANDS_QUERY_RESULT, DIAMOND_AWARDS_QUERY_RESULT, FOUNDER_QUERY_RESULT, HOMEPAGE_QUERY_RESULT, MEDIA_DESK_QUERY_RESULT, MEDIA_HUB_QUERY_RESULT, VIDEO_PAGE_QUERY_RESULT, MEMBERSHIP_PAGE_QUERY_RESULT, SERVICE_QUERY_RESULT, SERVICES_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT, TOOLKITS_QUERY_RESULT} from '../../sanity.types'
+import {ABOUT_PAGE_QUERY, ARTICLE_QUERY, ARTICLES_QUERY, BRANDS_QUERY, COSMETIC_PR_PAGE_QUERY, FOUNDER_QUERY, HOMEPAGE_QUERY, MEDIA_DESK_QUERY, MEDIA_HUB_QUERY, VIDEO_PAGE_QUERY, MEMBERSHIP_PAGE_QUERY, NAVIGATION_QUERY, SERVICE_QUERY, SERVICES_QUERY, SITE_SETTINGS_QUERY, TOOLKITS_QUERY, DIAMOND_AWARDS_QUERY, VIDEOS_QUERY, VIDEO_QUERY} from '@/sanity/lib/queries'
+import type {ABOUT_PAGE_QUERY_RESULT, ARTICLE_QUERY_RESULT, ARTICLES_QUERY_RESULT, BRANDS_QUERY_RESULT, COSMETIC_PR_PAGE_QUERY_RESULT, DIAMOND_AWARDS_QUERY_RESULT, FOUNDER_QUERY_RESULT, HOMEPAGE_QUERY_RESULT, MEDIA_DESK_QUERY_RESULT, MEDIA_HUB_QUERY_RESULT, VIDEO_PAGE_QUERY_RESULT, MEMBERSHIP_PAGE_QUERY_RESULT, SERVICE_QUERY_RESULT, SERVICES_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT, TOOLKITS_QUERY_RESULT} from '../../sanity.types'
 
 /**
  * This module is the single translation boundary between Sanity and the app.
@@ -229,10 +229,14 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 export async function getHomepage(): Promise<Homepage> {
   const data = await sanityFetch<HOMEPAGE_QUERY_RESULT>(HOMEPAGE_QUERY)
   if (!data) return fallbackHomepage
-  const sectionOrder = (data.sections || [])
+  const storedOrder = (data.sections || [])
     .filter((x) => x.enabled !== false)
     .map((x) => x.sectionType)
     .filter((t): t is HomeSectionType => Boolean(t))
+  // V19 migration shim: a stored order that predates the Cosmetic PR spotlight
+  // section is superseded by the approved V19 order until the dataset is reseeded
+  // (or an editor re-saves the section list including it).
+  const sectionOrder = storedOrder.length && storedOrder.includes('cprSpotlight') ? storedOrder : fallbackHomepage.sectionOrder
   const stats = toStats(data.stats)
   return {
     hero: {
@@ -245,10 +249,13 @@ export async function getHomepage(): Promise<Homepage> {
       image: toImage(data.heroImage) || fallbackHomepage.hero.image,
       imageCaption: data.heroImageCaption || fallbackHomepage.hero.imageCaption,
       imageMeta: data.heroImageMeta || fallbackHomepage.hero.imageMeta,
+      film: data.heroFilm?.length ? data.heroFilm.map(toImage).filter((img): img is ImageValue => Boolean(img)) : fallbackHomepage.hero.film,
+      videoUrl: data.heroVideoUrl ?? fallbackHomepage.hero.videoUrl,
+      filmBadge: data.heroFilmBadge || fallbackHomepage.hero.filmBadge,
       primaryCta: fallbackHomepage.hero.primaryCta,
       secondaryCta: fallbackHomepage.hero.secondaryCta
     },
-    sectionOrder: sectionOrder.length ? sectionOrder : fallbackHomepage.sectionOrder,
+    sectionOrder,
     story: {
       heading: data.storyHeading || fallbackHomepage.story?.heading,
       opening: data.storyOpening || fallbackHomepage.story?.opening,
@@ -258,6 +265,21 @@ export async function getHomepage(): Promise<Homepage> {
     credibilityFacts: data.credibilityFacts?.length ? data.credibilityFacts.map((f) => ({label: f.label ?? '', title: f.title ?? ''})) : fallbackHomepage.credibilityFacts,
     publications: data.publications?.length ? data.publications : fallbackHomepage.publications,
     clientLogos: data.clientLogos?.length ? data.clientLogos.map((l) => ({name: l.name ?? '', image: toImage(l.image)})) : fallbackHomepage.clientLogos,
+    latestRail: data.latestRail?.length
+      ? data.latestRail.flatMap((item) => (item.label && item.title ? [{label: item.label, title: item.title, actionLabel: item.actionLabel ?? undefined, href: item.href ?? undefined}] : []))
+      : fallbackHomepage.latestRail,
+    cprSpotlight: (data.cprHeading || data.cprCards?.length)
+      ? {
+          eyebrow: data.cprEyebrow ?? undefined,
+          heading: data.cprHeading ?? undefined,
+          accent: data.cprAccent ?? undefined,
+          intro: data.cprIntro ?? undefined,
+          statusChips: data.cprStatusChips ?? undefined,
+          cards: (data.cprCards || []).flatMap((card) =>
+            card.title ? [{label: card.label ?? undefined, title: card.title, text: card.text ?? undefined, ctaLabel: card.ctaLabel ?? undefined, image: toImage(card.image)}] : []
+          )
+        }
+      : fallbackHomepage.cprSpotlight,
     featuredArticles: data.featuredArticles?.map(toArticle) ?? [],
     featuredServices: data.featuredServices?.map(toService) ?? [],
     featuredBrands: data.featuredBrands?.map(toBrand) ?? [],
@@ -356,6 +378,52 @@ export async function getAboutPage(): Promise<AboutPage | null> {
     principlesHeading: data.principlesHeading ?? undefined,
     principlesIntro: data.principlesIntro ?? undefined,
     principles: toPrinciples(data.principles),
+    seo: toSeo(data.seo)
+  }
+}
+
+export async function getCosmeticPr(): Promise<CosmeticPrPage | null> {
+  const data = await sanityFetch<COSMETIC_PR_PAGE_QUERY_RESULT>(COSMETIC_PR_PAGE_QUERY)
+  if (!data) return null
+  return {
+    heroEyebrow: data.heroEyebrow ?? undefined,
+    heroTitle: data.heroTitle ?? undefined,
+    heroAccent: data.heroAccent ?? undefined,
+    heroIntro: data.heroIntro ?? undefined,
+    heroBody: data.heroBody ?? undefined,
+    heroImage: toImage(data.heroImage),
+    heroCaption: data.heroCaption ?? undefined,
+    heroCaptionMeta: data.heroCaptionMeta ?? undefined,
+    identityStrip: (data.identityStrip || []).flatMap((item) => (item.label && item.value ? [{label: item.label, value: item.value}] : [])),
+    storyEyebrow: data.storyEyebrow ?? undefined,
+    storySideHeading: data.storySideHeading ?? undefined,
+    storySideText: data.storySideText ?? undefined,
+    storyHeading: data.storyHeading ?? undefined,
+    storyAccent: data.storyAccent ?? undefined,
+    storyBody: toPortableText(data.storyBody),
+    capabilitiesEyebrow: data.capabilitiesEyebrow ?? undefined,
+    capabilitiesNote: data.capabilitiesNote ?? undefined,
+    capabilitiesHeading: data.capabilitiesHeading ?? undefined,
+    capabilities: toPrinciples(data.capabilities),
+    casesEyebrow: data.casesEyebrow ?? undefined,
+    casesHeading: data.casesHeading ?? undefined,
+    cases: (data.cases || []).flatMap((item) =>
+      item.title ? [{label: item.label ?? undefined, title: item.title, description: item.description ?? undefined, tags: item.tags ?? undefined}] : []
+    ),
+    testimonialsEyebrow: data.testimonialsEyebrow ?? undefined,
+    testimonialsHeading: data.testimonialsHeading ?? undefined,
+    testimonials: (data.testimonials || []).flatMap((item) => (item.name && item.quote ? [{name: item.name, quote: item.quote}] : [])),
+    publicationsEyebrow: data.publicationsEyebrow ?? undefined,
+    publicationsHeading: data.publicationsHeading ?? undefined,
+    publicationsIntro: data.publicationsIntro ?? undefined,
+    publications: data.publications ?? undefined,
+    summaryEyebrow: data.summaryEyebrow ?? undefined,
+    summaryHeading: data.summaryHeading ?? undefined,
+    summaryBody: toPortableText(data.summaryBody),
+    summaryPoints: (data.summaryPoints || []).flatMap((item) => (item.label && item.text ? [{label: item.label, text: item.text}] : [])),
+    newsletterEyebrow: data.newsletterEyebrow ?? undefined,
+    newsletterHeading: data.newsletterHeading ?? undefined,
+    newsletterText: data.newsletterText ?? undefined,
     seo: toSeo(data.seo)
   }
 }
