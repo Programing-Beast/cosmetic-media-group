@@ -11,6 +11,7 @@ export const brand = defineType({
     defineField({name: 'description', title: 'Description', type: 'text', rows: 4}),
     defineField({name: 'image', title: 'Image', type: 'image', options: {hotspot: true}, fields: [{name: 'alt', type: 'string'}]}),
     defineField({name: 'href', title: 'Internal path or external URL', type: 'string'}),
+    defineField({name: 'ctaLabel', title: 'Card CTA label', description: 'e.g. “Visit the standalone brand ↗”', type: 'string'}),
     defineField({name: 'external', title: 'External website', type: 'boolean', initialValue: false}),
     defineField({name: 'order', title: 'Order', type: 'number'})
   ],

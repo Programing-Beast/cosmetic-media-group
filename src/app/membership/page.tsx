@@ -3,9 +3,9 @@ import {getMembership} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 
 const FALLBACK_BENEFITS = [
-  {title: 'Exclusive intelligence', description: 'Reports, research, trend analysis and editorial content reserved for members.'},
-  {title: 'Practical resources', description: 'Templates, guides, courses and tools designed for aesthetics professionals and businesses.'},
-  {title: 'Industry access', description: 'Events, interviews, expert content and opportunities to join important industry conversations.'}
+  {title: 'Member intelligence', description: 'Premium reports, deeper trend analysis and early access to annual guides.'},
+  {title: 'Practical resources', description: 'Downloadable templates, training sessions, courses and implementation toolkits.'},
+  {title: 'Industry access', description: 'Selected events, conversations, opportunities and member-only content.'}
 ]
 
 export async function generateMetadata() {
@@ -21,11 +21,11 @@ export default async function MembershipPage() {
       <section className="membership-hero">
         <div className="membership-content">
           <span className="coming">{membership?.comingSoonLabel || 'Coming soon'}</span>
-          <h1>{membership?.heroTitle || 'Closer to the'} <span className="serif pink">{membership?.heroAccent || 'conversation.'}</span></h1>
-          <p>{membership?.intro || 'Future membership will provide access to exclusive reports, toolkits, editorial content, events, education and opportunities designed for industry leaders.'}</p>
+          <h1>{membership?.heroTitle || 'Closer to the'} <span className="serif pink">{membership?.heroAccent || 'industry.'}</span></h1>
+          <p>{membership?.intro || 'A future membership for professionals and brands who want deeper insight, better resources and meaningful access to the conversations shaping aesthetics.'}</p>
           <ManagedForm type="membership" className="membership-signup" successMessage="Thank you. Your interest has been registered.">
-            <input type="email" name="email" required placeholder="Your email address" />
-            <button className="btn btn-pink" type="submit">Join the waiting list ↗</button>
+            <input type="email" name="email" required placeholder="Join the priority list" />
+            <button className="btn btn-pink" type="submit">Keep me informed ↗</button>
           </ManagedForm>
         </div>
       </section>
@@ -33,10 +33,10 @@ export default async function MembershipPage() {
         <div className="shell">
           <div className="section-head">
             <div>
-              <div className="eyebrow">{membership?.benefitsEyebrow || 'Planned member benefits'}</div>
-              <h2>{membership?.benefitsHeading || 'A platform designed to grow with the industry.'}</h2>
+              <div className="eyebrow">{membership?.benefitsEyebrow || 'The future member experience'}</div>
+              <h2>{membership?.benefitsHeading || 'Useful access. Not more noise.'}</h2>
             </div>
-            <p>{membership?.benefitsIntro || 'The features below are prepared for future phases and will be scoped separately when the membership is ready to launch.'}</p>
+            <p>{membership?.benefitsIntro || 'The membership is planned around practical value, credible intelligence and the ability to participate more closely in the Cosmetic Media Group ecosystem.'}</p>
           </div>
           <div className="values">
             {benefits.map((benefit, index) => (

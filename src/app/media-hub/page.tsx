@@ -6,7 +6,7 @@ import {getArticles, getMediaHubPage} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
-const DEFAULT_INTRO = 'Editorial coverage, expert interviews, industry news, trends, opinion, podcasts, video and practical intelligence from across aesthetics.'
+const DEFAULT_INTRO = 'Articles, interviews, videos, podcasts, industry news, trends, opinion and expert content for the people shaping modern aesthetics.'
 
 export async function generateMetadata() {
   const page = await getMediaHubPage()
@@ -28,8 +28,8 @@ export default async function MediaHubPage() {
   return (
     <div className="page-enter">
       <PageHero
-        title={page?.heroTitle || 'The industry’s next'}
-        accent={page?.heroAccent || 'conversation.'}
+        title={page?.heroTitle || 'The industry,'}
+        accent={page?.heroAccent || 'edited.'}
         intro={page?.intro || DEFAULT_INTRO}
         crumbs={[{label: 'Home', href: '/'}, {label: 'Media Hub'}]}
       />

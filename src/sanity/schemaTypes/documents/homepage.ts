@@ -59,6 +59,34 @@ export const homepage = defineType({
       validation: (rule) => rule.max(3),
       group: 'content'
     }),
+    defineField({
+      name: 'brandRail',
+      title: 'Our brands strip — rows',
+      description: 'The four rows in the "Distinct platforms" section (08). Row 04 is Education & Insights in V19.',
+      type: 'array',
+      of: [{type: 'object', fields: [
+        {name: 'label', title: 'Label', type: 'string', description: 'e.g. "Communications" — rendered as "01 / Communications".'},
+        {name: 'title', title: 'Name', type: 'string'},
+        {name: 'description', title: 'Description', type: 'text', rows: 2},
+        {name: 'href', title: 'Link', type: 'string', description: 'Internal path, e.g. /cosmetic-pr.'}
+      ], preview: {select: {title: 'title', subtitle: 'label'}}}],
+      validation: (rule) => rule.max(4),
+      group: 'content'
+    }),
+    defineField({
+      name: 'resourceTiles',
+      title: 'Toolkits section — tiles',
+      description: 'The three resource covers in the "Knowledge designed to be used" section (09).',
+      type: 'array',
+      of: [{type: 'object', fields: [
+        {name: 'tag', title: 'Tag', type: 'string', description: 'e.g. "Guide / Free".'},
+        {name: 'title', title: 'Title', type: 'string'},
+        {name: 'actionLabel', title: 'Action label', type: 'string', description: 'e.g. "Download ↗".'},
+        {name: 'href', title: 'Link', type: 'string', description: 'Internal path, defaults to /toolkits.'}
+      ], preview: {select: {title: 'title', subtitle: 'tag'}}}],
+      validation: (rule) => rule.max(3),
+      group: 'content'
+    }),
     defineField({name: 'cprEyebrow', title: 'Eyebrow', type: 'string', description: 'e.g. "05 — Cosmetic PR".', group: 'cpr'}),
     defineField({name: 'cprHeading', title: 'Heading (first line)', type: 'string', description: 'e.g. "The flagship agency.".', group: 'cpr'}),
     defineField({name: 'cprAccent', title: 'Heading accent (pink, own line)', type: 'string', description: 'e.g. "The foundation.".', group: 'cpr'}),

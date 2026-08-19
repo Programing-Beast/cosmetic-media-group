@@ -67,6 +67,9 @@ async function main() {
       slug: {_type: 'slug', current: service.slug},
       eyebrow: service.eyebrow,
       intro: service.intro,
+      listDescription: service.listDescription,
+      listCta: service.listCta,
+      detailIntro: service.detailIntro,
       body: service.body,
       image: await sanityImage(service.image, service.title),
       outcomes: service.outcomes,
@@ -92,6 +95,9 @@ async function main() {
     image: await sanityImage('/images/founder.jpg', 'Lucy Hilson'),
     bio: 'Founder, PR specialist, speaker, interviewer and industry commentator.'
   })
+
+  // V19 cleanup (client-approved): the Media Hub test documents must not exist in any dataset.
+  await client.delete({query: '*[_type == "article" && slug.current in ["video-testing", "video-list"]]'})
 
   const articleRefs: Array<{_type: 'reference'; _ref: string; _key: string}> = []
   for (const article of articles) {
@@ -131,6 +137,7 @@ async function main() {
       image: await sanityImage(brand.image, brand.title),
       href: brand.href,
       external: brand.external || false,
+      ctaLabel: brand.ctaLabel,
       order: index + 1
     })
   }
@@ -186,6 +193,8 @@ async function main() {
     publications: homepage.publications,
     clientLogos: homepage.clientLogos.map((item, index) => ({_key: `client-${index}`, name: item.name})),
     latestRail: (homepage.latestRail || []).map((item, index) => ({_key: `rail-${index}`, ...item})),
+    brandRail: (homepage.brandRail || []).map((item, index) => ({_key: `brand-rail-${index}`, ...item})),
+    resourceTiles: (homepage.resourceTiles || []).map((item, index) => ({_key: `resource-${index}`, ...item})),
     cprEyebrow: homepage.cprSpotlight?.eyebrow,
     cprHeading: homepage.cprSpotlight?.heading,
     cprAccent: homepage.cprSpotlight?.accent,
@@ -200,7 +209,9 @@ async function main() {
       ...(typeof card.image === 'string' ? {image: await sanityImage(card.image, card.title)} : {})
     }))),
     sections: homepage.sectionOrder.map((sectionType, index) => ({_type: 'homeSection', _key: `${index}-${sectionType}`, sectionType, enabled: true})),
-    featuredArticles: articleRefs.slice(0, 3),
+    featuredArticles: ['future-of-aesthetic-medicine', 'in-conversation-building-authority', 'people-raising-standards']
+      .map((slug) => articleRefs.find((ref) => ref._ref === `article-${slug}`))
+      .filter((ref): ref is NonNullable<typeof ref> => Boolean(ref)),
     featuredServices: serviceRefs,
     featuredBrands: brandRefs,
     featuredToolkits: toolkitRefs.slice(0, 3)
@@ -214,9 +225,9 @@ async function main() {
     intro: 'Founder, PR specialist, speaker, interviewer and industry commentator with more than 20 years of experience building trusted reputations across aesthetics.',
     image: await sanityImage('/images/founder.jpg', 'Lucy Hilson'),
     body: [
-      block('For more than 20 years, Lucy has helped doctors, clinics, brands and industry leaders build trusted reputations through strategic public relations and media exposure.', 'founder-1'),
-      block('Cosmetic Media Group was created to go beyond traditional PR, bringing together media, education, content, podcasts, events and personal branding.', 'founder-2'),
-      block('Lucy is a regular speaker, interviewer and industry commentator, and the founder of the Diamond Awards Dubai.', 'founder-3')
+      block("For more than 20 years, Lucy has helped doctors, clinics, brands and industry leaders build trusted reputations through strategic public relations and media exposure. Her work has secured coverage in leading consumer, beauty and business publications, positioned experts as trusted media commentators and supported some of the industry's most recognised names.", 'founder-1'),
+      block('As the industry has evolved, so has her vision. Cosmetic Media Group was created to go beyond traditional PR, bringing together media, education, content, podcasts, events and personal branding into one platform designed to help aesthetic professionals build authority, influence and lasting credibility.', 'founder-2'),
+      block('Alongside leading Cosmetic Media Group, Lucy is a regular speaker, interviewer and industry commentator, known for championing higher standards in aesthetics and helping experts communicate with confidence. She is also the founder of the Diamond Awards Dubai and co-founder of The Aesthetics Edit.', 'founder-3')
     ],
     belief: 'The most successful businesses are not always the most talented. They are the ones people know, trust and remember.',
     stats: [
@@ -251,19 +262,20 @@ async function main() {
       {value: '1', label: 'Trusted ecosystem'}
     ].map((stat, index) => ({_type: 'stat', _key: `about-stat-${index}`, ...stat})),
     evolutionEyebrow: 'Our evolution',
-    evolutionHeading: 'A media company, not simply an agency.',
+    evolutionHeading: 'From specialist PR to a connected media company.',
     evolutionBody: [
-      block('Cosmetic Media Group is a modern media and communications company for the global aesthetics industry. We do not just help brands gain publicity. We create the conversations that shape the industry, connecting professionals, clinics, brands and consumers in one trusted ecosystem.', 'about-1'),
-      block('The group brings together strategic PR, personal branding, content production, editorial publishing, education, podcasts, events, research and recognition. Each platform has its own purpose, but they are connected by one ambition: to help credible experts and organisations build authority that lasts.', 'about-2'),
+      block('For more than 20 years, the business has helped aesthetic professionals earn recognition through strategic communications and media visibility. Cosmetic Media Group takes that experience further by bringing together PR, editorial content, education, podcasts, events, personal branding, awards and practical industry resources.', 'about-1'),
+      block('The result is one connected destination where experts and brands can raise their profile, share their knowledge, build credibility and grow their influence.', 'about-2'),
       block('Cosmetic PR remains the flagship specialist PR agency within the group, while Cosmetic Media Group provides the wider platform for editorial, content, education, events, awards and future membership.', 'about-3')
     ],
-    quote: 'We elevate the people, brands and ideas shaping the future of aesthetics.',
-    image: await sanityImage('/images/magazine.jpg', 'The Cosmetic Media Group editorial ecosystem'),
-    principlesEyebrow: 'Our principles',
-    principlesHeading: 'Recognition with substance.',
+    quote: 'The future of aesthetics will not be led by the loudest voices. It will be led by the most trusted ones.',
+    closingNote: 'Cosmetic Media Group exists to help the right people and ideas become seen, trusted and remembered — while creating useful platforms that move the wider industry forward.',
+    image: await sanityImage('/images/magazine.jpg', 'Cosmetic Media Group editorial platform'),
+    principlesEyebrow: 'Our point of view',
+    principlesHeading: 'Credibility before noise.',
     principlesIntro: 'Every part of the platform is designed to create recognition with substance, authority with relevance and influence that lasts.',
     principles: [
-      {_key: 'depth', title: 'Industry depth', description: 'We understand aesthetics from the inside: its experts, audiences, opportunities and responsibilities.'},
+      {_key: 'depth', title: 'Industry depth', description: 'We understand aesthetics from the inside — its experts, audiences, opportunities and responsibilities.'},
       {_key: 'editorial', title: 'Editorial intelligence', description: 'We look beyond promotion to uncover the ideas, evidence and voices that deserve attention.'},
       {_key: 'authority', title: 'Long-term authority', description: 'We build platforms, profiles and reputations that become more valuable and trusted over time.'}
     ]
@@ -296,7 +308,7 @@ async function main() {
       block('Long-standing relationships with consumer, trade, beauty and business media enable the agency to connect the right experts and stories with the publications and platforms that matter. That heritage now sits within the wider Cosmetic Media Group ecosystem, giving clients access to a broader mix of editorial, personal branding, content, education, podcasts, events and industry platforms.', 'cpr-story-2')
     ],
     capabilitiesEyebrow: '02 — Specialist capability',
-    capabilitiesNote: 'A concise summary of the current Cosmetic PR website. Final live service list to be approved by the client before migration.',
+    capabilitiesNote: 'A concise summary of the current Cosmetic PR website. Final live service list should be approved by the client before migration.',
     capabilitiesHeading: 'WHAT COSMETIC PR BRINGS TO THE TABLE',
     capabilities: [
       {_key: 'pr', title: 'PR & Communications', description: 'Media relations, expert positioning, editorial opportunities, press launches, awards and long-term reputation strategy.'},
@@ -329,7 +341,7 @@ async function main() {
     summaryBody: [
       block('This page is intentionally a concise editorial summary of the previous Cosmetic PR website, bringing its strongest proof points into the new Cosmetic Media Group design system without recreating the older site page-for-page.', 'cpr-summary-1'),
       block('It captures the essentials of the original platform: sector specialism, service breadth, award and event support, content creation, social and digital communications, proven media relationships, long-term client trust and selected campaign outcomes.', 'cpr-summary-2'),
-      block('For the final live build, this page can be expanded with additional approved case studies, publication logos, testimonials, before-and-after campaign outcomes or archived press examples if a deeper legacy showcase is wanted.', 'cpr-summary-3')
+      block('For the final live build, the developer can further expand this page with additional approved case studies, publication logos, testimonials, before-and-after campaign outcomes or archived press examples if the client wants a deeper legacy showcase.', 'cpr-summary-3')
     ],
     summaryPoints: [
       {_key: 'included', label: 'Included here', text: 'Agency positioning, services, case studies and testimonials'},
@@ -346,15 +358,15 @@ async function main() {
     _type: 'membershipPage',
     comingSoonLabel: 'Coming soon',
     heroTitle: 'Closer to the',
-    heroAccent: 'conversation.',
-    intro: 'Future membership will provide access to exclusive reports, toolkits, editorial content, events, education and opportunities designed for industry leaders.',
-    benefitsEyebrow: 'Planned member benefits',
-    benefitsHeading: 'A platform designed to grow with the industry.',
-    benefitsIntro: 'The features below are prepared for future phases and will be scoped separately when the membership is ready to launch.',
+    heroAccent: 'industry.',
+    intro: 'A future membership for professionals and brands who want deeper insight, better resources and meaningful access to the conversations shaping aesthetics.',
+    benefitsEyebrow: 'The future member experience',
+    benefitsHeading: 'Useful access. Not more noise.',
+    benefitsIntro: 'The membership is planned around practical value, credible intelligence and the ability to participate more closely in the Cosmetic Media Group ecosystem.',
     benefits: [
-      {_key: 'intelligence', title: 'Exclusive intelligence', description: 'Reports, research, trend analysis and editorial content reserved for members.'},
-      {_key: 'resources', title: 'Practical resources', description: 'Templates, guides, courses and tools designed for aesthetics professionals and businesses.'},
-      {_key: 'access', title: 'Industry access', description: 'Events, interviews, expert content and opportunities to join important industry conversations.'}
+      {_key: 'intelligence', title: 'Member intelligence', description: 'Premium reports, deeper trend analysis and early access to annual guides.'},
+      {_key: 'resources', title: 'Practical resources', description: 'Downloadable templates, training sessions, courses and implementation toolkits.'},
+      {_key: 'access', title: 'Industry access', description: 'Selected events, conversations, opportunities and member-only content.'}
     ]
   })
 
@@ -379,9 +391,9 @@ async function main() {
   await client.createOrReplace({
     _id: 'mediaHubPage',
     _type: 'mediaHubPage',
-    heroTitle: 'The industry’s next',
-    heroAccent: 'conversation.',
-    intro: 'Editorial coverage, expert interviews, industry news, trends, opinion, podcasts, video and practical intelligence from across aesthetics.',
+    heroTitle: 'The industry,',
+    heroAccent: 'edited.',
+    intro: 'Articles, interviews, videos, podcasts, industry news, trends, opinion and expert content for the people shaping modern aesthetics.',
     ctaEyebrow: 'For journalists',
     ctaHeading: 'Need an expert comment or interview?',
     ctaText: 'Use the dedicated media desk to submit your subject, deadline and required expertise.',
@@ -422,9 +434,9 @@ async function main() {
       'Elevate the region’s reputation as a leader in aesthetics excellence.',
       'Bring the global industry together through a prestigious annual event in Dubai.'
     ],
-    audience: ['Leading dermatologists and plastic surgeons', 'Aesthetic physicians and practitioners', 'Clinic owners, directors and practice managers', 'Device manufacturers and technology innovators', 'Skincare brands and product formulators', 'Industry educators and regulatory voices', 'VIP guests, press and media'],
-    eventExperience: ['Luxury gala dinner', 'Live entertainment', 'Awards presentations', 'Red carpet arrivals', 'Press interviews and media coverage', 'Premium brand activations', 'Networking with regional and global leaders'],
-    sponsorBenefits: ['Brand positioning alongside global excellence', 'Exposure across GCC press, media and key industry channels', 'Access to clinic owners, dermatologists, surgeons and aesthetic leaders', 'On-stage and in-room visibility', 'Inclusion in marketing, digital and PR campaigns', 'Opportunity to present awards or host dedicated activations', 'Exclusive partnership rights within your category'],
+    audience: ['Leading dermatologists and plastic surgeons', 'Aesthetic physicians and practitioners', 'Clinic owners, directors and practice managers', 'Device manufacturers and technology innovators', 'Skincare brands and product formulators', 'Industry educators, regulatory voices, press and VIP guests'],
+    eventExperience: ['Luxury gala dinner', 'Live entertainment', 'Awards presentations', 'Red carpet arrivals', 'Press interviews and media coverage', 'Premium brand activations', 'Regional and global networking', 'World-class hospitality'],
+    sponsorBenefits: ['Brand positioning alongside global excellence', 'Exposure across GCC press, media and industry channels', 'Access to clinic owners, dermatologists, surgeons and leaders', 'On-stage and in-room visibility at a high-profile gala', 'Inclusion in marketing, digital and PR campaigns', 'Exclusive partnership rights within your category'],
     sponsorshipPackages: [
       {_key: 'diamond', tier: 'Premier partnership', name: 'Diamond', description: 'Maximum prominence across the complete awards platform and event experience.', features: ['Headline and category opportunities', 'High-profile stage and room visibility', 'Integrated media, content and PR exposure', 'Exclusive activation possibilities']},
       {_key: 'gold', tier: 'High-impact partnership', name: 'Gold', description: 'Strong brand presence with meaningful access to attendees and industry channels.', features: ['Category and activation options', 'Digital and campaign inclusion', 'VIP attendance and networking', 'Brand alignment with excellence']},

@@ -60,6 +60,9 @@ type ServiceInput = {
   slug?: string | null
   eyebrow?: string | null
   intro?: string | null
+  listDescription?: string | null
+  listCta?: string | null
+  detailIntro?: string | null
   body?: string | null
   outcomes?: Array<string> | null
   deliverables?: Array<string> | null
@@ -74,6 +77,7 @@ type BrandInput = {
   description?: string | null
   href?: string | null
   external?: boolean | null
+  ctaLabel?: string | null
   image?: ImageInput
 }
 
@@ -176,6 +180,9 @@ function toService(s: ServiceInput): Service {
     slug: s.slug ?? '',
     eyebrow: s.eyebrow ?? '',
     intro: s.intro ?? '',
+    listDescription: s.listDescription ?? undefined,
+    listCta: s.listCta ?? undefined,
+    detailIntro: s.detailIntro ?? undefined,
     body: s.body ?? '',
     image: toImage(s.image),
     deliverables: s.deliverables ?? [],
@@ -192,7 +199,8 @@ function toBrand(b: BrandInput): Brand {
     description: b.description ?? '',
     image: toImage(b.image),
     href: b.href ?? undefined,
-    external: b.external ?? undefined
+    external: b.external ?? undefined,
+    ctaLabel: b.ctaLabel ?? undefined
   }
 }
 
@@ -268,6 +276,12 @@ export async function getHomepage(): Promise<Homepage> {
     latestRail: data.latestRail?.length
       ? data.latestRail.flatMap((item) => (item.label && item.title ? [{label: item.label, title: item.title, actionLabel: item.actionLabel ?? undefined, href: item.href ?? undefined}] : []))
       : fallbackHomepage.latestRail,
+    brandRail: data.brandRail?.length
+      ? data.brandRail.flatMap((item) => (item.label && item.title ? [{label: item.label, title: item.title, description: item.description ?? undefined, href: item.href ?? undefined}] : []))
+      : fallbackHomepage.brandRail,
+    resourceTiles: data.resourceTiles?.length
+      ? data.resourceTiles.flatMap((item) => (item.title ? [{tag: item.tag ?? undefined, title: item.title, actionLabel: item.actionLabel ?? undefined, href: item.href ?? undefined}] : []))
+      : fallbackHomepage.resourceTiles,
     cprSpotlight: (data.cprHeading || data.cprCards?.length)
       ? {
           eyebrow: data.cprEyebrow ?? undefined,
@@ -373,6 +387,7 @@ export async function getAboutPage(): Promise<AboutPage | null> {
     evolutionHeading: data.evolutionHeading ?? undefined,
     evolutionBody: toPortableText(data.evolutionBody),
     quote: data.quote ?? undefined,
+    closingNote: data.closingNote ?? undefined,
     image: toImage(data.image),
     principlesEyebrow: data.principlesEyebrow ?? undefined,
     principlesHeading: data.principlesHeading ?? undefined,

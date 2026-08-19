@@ -42,6 +42,9 @@ export type Service = {
   slug: string
   eyebrow: string
   intro: string
+  listDescription?: string
+  listCta?: string
+  detailIntro?: string
   body: string
   image?: ImageValue
   deliverables: string[]
@@ -84,6 +87,7 @@ export type Brand = {
   image?: ImageValue
   href?: string
   external?: boolean
+  ctaLabel?: string
 }
 
 export type Toolkit = {
@@ -136,6 +140,7 @@ export type AboutPage = {
   evolutionHeading?: string
   evolutionBody?: PortableTextBlock[]
   quote?: string
+  closingNote?: string
   image?: ImageValue
   principlesEyebrow?: string
   principlesHeading?: string
@@ -305,6 +310,10 @@ export type DiamondAwards = {
 
 export type LatestRailItem = {label: string; title: string; actionLabel?: string; href?: string}
 
+export type BrandRailItem = {label: string; title: string; description?: string; href?: string}
+
+export type ResourceTile = {tag?: string; title: string; actionLabel?: string; href?: string}
+
 export type CprSpotlightCard = {label?: string; title: string; text?: string; ctaLabel?: string; image?: ImageValue}
 
 export type CprSpotlight = {
@@ -340,6 +349,8 @@ export type Homepage = {
   publications: string[]
   clientLogos: Array<{name: string; image?: ImageValue}>
   latestRail?: LatestRailItem[]
+  brandRail?: BrandRailItem[]
+  resourceTiles?: ResourceTile[]
   cprSpotlight?: CprSpotlight
   featuredArticles?: Article[]
   featuredServices?: Service[]

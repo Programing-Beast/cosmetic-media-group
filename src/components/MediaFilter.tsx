@@ -15,14 +15,14 @@ export type MediaCard = {
 }
 
 const CHIPS: Array<{label: string; value: string}> = [
-  {label: 'All stories', value: 'all'},
+  {label: 'All', value: 'all'},
   {label: 'Articles', value: 'article'},
   {label: 'Interviews', value: 'interview'},
   {label: 'Videos', value: 'video'},
   {label: 'Podcasts', value: 'podcast'},
-  {label: 'Industry news', value: 'news'},
-  {label: 'Opinion', value: 'opinion'},
-  {label: 'Expert content', value: 'report'}
+  {label: 'Industry News', value: 'news'},
+  {label: 'Trends', value: 'report'},
+  {label: 'Opinion', value: 'opinion'}
 ]
 
 // Card eyebrow: show "FORMAT / CATEGORY", but collapse to a single label when
