@@ -42,16 +42,24 @@ const FALLBACK_TESTIMONIALS = [
 const FALLBACK_PUBLICATIONS = ['VOGUE', "Harper's Bazaar", 'GRAZIA', 'Tatler', 'Marie Claire', 'Cosmopolitan', 'The Telegraph', 'Daily Mail', 'HELLO!', 'Channel 5', 'MTV', 'This Morning']
 
 const FALLBACK_SUMMARY = [
-  'This page is intentionally a concise editorial summary of the previous Cosmetic PR website, bringing its strongest proof points into the new Cosmetic Media Group design system without recreating the older site page-for-page.',
-  'It captures the essentials of the original platform: sector specialism, service breadth, award and event support, content creation, social and digital communications, proven media relationships, long-term client trust and selected campaign outcomes.',
-  'For the final live build, the developer can further expand this page with additional approved case studies, publication logos, testimonials, before-and-after campaign outcomes or archived press examples if the client wants a deeper legacy showcase.'
+  'Cosmetic PR was founded in 2015 by Lucy Hilson with a clear goal: to help aesthetics businesses reach their potential through media awareness and meaningful business support. The agency has stayed deliberately specialist, focusing on medical aesthetics, beauty and wellness rather than trying to be everything to everyone.',
+  'That sector focus shapes the way the team works. Cosmetic PR combines media relations with an understanding of how clinics, practitioners, products and aesthetic brands actually grow — supporting clients with PR strategy, awards, events, content, digital communications and wider brand development.',
+  'Lucy\u2019s experience also extends beyond publicity into business development and consultancy, including support around product and skincare development, industry speaking opportunities and brand growth. Cosmetic PR now works internationally across the UK and Dubai, bringing that specialist knowledge to clients in both markets.'
 ]
 
 const FALLBACK_SUMMARY_POINTS = [
-  {label: 'Included here', text: 'Agency positioning, services, case studies and testimonials'},
-  {label: 'Can be added later', text: 'More case studies, press logos, screenshots, awards and archived campaign highlights'},
-  {label: 'Role in the new site', text: 'The flagship agency page within the wider Cosmetic Media Group ecosystem'}
+  {label: 'Aesthetics inside out', text: 'Deep knowledge of medical aesthetics, beauty and wellness — the niche has remained at the heart of the agency since launch.'},
+  {label: 'More than media coverage', text: 'PR is supported by practical business advice, awards, events, content, digital activity and brand development.'},
+  {label: 'International perspective', text: 'Established UK expertise with an active Dubai presence and support for brands and professionals operating across both markets.'},
+  {label: 'Award-winning agency', text: 'Cosmetic PR was named Best Aesthetic Specialist PR Agency 2022 \u2013 UK in the LuxLife Health, Beauty & Wellness Awards.'}
 ]
+
+// V21: "COSMETIC PR" renders in pink within the section 02 heading.
+function pinkHighlight(heading: string) {
+  const match = heading.match(/cosmetic pr/i)
+  if (!match || match.index === undefined) return heading
+  return <>{heading.slice(0, match.index)}<span className="cpr-pink">{match[0]}</span>{heading.slice(match.index + match[0].length)}</>
+}
 
 export async function generateMetadata() {
   const page = await getCosmeticPr()
@@ -118,9 +126,8 @@ export default async function CosmeticPrPage() {
         <div className="cpr-services-head">
           <div>
             <div className="cmg-section-no">{page?.capabilitiesEyebrow || '02 — Specialist capability'}</div>
-            <p className="muted">{page?.capabilitiesNote || 'A concise summary of the current Cosmetic PR website. Final live service list should be approved by the client before migration.'}</p>
           </div>
-          <h2>{page?.capabilitiesHeading || 'WHAT COSMETIC PR BRINGS TO THE TABLE'}</h2>
+          <h2>{pinkHighlight(page?.capabilitiesHeading || 'WHAT COSMETIC PR BRINGS TO THE TABLE')}</h2>
         </div>
         <div className="cpr-service-index">
           {capabilities.map((item, index) => <div className="cpr-service-line" key={item.title}>
@@ -187,8 +194,8 @@ export default async function CosmeticPrPage() {
     <section className="cpr-summary">
       <div className="shell cpr-summary-grid">
         <div className="cpr-summary-copy">
-          <div className="cmg-section-no">{page?.summaryEyebrow || '06 — What the legacy site proves'}</div>
-          <h2>{page?.summaryHeading || 'A full-site summary, refined into one editorial page.'}</h2>
+          <div className="cmg-section-no">{page?.summaryEyebrow || '06 — Why Cosmetic PR'}</div>
+          <h2>{page?.summaryHeading || 'Industry knowledge that goes beyond press coverage.'}</h2>
           {page?.summaryBody ? <RichText value={page.summaryBody} /> : FALLBACK_SUMMARY.map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
         </div>
         <div className="cpr-summary-points">
