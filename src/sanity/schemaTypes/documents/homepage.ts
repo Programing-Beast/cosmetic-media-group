@@ -34,6 +34,15 @@ export const homepage = defineType({
     }),
     defineField({name: 'heroVideoUrl', title: 'Hero looping video URL', description: 'When set, replaces the crossfade with a muted 4:5 looping video (external hosting, e.g. Mux/Vimeo file URL). The hero image is used as the poster.', type: 'url', group: 'hero'}),
     defineField({name: 'heroFilmBadge', title: 'Hero film badge', description: 'Small label over the hero media, e.g. "Looping editorial film / client footage".', type: 'string', group: 'hero'}),
+    defineField({
+      name: 'founderFilm',
+      title: 'Founder strip images',
+      description: 'The three images in the homepage founder section (02): portrait, speaking, podcast/interview.',
+      type: 'array',
+      of: [{type: 'image', options: {hotspot: true}, fields: [{name: 'alt', type: 'string', title: 'Alternative text'}]}],
+      validation: (rule) => rule.max(3),
+      group: 'content'
+    }),
     defineField({name: 'storyHeading', title: 'Story heading', type: 'string', group: 'story'}),
     defineField({name: 'storyOpening', title: 'Story opening', type: 'text', rows: 3, group: 'story'}),
     defineField({name: 'storyBody', title: 'Story body', type: 'portableText', group: 'story'}),

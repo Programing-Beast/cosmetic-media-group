@@ -11,7 +11,7 @@ export function HomeSections({homepage, services, articles, brands, toolkits}: {
   const renderers: Record<HomeSectionType, React.ReactNode> = {
     story: <Story key="story" homepage={homepage} />,
     credibility: <Credibility key="credibility" homepage={homepage} />,
-    founderTeaser: <FounderTeaser key="founderTeaser" />,
+    founderTeaser: <FounderTeaser key="founderTeaser" homepage={homepage} />,
     trustedBrands: <ProofBands key="trustedBrands" publications={homepage.publications} logos={homepage.clientLogos} />,
     services: <ServicesSection key="services" services={services} />,
     mediaHub: <MediaHubSection key="mediaHub" homepage={homepage} articles={articles} />,
@@ -57,8 +57,10 @@ function publicationClass(name: string) {
   return 'cmg-logo-times'
 }
 
-function FounderTeaser() {
-  return <section className="cmg-founder-teaser"><div className="shell cmg-founder-teaser-grid"><Link className="cmg-founder-teaser-image cmg-founder-film" href="/about/founder"><Image src="/images/founder.jpg" alt="Lucy Hilson, founder of Cosmetic Media Group" width={900} height={1100} sizes="(max-width: 980px) 100vw, 40vw" /><Image src="/images/speaker.jpg" alt="Lucy Hilson speaking and representing the industry" width={900} height={1100} sizes="(max-width: 980px) 100vw, 40vw" /><Image src="/images/podcast.jpg" alt="Industry interviews and podcast content" width={900} height={1100} sizes="(max-width: 980px) 100vw, 40vw" /><span className="founder-film-label">Founder / interviews / speaking / behind the scenes</span><span>Lucy Hilson / founder / speaker / commentator</span></Link><div className="cmg-founder-teaser-copy"><div className="cmg-section-no">02 — Founder perspective</div><h2>Built from experience. <em>Expanded through vision.</em></h2><p>Lucy Hilson has spent more than 20 years helping aesthetic professionals build trusted reputations. Her media experience, industry relationships and point of view sit at the heart of Cosmetic Media Group — making the founder&apos;s voice part of the platform rather than separate from it.</p><div className="cmg-founder-teaser-actions"><Link className="btn btn-dark" href="/about/founder">Meet Lucy Hilson ↗</Link><Link className="btn btn-media" href="/media-desk">Media enquiries ↗</Link></div></div></div></section>
+function FounderTeaser({homepage}: {homepage: Homepage}) {
+  const film = homepage.founderFilm?.length ? homepage.founderFilm : ['/images/founder.jpg', '/images/speaker.jpg', '/images/podcast.jpg']
+  const alts = ['Lucy Hilson, founder of Cosmetic Media Group', 'Lucy Hilson speaking and representing the industry', 'Industry interviews and podcast content']
+  return <section className="cmg-founder-teaser"><div className="shell cmg-founder-teaser-grid"><Link className="cmg-founder-teaser-image cmg-founder-film" href="/about/founder">{film.slice(0, 3).map((image, index) => <Image key={index} src={imageUrl(image, 900, 1100)} alt={imageAlt(image, alts[index])} width={900} height={1100} sizes="(max-width: 980px) 100vw, 40vw" />)}<span className="founder-film-label">Founder / interviews / speaking / behind the scenes</span><span>Lucy Hilson / founder / speaker / commentator</span></Link><div className="cmg-founder-teaser-copy"><div className="cmg-section-no">02 — Founder perspective</div><h2>Built from experience. <em>Expanded through vision.</em></h2><p>Lucy Hilson has spent more than 20 years helping aesthetic professionals build trusted reputations. Her media experience, industry relationships and point of view sit at the heart of Cosmetic Media Group — making the founder&apos;s voice part of the platform rather than separate from it.</p><div className="cmg-founder-teaser-actions"><Link className="btn btn-dark" href="/about/founder">Meet Lucy Hilson ↗</Link><Link className="btn btn-media" href="/media-desk">Media enquiries ↗</Link></div></div></div></section>
 }
 
 function ServicesSection({services}: {services: Service[]}) {

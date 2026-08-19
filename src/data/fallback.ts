@@ -532,6 +532,7 @@ export const homepage: Homepage = {
     {label: 'Behind the scenes', title: 'Inside the conversations, shoots and events shaping CMG.', actionLabel: 'Follow the story ↗', href: '/about/founder'},
     {label: 'Podcast', title: 'Trust, influence and the next chapter for aesthetics media.', actionLabel: 'Listen / watch ↗', href: '/media-hub'}
   ],
+  founderFilm: ['/images/founder.jpg', '/images/speaker.jpg', '/images/podcast.jpg'],
   brandRail: [
     {label: 'Communications', title: 'Cosmetic PR', description: 'The established flagship PR agency within Cosmetic Media Group.', href: '/cosmetic-pr'},
     {label: 'Editorial', title: 'The Aesthetics Edit', description: 'An independent standalone editorial platform and influential industry voice.', href: '/our-brands'},

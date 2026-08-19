@@ -176,6 +176,11 @@ async function main() {
       {...(await sanityImage('/images/event.jpg', 'Industry event and behind-the-scenes content')), _key: 'film-event'}
     ],
     heroFilmBadge: 'Looping editorial film / client footage',
+    founderFilm: [
+      {...(await sanityImage('/images/founder.jpg', 'Lucy Hilson, founder of Cosmetic Media Group')), _key: 'founder-film-1'},
+      {...(await sanityImage('/images/speaker.jpg', 'Lucy Hilson speaking and representing the industry')), _key: 'founder-film-2'},
+      {...(await sanityImage('/images/podcast.jpg', 'Industry interviews and podcast content')), _key: 'founder-film-3'}
+    ],
     storyHeading: 'More than PR.',
     storyOpening: 'Cosmetic Media Group is the umbrella platform connecting the experts, brands and ideas shaping the future of aesthetics.',
     storyBody: [

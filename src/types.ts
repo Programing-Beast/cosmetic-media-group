@@ -349,6 +349,7 @@ export type Homepage = {
   publications: string[]
   clientLogos: Array<{name: string; image?: ImageValue}>
   latestRail?: LatestRailItem[]
+  founderFilm?: ImageValue[]
   brandRail?: BrandRailItem[]
   resourceTiles?: ResourceTile[]
   cprSpotlight?: CprSpotlight
