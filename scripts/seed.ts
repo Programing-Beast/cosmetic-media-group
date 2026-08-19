@@ -313,7 +313,6 @@ async function main() {
       block('Long-standing relationships with consumer, trade, beauty and business media enable the agency to connect the right experts and stories with the publications and platforms that matter. That heritage now sits within the wider Cosmetic Media Group ecosystem, giving clients access to a broader mix of editorial, personal branding, content, education, podcasts, events and industry platforms.', 'cpr-story-2')
     ],
     capabilitiesEyebrow: '02 — Specialist capability',
-    capabilitiesNote: 'A concise summary of the current Cosmetic PR website. Final live service list should be approved by the client before migration.',
     capabilitiesHeading: 'WHAT COSMETIC PR BRINGS TO THE TABLE',
     capabilities: [
       {_key: 'pr', title: 'PR & Communications', description: 'Media relations, expert positioning, editorial opportunities, press launches, awards and long-term reputation strategy.'},
@@ -341,17 +340,18 @@ async function main() {
     publicationsHeading: 'Stories placed where credibility grows.',
     publicationsIntro: 'Cosmetic PR connects expert stories with the consumer, beauty, trade, lifestyle and broadcast platforms that shape visibility and trust.',
     publications: ['VOGUE', "Harper's Bazaar", 'GRAZIA', 'Tatler', 'Marie Claire', 'Cosmopolitan', 'The Telegraph', 'Daily Mail', 'HELLO!', 'Channel 5', 'MTV', 'This Morning'],
-    summaryEyebrow: '06 — What the legacy site proves',
-    summaryHeading: 'A full-site summary, refined into one editorial page.',
+    summaryEyebrow: '06 — Why Cosmetic PR',
+    summaryHeading: 'Industry knowledge that goes beyond press coverage.',
     summaryBody: [
-      block('This page is intentionally a concise editorial summary of the previous Cosmetic PR website, bringing its strongest proof points into the new Cosmetic Media Group design system without recreating the older site page-for-page.', 'cpr-summary-1'),
-      block('It captures the essentials of the original platform: sector specialism, service breadth, award and event support, content creation, social and digital communications, proven media relationships, long-term client trust and selected campaign outcomes.', 'cpr-summary-2'),
-      block('For the final live build, the developer can further expand this page with additional approved case studies, publication logos, testimonials, before-and-after campaign outcomes or archived press examples if the client wants a deeper legacy showcase.', 'cpr-summary-3')
+      block('Cosmetic PR was founded in 2015 by Lucy Hilson with a clear goal: to help aesthetics businesses reach their potential through media awareness and meaningful business support. The agency has stayed deliberately specialist, focusing on medical aesthetics, beauty and wellness rather than trying to be everything to everyone.', 'cpr-summary-1'),
+      block('That sector focus shapes the way the team works. Cosmetic PR combines media relations with an understanding of how clinics, practitioners, products and aesthetic brands actually grow — supporting clients with PR strategy, awards, events, content, digital communications and wider brand development.', 'cpr-summary-2'),
+      block('Lucy’s experience also extends beyond publicity into business development and consultancy, including support around product and skincare development, industry speaking opportunities and brand growth. Cosmetic PR now works internationally across the UK and Dubai, bringing that specialist knowledge to clients in both markets.', 'cpr-summary-3')
     ],
     summaryPoints: [
-      {_key: 'included', label: 'Included here', text: 'Agency positioning, services, case studies and testimonials'},
-      {_key: 'later', label: 'Can be added later', text: 'More case studies, press logos, screenshots, awards and archived campaign highlights'},
-      {_key: 'role', label: 'Role in the new site', text: 'The flagship agency page within the wider Cosmetic Media Group ecosystem'}
+      {_key: 'niche', label: 'Aesthetics inside out', text: 'Deep knowledge of medical aesthetics, beauty and wellness — the niche has remained at the heart of the agency since launch.'},
+      {_key: 'beyond', label: 'More than media coverage', text: 'PR is supported by practical business advice, awards, events, content, digital activity and brand development.'},
+      {_key: 'international', label: 'International perspective', text: 'Established UK expertise with an active Dubai presence and support for brands and professionals operating across both markets.'},
+      {_key: 'award', label: 'Award-winning agency', text: 'Cosmetic PR was named Best Aesthetic Specialist PR Agency 2022 – UK in the LuxLife Health, Beauty & Wellness Awards.'}
     ],
     newsletterEyebrow: 'Stay connected',
     newsletterHeading: 'PR insight from inside the industry.',
