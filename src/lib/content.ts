@@ -276,6 +276,7 @@ export async function getHomepage(): Promise<Homepage> {
     latestRail: data.latestRail?.length
       ? data.latestRail.flatMap((item) => (item.label && item.title ? [{label: item.label, title: item.title, actionLabel: item.actionLabel ?? undefined, href: item.href ?? undefined}] : []))
       : fallbackHomepage.latestRail,
+    founderFilm: data.founderFilm?.length ? data.founderFilm.map(toImage).filter((img): img is ImageValue => Boolean(img)) : fallbackHomepage.founderFilm,
     brandRail: data.brandRail?.length
       ? data.brandRail.flatMap((item) => (item.label && item.title ? [{label: item.label, title: item.title, description: item.description ?? undefined, href: item.href ?? undefined}] : []))
       : fallbackHomepage.brandRail,

@@ -40,6 +40,7 @@ export const HOMEPAGE_QUERY = defineQuery(`*[_type == "homepage"][0]{
   stats, credibilityFacts, publications,
   clientLogos[]{name, "image": logo{..., "asset": asset->{_id,_ref,url}}},
   latestRail, brandRail, resourceTiles,
+  "founderFilm": founderFilm[]{..., "asset": asset->{_id,_ref,url}},
   cprEyebrow, cprHeading, cprAccent, cprIntro, cprStatusChips,
   cprCards[]{label, title, text, ctaLabel, "image": image{..., "asset": asset->{_id,_ref,url}}},
   sections[]{sectionType,enabled}, seo,
