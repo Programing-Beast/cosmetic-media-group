@@ -1671,3 +1671,8 @@ to{transform:translateX(-50%)}
   .cpr-services-head h2{font-size:clamp(58px,11vw,86px)}
   .cpr-summary-grid{grid-template-columns:1fr;gap:45px}
 }
+
+/* Newsletter band heading: .85 leading caused descender collisions at 96px
+   ("insight" over "inside the") — same overlap class the V19 instructions fix
+   for the CPR heading. .98 keeps the tight editorial look without touching. */
+.cmg-home-newsletter h2{line-height:.98}
