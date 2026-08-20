@@ -27,6 +27,16 @@ const FALLBACK_ROLES = [
 
 const FALLBACK_NOTE = '* Media coverage figure is shown as supplied in the client feedback and should be verified before the final website goes live.'
 
+// The seeded headline already contains the full phrase, so the italic accent is
+// carved out of it rather than appended — the phrase renders exactly once
+// whatever the Sanity value is.
+function FounderHeadline({headline}: {headline?: string}) {
+  const text = headline?.trim() || 'Experience with a point of view.'
+  const match = text.match(/^(.*?)\s*(point of view\.?)$/i)
+  if (!match) return <>{text}</>
+  return <>{match[1]} <em>{match[2]}</em></>
+}
+
 export async function generateMetadata() {
   const founder = await getFounder()
   return createMetadata('Meet Lucy Hilson', 'Founder, PR specialist, speaker, interviewer and industry commentator.', founder?.seo, '/about/founder')
@@ -60,7 +70,7 @@ export default async function FounderPage() {
           </div>
           <div className="cmg-founder-copy">
             <div className="cmg-section-no">01 — Founder profile</div>
-            <h2>{founder?.headline || 'Experience with a'} <em>point of view.</em></h2>
+            <h2><FounderHeadline headline={founder?.headline} /></h2>
             <p className="founder-intro">Lucy Hilson is the founder of Cosmetic Media Group and one of the UK and Middle East&apos;s most established PR specialists in aesthetics.</p>
             {founder?.body ? (
               <RichText value={founder.body} />
