@@ -59,12 +59,12 @@ export function MediaFilter({cards}: {cards: MediaCard[]}) {
           )
         )}
       </div>
-      <div className="media-grid" style={{marginTop: 42}}>
+      <div className="media-grid">
         {visible.length ? (
           visible.map((card) => (
             <Link className="media-card" href={`/media-hub/${card.slug}`} key={card.slug}>
               <div className="story-image"><Image src={card.img} alt={card.alt} width={700} height={440} sizes="(max-width: 760px) 100vw, 33vw" /></div>
-              <div className="story-meta">{metaLabel(card)}</div>
+              <div className="story-meta" style={{marginTop: 17}}>{metaLabel(card)}</div>
               <h3>{card.title}</h3>
               <p>{card.excerpt}</p>
             </Link>

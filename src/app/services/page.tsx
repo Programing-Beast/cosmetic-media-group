@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {NewsletterBand} from '@/components/CommonSections'
 import {getServices} from '@/lib/content'
+import {serviceHref} from '@/lib/links'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
@@ -26,7 +27,7 @@ export default async function ServicesPage() {
       <section className="services-editorial-list">
         <div className="shell">
           {services.map((service, index) => (
-            <Link className="service-feature" href={service.slug === 'pr' ? '/cosmetic-pr' : `/services/${service.slug}`} key={service.slug}>
+            <Link className="service-feature" href={serviceHref(service.slug)} key={service.slug}>
               <span className="service-feature-no">{String(index + 1).padStart(2, '0')}</span>
               <h2>{service.title}</h2>
               <div className="service-feature-copy">

@@ -1,7 +1,6 @@
 import type {Metadata} from 'next'
 import './globals.css'
 import {SiteChrome} from '@/components/SiteChrome'
-import {TopProgressBar} from '@/components/TopProgressBar'
 import {getNavigation, getServices, getSiteSettings} from '@/lib/content'
 
 export const metadata: Metadata = {
@@ -24,7 +23,6 @@ export default async function RootLayout({children}: Readonly<{children: React.R
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
       </head>
       <body suppressHydrationWarning>
-        <TopProgressBar />
         <SiteChrome settings={settings} services={footerServices} navigation={navigation}>{children}</SiteChrome>
       </body>
     </html>

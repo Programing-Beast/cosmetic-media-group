@@ -5,6 +5,7 @@ import {ExternalVideo} from '@/components/ExternalVideo'
 import {RichText} from '@/components/RichText'
 import {ShareLinks} from '@/components/ShareLinks'
 import {getArticle, getArticles} from '@/lib/content'
+import {serviceHref} from '@/lib/links'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 
@@ -57,7 +58,7 @@ export default async function ArticlePage({params}: {params: Promise<{slug: stri
               <div className="eyebrow">Related service</div>
               <p>
                 {article.relatedService ? (
-                  <Link href={`/services/${article.relatedService.slug}`}><b>{article.relatedService.title} ↗</b></Link>
+                  <Link href={serviceHref(article.relatedService.slug)}><b>{article.relatedService.title} ↗</b></Link>
                 ) : (
                   <Link href="/services"><b>Explore our services ↗</b></Link>
                 )}
