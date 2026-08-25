@@ -869,8 +869,31 @@
        ========================================================= */
 
     /* About and Services mega menus share the same editorial interaction. */
-    .nav-trigger{font-family:inherit;color:inherit;cursor:pointer;text-transform:uppercase}
+    .nav-trigger{font-family:inherit;color:inherit;cursor:pointer;text-transform:uppercase;display:inline-flex;align-items:baseline;gap:5px}
     .nav-trigger[aria-expanded="true"]:after{right:0}
+    .nav-chevron{
+      position:relative;
+      display:inline-block;
+      width:9px;
+      height:7px;
+      flex:0 0 9px;
+      margin-left:1px;
+      transform:translateY(1px);
+      transition:transform .22s ease;
+    }
+    .nav-chevron:before{
+      content:"";
+      position:absolute;
+      left:1px;
+      top:-1px;
+      width:6px;
+      height:6px;
+      border-right:1.6px solid var(--pink);
+      border-bottom:1.6px solid var(--pink);
+      transform:rotate(45deg);
+      transform-origin:center;
+    }
+    .nav-trigger[aria-expanded="true"] .nav-chevron{transform:translateY(1px) rotate(180deg)}
     .about-mega-links{grid-template-columns:repeat(2,minmax(0,1fr))}
     .mega{transform-origin:top center}
     .mega.open{display:block}
