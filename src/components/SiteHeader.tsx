@@ -81,11 +81,11 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
           </Link>
           <nav aria-label="Primary navigation">
             <div className="nav-group" onMouseEnter={() => enter('about')} onMouseLeave={leave}>
-              <button className="nav-trigger" type="button" aria-expanded={open === 'about'} onClick={() => setOpen(open === 'about' ? null : 'about')} onFocus={() => enter('about')}>About</button>
+              <button className="nav-trigger" type="button" aria-expanded={open === 'about'} onClick={() => setOpen(open === 'about' ? null : 'about')} onFocus={() => enter('about')}>About<span className="nav-chevron" aria-hidden="true" /></button>
             </div>
             <Link href="/cosmetic-pr">Cosmetic PR</Link>
             <div className="nav-group" onMouseEnter={() => enter('services')} onMouseLeave={leave}>
-              <button className="nav-trigger" type="button" aria-expanded={open === 'services'} onClick={() => setOpen(open === 'services' ? null : 'services')} onFocus={() => enter('services')}>Services</button>
+              <button className="nav-trigger" type="button" aria-expanded={open === 'services'} onClick={() => setOpen(open === 'services' ? null : 'services')} onFocus={() => enter('services')}>Services<span className="nav-chevron" aria-hidden="true" /></button>
             </div>
             <Link href="/media-hub">Media Hub</Link>
             <Link href="/diamond-awards">Diamond Awards</Link>
