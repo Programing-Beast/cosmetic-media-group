@@ -1700,6 +1700,19 @@ to{transform:translateX(-50%)}
    for the CPR heading. .98 keeps the tight editorial look without touching. */
 .cmg-home-newsletter h2{line-height:.98}
 
+    /* iOS Safari fixes (client 10-09): Safari paints unstyled <button> text with
+       its default blue, so controls get explicit colours; Unicode ↗ was replaced
+       with the .arrow-icon SVG site-wide; article hero image capped on mobile. */
+    button{color:inherit}
+    .filter-chip{color:var(--ink);-webkit-text-fill-color:currentColor}
+    .filter-chip.active,.filter-chip:hover{color:#fff}
+    .arrow-icon{display:inline-block;vertical-align:-1px;flex:0 0 auto}
+    .cmg-service-row .go .arrow-icon{width:22px;height:22px}
+    .cmg-brand-line b .arrow-icon{width:18px;height:18px}
+    @media(max-width:760px){
+      .article-hero-image{height:auto;aspect-ratio:3/2;margin-left:18px;margin-right:18px}
+    }
+
     /* Video hero band above the editorial cover — client review, 10-09 requirements */
     .cmg-video-hero{padding:38px 0 0}
     .cmg-video-hero-film{display:block;width:100%;aspect-ratio:1920/1074;height:auto;object-fit:cover;border-radius:22px;background:#ddd}
@@ -1707,3 +1720,4 @@ to{transform:translateX(-50%)}
       .cmg-video-hero{padding-top:14px}
       .cmg-video-hero-film{border-radius:14px}
     }
+

@@ -5,6 +5,7 @@ import {RichText} from '@/components/RichText'
 import {getCosmeticPr} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
+import {Arrow} from '@/components/Arrow'
 
 const FALLBACK_IDENTITY = [
   {label: 'Position', value: 'Flagship agency within CMG'},
@@ -87,8 +88,8 @@ export default async function CosmeticPrPage() {
             <p className="cpr-intro">{page?.heroIntro || 'The established specialist PR agency behind more than a decade of recognised work across medical aesthetics, beauty and wellness.'}</p>
             <p>{page?.heroBody || 'Cosmetic Media Group is the umbrella brand. Cosmetic PR remains its flagship communications agency — combining deep sector knowledge, long-standing media relationships and bespoke strategy to build trusted reputations.'}</p>
             <div className="hero-actions">
-              <Link className="btn btn-dark" href="/contact">Discuss a PR brief ↗</Link>
-              <Link className="text-link" href="/about/founder">Meet Lucy Hilson ↗</Link>
+              <Link className="btn btn-dark" href="/contact">Discuss a PR brief <Arrow /></Link>
+              <Link className="text-link" href="/about/founder">Meet Lucy Hilson <Arrow /></Link>
             </div>
           </div>
           <div className="cpr-hero-image">
@@ -116,7 +117,7 @@ export default async function CosmeticPrPage() {
         <div className="cpr-story-main">
           <h2>{page?.storyHeading || 'PR that builds'} <em>{page?.storyAccent || 'recognition with substance.'}</em></h2>
           {page?.storyBody ? <RichText value={page.storyBody} /> : FALLBACK_STORY.map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
-          <Link className="btn btn-dark" href="/contact" style={{marginTop: 25}}>Start a PR conversation ↗</Link>
+          <Link className="btn btn-dark" href="/contact" style={{marginTop: 25}}>Start a PR conversation <Arrow /></Link>
         </div>
       </div>
     </section>
@@ -146,7 +147,7 @@ export default async function CosmeticPrPage() {
             <div className="cmg-section-no">{page?.casesEyebrow || '03 — Selected impact'}</div>
             <h2>{page?.casesHeading || 'Proof built through real campaigns.'}</h2>
           </div>
-          <Link className="text-link" href="/contact">Discuss your goals ↗</Link>
+          <Link className="text-link" href="/contact">Discuss your goals <Arrow /></Link>
         </div>
         <div className="cpr-case-grid">
           {cases.map((item) => <article className="cpr-case" key={item.title}>
@@ -214,7 +215,7 @@ export default async function CosmeticPrPage() {
           <p>{page?.newsletterText || 'Follow the latest campaigns, media opportunities, expert perspectives and wider Cosmetic Media Group updates.'}</p>
           <ManagedForm type="newsletter" successMessage="Thank you. You are subscribed.">
             <input type="email" name="email" required placeholder="Your email address" />
-            <button type="submit">Subscribe ↗</button>
+            <button type="submit">Subscribe <Arrow /></button>
           </ManagedForm>
         </div>
       </div>

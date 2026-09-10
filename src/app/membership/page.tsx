@@ -1,6 +1,7 @@
 import {ManagedForm} from '@/components/Form'
 import {getMembership} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
+import {Arrow} from '@/components/Arrow'
 
 const FALLBACK_BENEFITS = [
   {title: 'Member intelligence', description: 'Premium reports, deeper trend analysis and early access to annual guides.'},
@@ -25,7 +26,7 @@ export default async function MembershipPage() {
           <p>{membership?.intro || 'A future membership for professionals and brands who want deeper insight, better resources and meaningful access to the conversations shaping aesthetics.'}</p>
           <ManagedForm type="membership" className="membership-signup" successMessage="Thank you. Your interest has been registered.">
             <input type="email" name="email" required placeholder="Join the priority list" />
-            <button className="btn btn-pink" type="submit">Keep me informed ↗</button>
+            <button className="btn btn-pink" type="submit">Keep me informed <Arrow /></button>
           </ManagedForm>
         </div>
       </section>

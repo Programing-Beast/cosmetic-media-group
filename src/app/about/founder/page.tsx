@@ -5,6 +5,7 @@ import {getFounder} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
 import {RichText} from '@/components/RichText'
+import {Arrow} from '@/components/Arrow'
 
 const FALLBACK_STATS = [
   {value: '20+', label: 'Years in aesthetics PR'},
@@ -119,8 +120,8 @@ export default async function FounderPage() {
             ))}
           </div>
           <div className="founder-page-cta">
-            <Link className="btn btn-dark" href="/contact">Invite Lucy to speak or collaborate ↗</Link>
-            <Link className="text-link" href="/media-desk">Media and journalist enquiries ↗</Link>
+            <Link className="btn btn-dark" href="/contact">Invite Lucy to speak or collaborate <Arrow /></Link>
+            <Link className="text-link" href="/media-desk">Media and journalist enquiries <Arrow /></Link>
           </div>
         </div>
       </section>

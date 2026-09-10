@@ -5,6 +5,7 @@ import {type VideoCardData} from '@/components/VideoCard'
 import {getVideos, getVideoPage} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
+import {Arrow} from '@/components/Arrow'
 
 const DEFAULT_INTRO = 'Live broadcast, streaming, content and video production — a selection of work from across the aesthetics industry.'
 
@@ -43,7 +44,7 @@ export default async function VideoGalleryPage() {
           </div>
           <div>
             <p>{page?.ctaText || 'Use the dedicated media desk to submit your subject, deadline and required expertise.'}</p>
-            <Link className="btn btn-dark" href={page?.ctaButtonHref || '/media-desk'}>{page?.ctaButtonLabel || 'Open the media desk'} ↗</Link>
+            <Link className="btn btn-dark" href={page?.ctaButtonHref || '/media-desk'}>{page?.ctaButtonLabel || 'Open the media desk'} <Arrow /></Link>
           </div>
         </div>
       </section>
