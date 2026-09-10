@@ -5,6 +5,7 @@ import {RichText} from '@/components/RichText'
 import {getAboutPage} from '@/lib/content'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
+import {Arrow} from '@/components/Arrow'
 
 const FALLBACK_STATS = [
   {value: '20+', label: 'Years in aesthetics communications'},
@@ -57,11 +58,11 @@ export default async function AboutPage() {
                 <p>Cosmetic PR remains the flagship specialist PR agency within the group, while Cosmetic Media Group provides the wider platform for editorial, content, education, events, awards and future membership.</p>
               </>
             )}
-            <p><Link className="text-link" href="/cosmetic-pr">Explore Cosmetic PR ↗</Link></p>
+            <p><Link className="text-link" href="/cosmetic-pr">Explore Cosmetic PR <Arrow /></Link></p>
             <blockquote className="quote">{about?.quote || 'The future of aesthetics will not be led by the loudest voices. It will be led by the most trusted ones.'}</blockquote>
             <p>{about?.closingNote || 'Cosmetic Media Group exists to help the right people and ideas become seen, trusted and remembered — while creating useful platforms that move the wider industry forward.'}</p>
             <div className="hero-actions">
-              <Link className="btn btn-dark" href="/about/founder">Meet founder Lucy Hilson ↗</Link>
+              <Link className="btn btn-dark" href="/about/founder">Meet founder Lucy Hilson <Arrow /></Link>
             </div>
           </div>
         </div>

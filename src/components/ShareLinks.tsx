@@ -1,6 +1,7 @@
 'use client'
 
 import {useState} from 'react'
+import {Arrow} from '@/components/Arrow'
 
 export function ShareLinks({title}: {title: string}) {
   const [copied, setCopied] = useState(false)
@@ -31,9 +32,9 @@ export function ShareLinks({title}: {title: string}) {
     <div className="aside-box">
       <div className="eyebrow">Share</div>
       <p>
-        <button type="button" className="text-link share-link" onClick={shareLinkedIn}>LinkedIn ↗</button><br />
-        <button type="button" className="text-link share-link" onClick={shareEmail}>Email ↗</button><br />
-        <button type="button" className="text-link share-link" onClick={copyLink}>{copied ? 'Link copied ✓' : 'Copy link ↗'}</button>
+        <button type="button" className="text-link share-link" onClick={shareLinkedIn}>LinkedIn <Arrow /></button><br />
+        <button type="button" className="text-link share-link" onClick={shareEmail}>Email <Arrow /></button><br />
+        <button type="button" className="text-link share-link" onClick={copyLink}>{copied ? 'Link copied ✓' : <>Copy link <Arrow /></>}</button>
       </p>
     </div>
   )

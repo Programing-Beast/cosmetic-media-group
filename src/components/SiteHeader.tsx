@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useEffect, useRef, useState} from 'react'
 import type {FooterNavItem, MegaMenuContent, MenuLink, Navigation} from '@/types'
+import {Arrow} from '@/components/Arrow'
 
 type MenuName = 'about' | 'services' | null
 
@@ -96,7 +97,7 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
           <div className="header-actions">
             {/* Future search control — connects to editorial/CMS search in a later phase (client feedback, V21). */}
             <button className="search-btn" type="button" aria-label="Search" onClick={() => showToast('Search is coming soon.')}>⌕</button>
-            <Link className="btn btn-dark header-conversation" href="/contact">Start a conversation <span>↗</span></Link>
+            <Link className="btn btn-dark header-conversation" href="/contact">Start a conversation <span><Arrow /></span></Link>
             <button className="menu-btn" type="button" onClick={() => setMobileOpen(true)} aria-label="Open menu">☰</button>
           </div>
         </div>
@@ -138,10 +139,10 @@ function MegaMenu({name, open, content, links, onEnter, onLeave, onLinkClick}: {
           {content.eyebrow && <div className="eyebrow">{content.eyebrow}</div>}
           {content.heading && <h3>{content.heading}</h3>}
           {content.text && <p>{content.text}</p>}
-          {content.ctaLabel && content.ctaHref && <Link className="btn btn-white" href={content.ctaHref} onClick={onLinkClick}>{content.ctaLabel} ↗</Link>}
+          {content.ctaLabel && content.ctaHref && <Link className="btn btn-white" href={content.ctaHref} onClick={onLinkClick}>{content.ctaLabel} <Arrow /></Link>}
         </div>
         <div className="mega-links">
-          {links.map((link) => <Link className="mega-link" key={link.href} href={link.href} onClick={onLinkClick}><span>{link.label}</span><span>↗</span></Link>)}
+          {links.map((link) => <Link className="mega-link" key={link.href} href={link.href} onClick={onLinkClick}><span>{link.label}</span><span><Arrow /></span></Link>)}
         </div>
       </div>
     </div>

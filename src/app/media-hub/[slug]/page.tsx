@@ -8,6 +8,7 @@ import {getArticle, getArticles} from '@/lib/content'
 import {serviceHref} from '@/lib/links'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
+import {Arrow} from '@/components/Arrow'
 
 export async function generateStaticParams() {
   const articles = await getArticles()
@@ -58,13 +59,13 @@ export default async function ArticlePage({params}: {params: Promise<{slug: stri
               <div className="eyebrow">Related service</div>
               <p>
                 {article.relatedService ? (
-                  <Link href={serviceHref(article.relatedService.slug)}><b>{article.relatedService.title} ↗</b></Link>
+                  <Link href={serviceHref(article.relatedService.slug)}><b>{article.relatedService.title} <Arrow /></b></Link>
                 ) : (
-                  <Link href="/services"><b>Explore our services ↗</b></Link>
+                  <Link href="/services"><b>Explore our services <Arrow /></b></Link>
                 )}
               </p>
             </div>
-            <div className="aside-box"><Link className="text-link" href="/media-hub">Back to Media Hub ↗</Link></div>
+            <div className="aside-box"><Link className="text-link" href="/media-hub">Back to Media Hub <Arrow /></Link></div>
           </aside>
         </div>
       </section>

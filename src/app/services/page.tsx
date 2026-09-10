@@ -5,6 +5,7 @@ import {getServices} from '@/lib/content'
 import {serviceHref} from '@/lib/links'
 import {createMetadata} from '@/lib/metadata'
 import {imageAlt, imageUrl} from '@/sanity/lib/image'
+import {Arrow, ArrowLabel} from '@/components/Arrow'
 
 export const metadata = createMetadata('Services', 'Connected communications, positioning, production and experiences for ambitious brands and leaders across the global aesthetics industry.', undefined, '/services')
 
@@ -32,7 +33,7 @@ export default async function ServicesPage() {
               <h2>{service.title}</h2>
               <div className="service-feature-copy">
                 <p>{service.listDescription || service.intro}</p>
-                <span className="text-link">{service.listCta || (service.slug === 'pr' ? 'Explore Cosmetic PR ↗' : `Explore ${service.title.toLowerCase()} ↗`)}</span>
+                <span className="text-link"><ArrowLabel text={service.listCta || (service.slug === 'pr' ? 'Explore Cosmetic PR ↗' : `Explore ${service.title.toLowerCase()} ↗`)} /></span>
               </div>
               <div className="service-feature-image"><Image src={imageUrl(service.image, 700, 500)} alt={imageAlt(service.image, service.title)} width={700} height={500} sizes="(max-width: 980px) 100vw, 33vw" /></div>
             </Link>
@@ -44,7 +45,7 @@ export default async function ServicesPage() {
           <h2>One idea. Every relevant channel.</h2>
           <div>
             <p>The strongest work rarely sits inside a single service. We connect communications, editorial thinking, production, events and expert positioning around one clear commercial and reputational objective.</p>
-            <Link className="btn btn-white" href="/contact">Discuss your brief ↗</Link>
+            <Link className="btn btn-white" href="/contact">Discuss your brief <Arrow /></Link>
           </div>
         </div>
       </section>
