@@ -1710,5 +1710,5 @@ to{transform:translateX(-50%)}
     .cmg-service-row .go .arrow-icon{width:22px;height:22px}
     .cmg-brand-line b .arrow-icon{width:18px;height:18px}
     @media(max-width:760px){
-      .article-hero-image{height:auto;aspect-ratio:3/2}
+      .article-hero-image{height:auto;aspect-ratio:3/2;margin-left:18px;margin-right:18px}
     }
