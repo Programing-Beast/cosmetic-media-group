@@ -1699,3 +1699,11 @@ to{transform:translateX(-50%)}
    ("insight" over "inside the") — same overlap class the V19 instructions fix
    for the CPR heading. .98 keeps the tight editorial look without touching. */
 .cmg-home-newsletter h2{line-height:.98}
+
+    /* Video hero band above the editorial cover — client review, 10-09 requirements */
+    .cmg-video-hero{padding:38px 0 0}
+    .cmg-video-hero-film{display:block;width:100%;aspect-ratio:1920/1074;height:auto;object-fit:cover;border-radius:22px;background:#ddd}
+    @media(max-width:760px){
+      .cmg-video-hero{padding-top:14px}
+      .cmg-video-hero-film{border-radius:14px}
+    }
