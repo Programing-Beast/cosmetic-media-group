@@ -6,7 +6,7 @@
 export function Arrow() {
   return (
     <svg className="arrow-icon" width="1em" height="1em" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M2 24L23 3M15.2 3H23V10.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="butt" strokeLinejoin="miter" />
+      <path d="M2 24L23 3M15.2 3H23V10.8" stroke="currentColor" strokeWidth="0.9" strokeLinecap="butt" strokeLinejoin="miter" />
     </svg>
   )
 }
