@@ -1733,5 +1733,8 @@ to{transform:translateX(-50%)}
        would make object-fit:cover discard most of the frame's width — at 390px wide that is a
        62% side crop. Above 3/2 the box is wider than the film and cover trims top/bottom only. */
     @media(min-aspect-ratio:3/2){
-      .cmg-video-hero-full .cmg-video-hero-film{aspect-ratio:auto;height:calc(100svh - 103px)}
+      /* Anchor the cover-crop to the top of the frame: the film's own logo and title live
+         there, and a centred crop hides them — which reads as the video sliding under the
+         sticky header. Only the bottom of the frame gives way now. */
+      .cmg-video-hero-full .cmg-video-hero-film{aspect-ratio:auto;height:calc(100svh - 103px);object-position:center top}
     }
