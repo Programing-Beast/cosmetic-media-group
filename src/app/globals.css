@@ -1723,4 +1723,15 @@ to{transform:translateX(-50%)}
     /* Top band runs edge to edge: no .shell wrapper, so square corners and flush to the header.
        Declared after the 760px query above so padding-top:0 survives at equal specificity. */
     .cmg-video-hero-full{padding-top:0}
+    /* Fill exactly the viewport left under the sticky header so the film lands whole and the
+       rest of the page begins below the fold. 103px = .header-inner 102px + its 1px border.
+       svh (not vh/dvh) keeps mobile honest when the browser toolbar is showing. The explicit
+       height supersedes the 1920/1074 aspect-ratio above; object-fit:cover absorbs the
+       difference between the film and the viewport. */
     .cmg-video-hero-full .cmg-video-hero-film{border-radius:0}
+    /* Only landscape viewports get the fill. The film is 1920x1074 (1.79:1), so a portrait box
+       would make object-fit:cover discard most of the frame's width — at 390px wide that is a
+       62% side crop. Above 3/2 the box is wider than the film and cover trims top/bottom only. */
+    @media(min-aspect-ratio:3/2){
+      .cmg-video-hero-full .cmg-video-hero-film{aspect-ratio:auto;height:calc(100svh - 103px)}
+    }
