@@ -1,10 +1,12 @@
 // The ↗ glyph (U+2197) is emoji-capable, so iOS Safari renders it with the
-// Apple emoji font (blue square arrow). An inline SVG renders identically on
-// every platform, so every arrow on the site goes through these components.
+// Apple emoji font (blue square arrow). This SVG replaces it site-wide. The
+// geometry was matched pixel-for-pixel against the arrow in the approved V23
+// mockup (long thin 45° shaft, small bracket head, hairline weight): at 13px
+// text the shaft is exactly 1px. Em sizing keeps it scaling with font-size.
 export function Arrow() {
   return (
-    <svg className="arrow-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="arrow-icon" width="1em" height="1em" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M2 24L23 3M15.2 3H23V10.8" stroke="currentColor" strokeWidth="0.9" strokeLinecap="butt" strokeLinejoin="miter" />
     </svg>
   )
 }
