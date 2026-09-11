@@ -1720,3 +1720,7 @@ to{transform:translateX(-50%)}
       .cmg-video-hero-film{border-radius:14px}
     }
 
+    /* Top band runs edge to edge: no .shell wrapper, so square corners and flush to the header.
+       Declared after the 760px query above so padding-top:0 survives at equal specificity. */
+    .cmg-video-hero-full{padding-top:0}
+    .cmg-video-hero-full .cmg-video-hero-film{border-radius:0}
