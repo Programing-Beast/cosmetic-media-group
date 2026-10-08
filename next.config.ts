@@ -1,6 +1,7 @@
 import type {NextConfig} from 'next'
 
 const nextConfig: NextConfig = {
+  transpilePackages: ['@nomanbutt/cmg-core'],
   images: {
     remotePatterns: [
       {protocol: 'https', hostname: 'cdn.sanity.io'},

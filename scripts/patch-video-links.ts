@@ -1,5 +1,5 @@
 import {createClient} from '@sanity/client'
-import {videoGalleries} from '../src/data/fallback'
+import {videoGalleries} from '@nomanbutt/cmg-core/data/fallback'
 
 // Patches the `videos` array and `category` on existing videoGallery docs, so we
 // can verify playback and the list filter without a full re-seed.

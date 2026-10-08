@@ -24,9 +24,36 @@ Production-oriented developer handoff for the Cosmetic Media Group editorial web
 
 ## Technology versions
 
-The package file pins the tested target versions for the handoff date. Run upgrades in a branch and retest the Studio, forms and visual layouts before merging.
+Framework dependencies remain pinned to the tested target versions. The core package follows the npm `latest` tag and refreshes before each development run and production build.
+
+## Package architecture and local installation
+
+This app depends on the npm package `@nomanbutt/cmg-core`. The separate package source lives in the sibling folder `../cmg-core`.
+
+Core page and layout implementations, shared components, content loaders, Sanity schemas and Studio configuration, forms API logic, metadata and fallback data live in that package. This repository retains thin Next.js route files, deployment configuration, environment variables, scripts and `public` assets. Keep the app's public assets when deploying.
+
+The Next.js configuration must include `transpilePackages: ['@nomanbutt/cmg-core']`. The root layout imports the package stylesheet through `@nomanbutt/cmg-core/styles.css`.
+
+For local package development, build and pack the sibling package, then install its tarball in the app:
+
+```bash
+cd ../cmg-core
+npm install
+npm run build
+npm pack
+cd ../cosmetic-media-group
+npm install ../cmg-core/nomanbutt-cmg-core-1.0.0.tgz
+```
+
+Use the filename printed by `npm pack` if you changed the package scope or version. Rebuild, repack and reinstall the tarball after package changes. The build emits ESM JavaScript and TypeScript declarations in `dist`, preserving module paths.
 
 ## 1. Install
+
+This app installs `@nomanbutt/cmg-core@latest` from npm. A fresh app checkout does not require the sibling source folder. If the npm package is later made private, development and deployment need an npm account or token authorized to download it.
+
+`npm run dev` and `npm run build` first run `npm run core:update`, which checks npm's `latest` tag and updates the installed core package and lockfile. A new published release is picked up the next time either command runs, including after a deployment's `npm ci` step. A running development session must be restarted; a live site needs a rebuild and redeploy. Registry access is required for this update step. `npm start` serves the already-built application.
+
+For local tarball development, run `npx next dev` or `npx next build` to bypass automatic registry updates. Restore the dependency to `latest` when switching back to published releases.
 
 ```bash
 npm install
@@ -167,3 +194,20 @@ Dynamic pages are rendered at `/services/[slug]`.
 ## Important scope note
 
 This repository provides the complete Phase 1 editorial website foundation. Secure member accounts, paid subscriptions, course progress, gated resources, advanced event booking, awards submissions and payment workflows require separate backend and product development. The current architecture is prepared so those systems can be added without rebuilding the public website.
+
+
+## Publishing the core package
+
+The package is owned by `nomanbutt` and configured for public publication. Run the following in `../cmg-core` to publish a release:
+
+```bash
+cd ../cmg-core
+npm login
+npm run build
+npm pack --dry-run
+npm publish --access public
+```
+
+Follow npm's authentication prompts. Supply a publishing token through your CI secret store if publishing from CI. Never put tokens in source control. Version 1.0.0 is published publicly at https://www.npmjs.com/package/@nomanbutt/cmg-core.
+
+To make the package private later, upgrade to a paid npm plan, update Package Access in its npm settings, and set `publishConfig.access` to `restricted` in the package source. Make the GitHub repository private too if you want to restrict source access. Already downloaded package code and existing deployments remain usable.

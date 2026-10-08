@@ -2,31 +2,30 @@
   "name": "cosmetic-media-group-platform",
   "version": "1.0.0",
   "private": true,
-  "engines": {"node": ">=20.9.0"},
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
+    "core:update": "npm update @nomanbutt/cmg-core --tag latest --prefer-online --no-audit --no-fund",
+    "predev": "npm run core:update",
     "dev": "next dev",
-    "predev": "npm run sanity:typegen",
+    "prebuild": "npm run core:update",
     "build": "next build",
-    "prebuild": "npm run sanity:typegen",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "pretypecheck": "npm run sanity:typegen",
-    "sanity:typegen": "sanity schema extract --path=./schema.json --force && sanity typegen generate",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "sanity:schema": "sanity schema extract --path=./schema.json --force"
   },
   "dependencies": {
-    "@portabletext/react": "6.2.0",
-    "@sanity/image-url": "2.1.1",
-    "@sanity/vision": "6.5.0",
+    "@nomanbutt/cmg-core": "latest",
     "@sanity/client": "7.23.2",
     "next": "16.2.11",
     "next-sanity": "13.1.4",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "sanity": "6.5.0",
-    "styled-components": "^6.1.19",
-    "zod": "4.4.3"
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@types/node": "^24.0.15",

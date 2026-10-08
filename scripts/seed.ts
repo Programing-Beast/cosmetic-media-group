@@ -1,7 +1,7 @@
 import {createClient} from '@sanity/client'
 import {createReadStream, existsSync} from 'node:fs'
 import {join} from 'node:path'
-import {articles, brands, homepage, navigation, services, siteSettings, toolkits, videoGalleries} from '../src/data/fallback'
+import {articles, brands, homepage, navigation, services, siteSettings, toolkits, videoGalleries} from '@nomanbutt/cmg-core/data/fallback'
 
 // Defaults to .env.local; set SEED_ENV_FILE to target another dataset,
 // e.g. SEED_ENV_FILE=.env.handover.local npm run seed
