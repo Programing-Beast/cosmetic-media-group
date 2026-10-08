@@ -11,9 +11,9 @@ export function SiteFooter({settings, services}: {settings: SiteSettings; servic
             <h2>{settings.tagline}</h2>
             <p>{settings.description}</p>
           </div>
-          <div className="footer-col"><h4>Company</h4><Link href="/about">About</Link><Link href="/cosmetic-pr">Cosmetic PR</Link><Link href="/about/founder">Meet the Founder</Link><Link href="/media-hub">Media Hub</Link><Link href="/diamond-awards">Diamond Awards</Link><Link href="/our-brands">Our Brands</Link><Link href="/membership">Membership</Link></div>
+          <div className="footer-col"><h4>Company</h4><Link href="/about">About</Link><Link href="/cosmetic-pr">Cosmetic PR</Link><Link href="/about/founder">Meet the Founder</Link><Link href="/diamond-awards">Diamond Awards</Link><Link href="/our-brands">Our Brands</Link><Link href="/membership">Membership</Link></div>
           <div className="footer-col"><h4>Services</h4>{services.length ? services.map((service) => <Link key={service.slug} href={service.slug === 'pr' ? '/cosmetic-pr' : `/services/${service.slug}`}>{service.title}</Link>) : <Link href="/services">All services</Link>}</div>
-          <div className="footer-col"><h4>Resources</h4><Link href="/media-desk">Media Desk for Journalists</Link><Link href="/toolkits">Toolkits</Link><Link href="/media-hub">Articles & interviews</Link><Link href="/toolkits">Research & reports</Link><Link href="/contact">Contact</Link>{settings.socialLinks?.map((link) => <a key={link.platform} href={link.url}>{link.platform}</a>)}</div>
+          <div className="footer-col"><h4>Resources</h4><Link href="/media-desk">Media Desk for Journalists</Link><Link href="/toolkits">Toolkits</Link><Link href="/toolkits">Research & reports</Link><Link href="/contact">Contact</Link>{settings.socialLinks?.map((link) => <a key={link.platform} href={link.url}>{link.platform}</a>)}</div>
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Cosmetic Media Group.</span>
