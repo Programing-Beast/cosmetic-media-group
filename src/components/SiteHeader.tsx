@@ -88,7 +88,7 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
             <div className="nav-group" onMouseEnter={() => enter('services')} onMouseLeave={leave}>
               <button className="nav-trigger" type="button" aria-expanded={open === 'services'} onClick={() => setOpen(open === 'services' ? null : 'services')} onFocus={() => enter('services')}>Services<span className="nav-chevron" aria-hidden="true" /></button>
             </div>
-            <Link href="/media-hub">Media Hub</Link>
+            {/* Media Hub is hidden from navigation for now (client, 8-10) — the page stays reachable by URL. */}
             <Link href="/diamond-awards">Diamond Awards</Link>
             <Link href="/our-brands">Our Brands</Link>
             <Link href="/toolkits">Toolkits</Link>
@@ -117,7 +117,6 @@ export function SiteHeader({navigation, services}: {navigation: Navigation; serv
           <Link href="/cosmetic-pr">Cosmetic PR</Link>
           <Link href="/services">Services</Link>
           <div className="mobile-sub">{serviceLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
-          <Link href="/media-hub">Media Hub</Link>
           <Link href="/media-desk">Media Desk</Link>
           <Link href="/diamond-awards">Diamond Awards</Link>
           <Link href="/our-brands">Our Brands</Link>
